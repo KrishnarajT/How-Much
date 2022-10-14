@@ -4,6 +4,8 @@ So the point of this project was to make something that was fun to do. The idea 
 
 Another reason to go with this project, is that it would teach me nicely the basics of working with databases. It would also be my first project in which I add a Database. 
 
+This thing must look Beautiful.
+
 # The Features
 
 The reason that Intention was important to state is that its the motivation to do everything, and all the features wanna meet the expectations somewhere down the road. Keeping that in mind, the features that I want it to have are: 
