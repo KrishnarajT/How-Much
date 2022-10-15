@@ -4,42 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3445363-49b9-4e94-934c-5274cca32d9f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/jgoodies-common-javadoc.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/jgoodies-common-sources.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/jgoodies-common.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/jgoodies-forms-javadoc.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/jgoodies-forms-sources.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/jgoodies-forms.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/Colors.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/GameFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/GamePanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/LoginFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/BelgradoItalic-OVArd.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/Bulgatti-xgMV.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/Caecilia font.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/CaeciliaLTPro45Light.TTF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/CircularStd-Book.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/GameOfSquids-1GMVL.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/Hendrickson-K7GOD.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/MomcakeBold-WyonA.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/MomcakeThin-9Y6aZ.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/NotoEmoji-VariableFont_wght.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/ProductSans-Light.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/Rocketwildness-7BB8R.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/Salt.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/SdCammelloDemo-AxlD.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/SpaceGame-6YGgo.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/Spacetron-51nWZ.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/unifont-13.0.06.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/whitneylight.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Login_bg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Untitled.xcf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/Main.class" afterDir="false" />
-    </list>
+    <list default="true" id="c3445363-49b9-4e94-934c-5274cca32d9f" name="Changes" comment="created login page" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -121,8 +86,16 @@
       <workItem from="1665165156879" duration="2817000" />
       <workItem from="1665748724977" duration="12439000" />
       <workItem from="1665842243244" duration="124000" />
-      <workItem from="1665842379950" duration="10020000" />
+      <workItem from="1665842379950" duration="10479000" />
     </task>
+    <task id="LOCAL-00001" summary="created login page">
+      <created>1665855114321</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1665855114321</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,5 +114,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="created login page" />
+    <option name="LAST_COMMIT_MESSAGE" value="created login page" />
   </component>
 </project>
