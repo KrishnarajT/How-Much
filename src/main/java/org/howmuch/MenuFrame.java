@@ -108,10 +108,13 @@ public class MenuFrame extends JFrame {
 
         options_panel = new JPanel();
         BoxLayout bl = new BoxLayout(options_panel, BoxLayout.Y_AXIS);
-        options_panel.setLayout(fl);
+        options_panel.setLayout(bl);
         options_panel.add(chooseTopic_btn);
+        options_panel.add(Box.createRigidArea(new Dimension(0, 25)));
         options_panel.add(viewHighscore_btn);
+        options_panel.add(Box.createRigidArea(new Dimension(0, 25)));
         options_panel.add(helpAndCredits_btn);
+        options_panel.add(Box.createRigidArea(new Dimension(0, 25)));
         options_panel.add(updateDatabase_btn);
         options_panel.setBackground(new Color(0, 0, 0, 0));
 
