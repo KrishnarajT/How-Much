@@ -5,10 +5,6 @@ import java.awt.*;
 
 public class MenuPanel extends JPanel {
     private Image background;
-    MenuPanel()
-    {
-
-    }
 
     public void paintComponent(Graphics g) {
 

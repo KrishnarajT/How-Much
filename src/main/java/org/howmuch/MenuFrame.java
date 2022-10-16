@@ -11,8 +11,8 @@ public class MenuFrame extends JFrame {
     MenuPanel menuPanel;
     JButton exit_btn, resize_btn, minimize_btn, chooseTopic_btn, viewHighscore_btn, helpAndCredits_btn, updateDatabase_btn;
     JToggleButton darkMode_tglbtn;
-    JPanel basicButtons_pnl;
-    JLabel darkMode_lbl, background_lbl;
+    JPanel basicButtons_pnl, options_panel;
+    JLabel darkMode_lbl;
     Font buttonFont;
 
     MenuFrame() {
@@ -42,6 +42,7 @@ public class MenuFrame extends JFrame {
             }
         });
 
+        this.add(options_panel);
         this.add(darkMode_tglbtn);
         this.add(darkMode_lbl);
         this.add(basicButtons_pnl);
@@ -61,9 +62,21 @@ public class MenuFrame extends JFrame {
         darkMode_lbl.setBounds((int) (0.017 * screenSize.getWidth()), (int) (0.80 * screenSize.getHeight()), 400, 50);
         darkMode_lbl.setFont(buttonFont.deriveFont((float) (0.05 * getHeight())));
 
-
         // The Dark Mode toggle button
         darkMode_tglbtn.setBounds((int) (0.17 * screenSize.getWidth()), (int) (0.80 * screenSize.getHeight()), 60, 40);
+
+        // Options panel
+        options_panel.setBounds((int) (0.63 * screenSize.getWidth()), (int) (0.34 * screenSize.getHeight()), 500, 700);
+
+        // Buttons in the Options Panel
+        chooseTopic_btn.setBounds(new Rectangle(300, 70));
+        chooseTopic_btn.setFont(buttonFont.deriveFont((float) (0.07 * getHeight())));
+        viewHighscore_btn.setBounds(new Rectangle(300, 70));
+        viewHighscore_btn.setFont(buttonFont.deriveFont((float) (0.07 * getHeight())));
+        helpAndCredits_btn.setBounds(new Rectangle(300, 70));
+        helpAndCredits_btn.setFont(buttonFont.deriveFont((float) (0.07 * getHeight())));
+        updateDatabase_btn.setBounds(new Rectangle(300, 70));
+        updateDatabase_btn.setFont(buttonFont.deriveFont((float) (0.07 * getHeight())));
     }
 
     private void reassignColors() {
@@ -75,6 +88,14 @@ public class MenuFrame extends JFrame {
         exit_btn.setBackground(Colors.bgColor);
         resize_btn.setBackground(Colors.bgColor);
         minimize_btn.setBackground(Colors.bgColor);
+        chooseTopic_btn.setBackground(Colors.bgColor);
+        chooseTopic_btn.setForeground(Colors.primaryColor);
+        viewHighscore_btn.setBackground(Colors.bgColor);
+        viewHighscore_btn.setForeground(Colors.primaryColor);
+        updateDatabase_btn.setBackground(Colors.bgColor);
+        updateDatabase_btn.setForeground(Colors.primaryColor);
+        helpAndCredits_btn.setBackground(Colors.bgColor);
+        helpAndCredits_btn.setForeground(Colors.primaryColor);
     }
 
     private void createPanels() {
@@ -84,6 +105,16 @@ public class MenuFrame extends JFrame {
         basicButtons_pnl.add(minimize_btn);
         basicButtons_pnl.add(resize_btn);
         basicButtons_pnl.add(exit_btn);
+
+        options_panel = new JPanel();
+        BoxLayout bl = new BoxLayout(options_panel, BoxLayout.Y_AXIS);
+        options_panel.setLayout(fl);
+        options_panel.add(chooseTopic_btn);
+        options_panel.add(viewHighscore_btn);
+        options_panel.add(helpAndCredits_btn);
+        options_panel.add(updateDatabase_btn);
+        options_panel.setBackground(new Color(0, 0, 0, 0));
+
     }
 
     public void createFonts() {
@@ -168,7 +199,6 @@ public class MenuFrame extends JFrame {
         Image resizeDown_image = resizeDown.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
 
         exit_btn = new JButton();
-//        exit_btn.setText("-");
         exit_btn.setIcon(new ImageIcon(exit_image));
         exit_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         exit_btn.setAlignmentX(Box.CENTER_ALIGNMENT);
@@ -201,7 +231,6 @@ public class MenuFrame extends JFrame {
         resize_btn.setBorder(null);
         resize_btn.addChangeListener(evt -> {
             if (exit_btn.getModel().isPressed()) {
-//                this.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 exit_btn.setForeground(Colors.primaryColor);
             } else if (exit_btn.getModel().isRollover()) {
                 exit_btn.setForeground(Colors.secondaryColor);
@@ -251,6 +280,92 @@ public class MenuFrame extends JFrame {
             }
         });
 
+        chooseTopic_btn = new JButton();
+        chooseTopic_btn.setText("Choose Topic");
+        chooseTopic_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
+        chooseTopic_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
+        chooseTopic_btn.setFocusPainted(false);
+        chooseTopic_btn.setBounds(0, 0, 500, 500);
+        chooseTopic_btn.setContentAreaFilled(false);
+        chooseTopic_btn.setOpaque(true);
+        chooseTopic_btn.setBorder(null);
+        chooseTopic_btn.addChangeListener(evt -> {
+            if (chooseTopic_btn.getModel().isPressed()) {
+                chooseTopic_btn.setForeground(Colors.accentColor);
+            } else if (chooseTopic_btn.getModel().isRollover()) {
+                chooseTopic_btn.setForeground(Colors.accentColor);
+            } else {
+                chooseTopic_btn.setForeground(Colors.primaryColor);
+            }
+        });
+
+        chooseTopic_btn.addActionListener(e -> {
+            Main.changeFrame(0);
+        });
+
+        viewHighscore_btn = new JButton();
+        viewHighscore_btn.setText("View Highscore");
+        viewHighscore_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
+        viewHighscore_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
+        viewHighscore_btn.setFocusPainted(false);
+        viewHighscore_btn.setContentAreaFilled(false);
+        viewHighscore_btn.setOpaque(true);
+        viewHighscore_btn.setBorder(null);
+        viewHighscore_btn.addChangeListener(evt -> {
+            if (viewHighscore_btn.getModel().isPressed()) {
+                viewHighscore_btn.setForeground(Colors.accentColor);
+            } else if (viewHighscore_btn.getModel().isRollover()) {
+                viewHighscore_btn.setForeground(Colors.accentColor);
+            } else {
+                viewHighscore_btn.setForeground(Colors.primaryColor);
+            }
+        });
+        viewHighscore_btn.addActionListener(e -> {
+            Main.changeFrame(0);
+        });
+
+        helpAndCredits_btn = new JButton();
+        helpAndCredits_btn.setText("Help and Credits");
+        helpAndCredits_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
+        helpAndCredits_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
+        helpAndCredits_btn.setFocusPainted(false);
+        helpAndCredits_btn.setContentAreaFilled(false);
+        helpAndCredits_btn.setOpaque(true);
+        helpAndCredits_btn.setBorder(null);
+        helpAndCredits_btn.addChangeListener(evt -> {
+            if (helpAndCredits_btn.getModel().isPressed()) {
+                helpAndCredits_btn.setForeground(Colors.accentColor);
+            } else if (helpAndCredits_btn.getModel().isRollover()) {
+                helpAndCredits_btn.setForeground(Colors.accentColor);
+            } else {
+                helpAndCredits_btn.setForeground(Colors.primaryColor);
+            }
+        });
+        helpAndCredits_btn.addActionListener(e -> {
+            Main.changeFrame(0);
+        });
+
+        updateDatabase_btn = new JButton();
+        updateDatabase_btn.setText("Update Database");
+        updateDatabase_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
+        updateDatabase_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
+        updateDatabase_btn.setFont(buttonFont.deriveFont(44f));
+        updateDatabase_btn.setFocusPainted(false);
+        updateDatabase_btn.setContentAreaFilled(false);
+        updateDatabase_btn.setOpaque(true);
+        updateDatabase_btn.setBorder(null);
+        updateDatabase_btn.addChangeListener(evt -> {
+            if (updateDatabase_btn.getModel().isPressed()) {
+                updateDatabase_btn.setForeground(Colors.accentColor);
+            } else if (updateDatabase_btn.getModel().isRollover()) {
+                updateDatabase_btn.setForeground(Colors.accentColor);
+            } else {
+                updateDatabase_btn.setForeground(Colors.primaryColor);
+            }
+        });
+        updateDatabase_btn.addActionListener(e -> {
+            Main.changeFrame(0);
+        });
     }
 
 }
