@@ -1,14 +1,20 @@
 package org.howmuch;
 
+import java.awt.*;
+
 public class Main {
 
 //    static GameFrame gameFrame;
     static LoginFrame loginFrame;
-    static Boolean DarkMode = false;
+    static MenuFrame menuFrame;
+    static final int WIDTH = 1280;
+    static final int HEIGHT = 720;
+
+    static boolean maxmized = false;
 
     public static void changeFrame(int status){
         /*
-        status = 1: Call Options
+        status = 1: Call Main Menu
         status = 2: Call GameFrame
         status = 3: Call GameOver
         status = 4: Game Over -> Restart Game
@@ -17,13 +23,14 @@ public class Main {
 
         switch (status) {
             case 1 -> {
-                // Call options
-//
-//                menuFrame.setVisible(false);
-//                menuFrame.dispose();
-//
-//                // Showing Options
-//                optionFrame = new OptionFrame();
+
+                // Disposing Login Window
+                loginFrame.setVisible(false);
+                loginFrame.dispose();
+
+                // Showing Main Menu
+                menuFrame = new MenuFrame();
+
             }
             case 2 -> {
                 // Call GameFrame
@@ -58,8 +65,8 @@ public class Main {
 //
             default -> {
                 // Exit game
-
                 System.out.println("Thanks for Playing! ");
+
                 // User Wants to Exit
                 System.exit(0);
             }
