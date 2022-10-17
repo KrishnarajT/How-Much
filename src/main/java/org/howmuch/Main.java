@@ -20,7 +20,6 @@ public class Main {
     static boolean maxmized = false;
 
 
-
     static JButton exit_btn;
     static JButton resize_btn;
     static JButton minimize_btn;
@@ -71,18 +70,13 @@ public class Main {
         exit_btn.setContentAreaFilled(false);
         exit_btn.setOpaque(true);
         exit_btn.setBorder(null);
-        exit_btn.addChangeListener(evt -> {
-            if (exit_btn.getModel().isPressed()) {
-                exit_btn.setForeground(Colors.primaryColor);
-                Main.changeFrame(0);
-            } else if (exit_btn.getModel().isRollover()) {
-                exit_btn.setForeground(Colors.secondaryColor);
-            } else {
-                exit_btn.setForeground(Colors.primaryColor);
-            }
-        });
+
         resize_btn = new JButton();
-        resize_btn.setIcon(new ImageIcon(resizeUp_image));
+        if (Main.maxmized) {
+            resize_btn.setIcon(new ImageIcon(resizeDown_image));
+        } else {
+            resize_btn.setIcon(new ImageIcon(resizeUp_image));
+        }
         resize_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         resize_btn.setAlignmentX(Box.CENTER_ALIGNMENT);
         resize_btn.setBounds(new Rectangle(25, 25));

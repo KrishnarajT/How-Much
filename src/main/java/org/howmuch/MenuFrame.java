@@ -1,6 +1,7 @@
 package org.howmuch;
 
 import javax.swing.*;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -16,13 +17,16 @@ public class MenuFrame extends JFrame {
     JToggleButton darkMode_tglbtn;
     JPanel options_panel;
     JLabel darkMode_lbl;
-    Resize_action_listener resize_action_listener;
 
     MenuFrame() {
         menuPanel = new MenuPanel();
 
         this.setTitle("How Much? ");
-        this.setPreferredSize(new Dimension(Main.WIDTH, Main.HEIGHT));
+        if (maxmized) {
+            this.setExtendedState(MAXIMIZED_BOTH);
+        } else {
+            this.setPreferredSize(new Dimension(Main.WIDTH, Main.HEIGHT));
+        }
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(true);
         this.setUndecorated(true);
@@ -109,7 +113,6 @@ public class MenuFrame extends JFrame {
     }
 
 
-
     private void createPanels() {
         options_panel = new JPanel();
         BoxLayout bl = new BoxLayout(options_panel, BoxLayout.Y_AXIS);
@@ -135,7 +138,11 @@ public class MenuFrame extends JFrame {
         darkMode_tglbtn.setBorder(null);
         darkMode_tglbtn.setFocusPainted(false);
         darkMode_tglbtn.setContentAreaFilled(false);
-        darkMode_tglbtn.setIcon(toggle_off);
+        if (Colors.DarkMode) {
+            darkMode_tglbtn.setIcon(toggle_on);
+        } else {
+            darkMode_tglbtn.setIcon(toggle_off);
+        }
 
         darkMode_tglbtn.addItemListener(new ItemListener() {
             @Override
@@ -176,29 +183,54 @@ public class MenuFrame extends JFrame {
 
     private void createButtons() {
 
-//        exit_btn.addChangeListener(evt -> {
-//            if (exit_btn.getModel().isPressed()) {
-//                exit_btn.setForeground(Colors.primaryColor);
-//                Main.changeFrame(0);
-//            } else if (exit_btn.getModel().isRollover()) {
-//                exit_btn.setForeground(Colors.secondaryColor);
-//            } else {
-//                exit_btn.setForeground(Colors.primaryColor);
-//            }
-//        });
+        // Removing Change and Action Listeners.
+        for (ActionListener listener : exit_btn.getActionListeners()) {
+            exit_btn.removeActionListener(listener);
+        }
+        for (ChangeListener listener : exit_btn.getChangeListeners()) {
+            exit_btn.removeChangeListener(listener);
+        }
 
-//        resize_btn.addChangeListener(evt -> {
-//            if (exit_btn.getModel().isPressed()) {
-//                exit_btn.setForeground(Colors.primaryColor);
-//            } else if (exit_btn.getModel().isRollover()) {
-//                exit_btn.setForeground(Colors.secondaryColor);
-//            } else {
-//                exit_btn.setForeground(Colors.primaryColor);
-//            }
-//        });
+        for (ActionListener listener : resize_btn.getActionListeners()) {
+            resize_btn.removeActionListener(listener);
+        }
+        for (ChangeListener listener : resize_btn.getChangeListeners()) {
+            resize_btn.removeChangeListener(listener);
+        }
 
-        resize_action_listener = new Resize_action_listener();
-        resize_btn.addActionListener(resize_action_listener);
+        for (ActionListener listener : minimize_btn.getActionListeners()) {
+            minimize_btn.removeActionListener(listener);
+        }
+        for (ChangeListener listener : minimize_btn.getChangeListeners()) {
+            minimize_btn.removeChangeListener(listener);
+        }
+
+
+        exit_btn.addChangeListener(evt -> {
+            if (exit_btn.getModel().isPressed()) {
+                exit_btn.setForeground(Colors.primaryColor);
+                Main.changeFrame(0);
+            } else if (exit_btn.getModel().isRollover()) {
+                exit_btn.setForeground(Colors.secondaryColor);
+            } else {
+                exit_btn.setForeground(Colors.primaryColor);
+            }
+        });
+        resize_btn.addActionListener(e -> {
+            if (!Main.maxmized) {
+                this.setExtendedState(MAXIMIZED_BOTH);
+                resize_btn.setIcon(new ImageIcon(resizeDown_image));
+            } else {
+                this.setExtendedState(JFrame.NORMAL);
+                this.setLocationRelativeTo(null);
+                Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+                int x = (int) ((dimension.getWidth() - Main.WIDTH) / 2);
+                int y = (int) ((dimension.getHeight() - Main.HEIGHT) / 2);
+                this.setBounds(x, y, Main.WIDTH, Main.HEIGHT);
+                resize_btn.setIcon(new ImageIcon(resizeUp_image));
+            }
+            Main.maxmized = !Main.maxmized;
+        });
 
         minimize_btn.addChangeListener(evt -> {
             if (minimize_btn.getModel().isPressed()) {
@@ -275,7 +307,6 @@ public class MenuFrame extends JFrame {
             }
         });
         helpAndCredits_btn.addActionListener(e -> {
-            resize_btn.removeActionListener(resize_action_listener);
             this.setVisible(false);
             this.dispose();
             Main.changeFrame(3);
@@ -302,24 +333,6 @@ public class MenuFrame extends JFrame {
         updateDatabase_btn.addActionListener(e -> {
             Main.changeFrame(0);
         });
-    }
-    class Resize_action_listener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (!Main.maxmized) {
-                setExtendedState(MAXIMIZED_BOTH);
-                resize_btn.setIcon(new ImageIcon(resizeDown_image));
-            } else {
-                setExtendedState(JFrame.NORMAL);
-                setLocationRelativeTo(null);
-                Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-                int x = (int) ((dimension.getWidth() - Main.WIDTH) / 2);
-                int y = (int) ((dimension.getHeight() - Main.HEIGHT) / 2);
-                setBounds(x, y, Main.WIDTH, Main.HEIGHT);
-                resize_btn.setIcon(new ImageIcon(resizeUp_image));
-            }
-            Main.maxmized = !Main.maxmized;
-        }
     }
 
 }

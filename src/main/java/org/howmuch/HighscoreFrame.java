@@ -1,30 +1,39 @@
 package org.howmuch;
 
 import javax.swing.*;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.util.Arrays;
 
 import static org.howmuch.Main.*;
 import static org.howmuch.MenuFrame.*;
 
 
-public class HighscoreFrame extends JFrame{
+public class HighscoreFrame extends JFrame {
     HighscorePanel highscorePanel;
     JButton backToMenu_btn;
+
     HighscoreFrame() {
         highscorePanel = new HighscorePanel();
 
         this.setTitle("How Much? ");
-        this.setPreferredSize(new Dimension(Main.WIDTH, Main.HEIGHT));
+        if (maxmized) {
+            this.setExtendedState(MAXIMIZED_BOTH);
+        } else {
+            this.setPreferredSize(new Dimension(Main.WIDTH, Main.HEIGHT));
+        }
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(true);
         this.setUndecorated(true);
         this.setMinimumSize(new Dimension(1280, 720));
 
         createFonts();
-        createButtons();
         createBasicButtonPanel();
+        createButtons();
         reassignColors();
         reassignBounds();
 
@@ -58,11 +67,9 @@ public class HighscoreFrame extends JFrame{
 
     private void reassignColors() {
         Colors.reassignColors();
-        if(Colors.DarkMode)
-        {
+        if (Colors.DarkMode) {
             highscorePanel.setBackground("src/main/resources/images/highscore dark.png");
-        }
-        else {
+        } else {
             highscorePanel.setBackground("src/main/resources/images/highscore.png");
         }
         backToMenu_btn.setBackground(Colors.primaryColor);
@@ -97,6 +104,66 @@ public class HighscoreFrame extends JFrame{
             this.dispose();
             Main.changeFrame(1);
         });
-    }
 
+
+        // Removing Change and Action Listeners.
+        for (ActionListener listener : exit_btn.getActionListeners()) {
+            exit_btn.removeActionListener(listener);
+        }
+        for (ChangeListener listener : exit_btn.getChangeListeners()) {
+            exit_btn.removeChangeListener(listener);
+        }
+
+        for (ActionListener listener : resize_btn.getActionListeners()) {
+            resize_btn.removeActionListener(listener);
+        }
+        for (ChangeListener listener : resize_btn.getChangeListeners()) {
+            resize_btn.removeChangeListener(listener);
+        }
+
+        for (ActionListener listener : minimize_btn.getActionListeners()) {
+            minimize_btn.removeActionListener(listener);
+        }
+        for (ChangeListener listener : minimize_btn.getChangeListeners()) {
+            minimize_btn.removeChangeListener(listener);
+        }
+
+
+        exit_btn.addChangeListener(evt -> {
+            if (exit_btn.getModel().isPressed()) {
+                exit_btn.setForeground(Colors.primaryColor);
+                Main.changeFrame(0);
+            } else if (exit_btn.getModel().isRollover()) {
+                exit_btn.setForeground(Colors.secondaryColor);
+            } else {
+                exit_btn.setForeground(Colors.primaryColor);
+            }
+        });
+        resize_btn.addActionListener(e -> {
+            if (!Main.maxmized) {
+                this.setExtendedState(MAXIMIZED_BOTH);
+                resize_btn.setIcon(new ImageIcon(resizeDown_image));
+            } else {
+                this.setExtendedState(JFrame.NORMAL);
+                this.setLocationRelativeTo(null);
+                Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+                int x = (int) ((dimension.getWidth() - Main.WIDTH) / 2);
+                int y = (int) ((dimension.getHeight() - Main.HEIGHT) / 2);
+                this.setBounds(x, y, Main.WIDTH, Main.HEIGHT);
+                resize_btn.setIcon(new ImageIcon(resizeUp_image));
+            }
+            Main.maxmized = !Main.maxmized;
+        });
+
+        minimize_btn.addChangeListener(evt -> {
+            if (minimize_btn.getModel().isPressed()) {
+                this.setState(JFrame.ICONIFIED);
+                minimize_btn.setForeground(Colors.primaryColor);
+            } else if (minimize_btn.getModel().isRollover()) {
+                minimize_btn.setForeground(Colors.secondaryColor);
+            } else {
+                minimize_btn.setForeground(Colors.primaryColor);
+            }
+        });
+    }
 }

@@ -16,7 +16,6 @@ import static org.howmuch.MenuFrame.*;
 public class HelpFrame extends JFrame {
     HelpPanel helpPanel;
     JButton backToMenu_btn;
-    Resize_action_listener resize_action_listener;
 
     HelpFrame() {
         helpPanel = new HelpPanel();
@@ -33,8 +32,8 @@ public class HelpFrame extends JFrame {
         this.setMinimumSize(new Dimension(1280, 720));
 
         createFonts();
-        createButtons();
         createBasicButtonPanel();
+        createButtons();
         reassignColors();
         reassignBounds();
 
@@ -53,6 +52,7 @@ public class HelpFrame extends JFrame {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
+
     private void reassignBounds() {
         Dimension screenSize = this.getSize();
 
@@ -105,69 +105,65 @@ public class HelpFrame extends JFrame {
             Main.changeFrame(1);
         });
 
-        System.out.println(Arrays.toString(resize_btn.getActionListeners()));
 
-        for(ActionListener listener : resize_btn.getActionListeners())
-        {
-            resize_btn.removeActionListener(listener);
+        // Removing Change and Action Listeners.
+        for (ActionListener listener : exit_btn.getActionListeners()) {
+            exit_btn.removeActionListener(listener);
+        }
+        for (ChangeListener listener : exit_btn.getChangeListeners()) {
+            exit_btn.removeChangeListener(listener);
         }
 
-        resize_action_listener = new Resize_action_listener();
-        resize_btn.removeActionListener(resize_action_listener);
-        System.out.println(Arrays.toString(resize_btn.getActionListeners()));
+        for (ActionListener listener : resize_btn.getActionListeners()) {
+            resize_btn.removeActionListener(listener);
+        }
+        for (ChangeListener listener : resize_btn.getChangeListeners()) {
+            resize_btn.removeChangeListener(listener);
+        }
 
-//
-        resize_btn.addChangeListener(evt -> {
+        for (ActionListener listener : minimize_btn.getActionListeners()) {
+            minimize_btn.removeActionListener(listener);
+        }
+        for (ChangeListener listener : minimize_btn.getChangeListeners()) {
+            minimize_btn.removeChangeListener(listener);
+        }
+
+
+        exit_btn.addChangeListener(evt -> {
             if (exit_btn.getModel().isPressed()) {
                 exit_btn.setForeground(Colors.primaryColor);
+                Main.changeFrame(0);
             } else if (exit_btn.getModel().isRollover()) {
-                System.out.println("hi");
                 exit_btn.setForeground(Colors.secondaryColor);
             } else {
                 exit_btn.setForeground(Colors.primaryColor);
             }
         });
-
-
-//        resize_btn.addActionListener(e -> {
-////            System.out.println("hi");
-//            if (!Main.maxmized) {
-//                this.setExtendedState(MAXIMIZED_BOTH);
-//                resize_btn.setIcon(new ImageIcon(resizeDown_image));
-//            } else {
-//                this.setExtendedState(JFrame.NORMAL);
-//                this.setLocationRelativeTo(null);
-//                Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-//                int x = (int) ((dimension.getWidth() - Main.WIDTH) / 2);
-//                int y = (int) ((dimension.getHeight() - Main.HEIGHT) / 2);
-//                this.setBounds(x, y, Main.WIDTH, Main.HEIGHT);
-//                resize_btn.setIcon(new ImageIcon(resizeUp_image));
-//            }
-//            Main.maxmized = !Main.maxmized;
-//        });
-
-        resize_btn.addActionListener(resize_action_listener);
-        System.out.println(Arrays.toString(resize_btn.getActionListeners()));
-
-    }
-    class Resize_action_listener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            System.out.println("hi");
+        resize_btn.addActionListener(e -> {
             if (!Main.maxmized) {
-                setExtendedState(MAXIMIZED_BOTH);
+                this.setExtendedState(MAXIMIZED_BOTH);
                 resize_btn.setIcon(new ImageIcon(resizeDown_image));
             } else {
-                setExtendedState(JFrame.NORMAL);
-                setLocationRelativeTo(null);
+                this.setExtendedState(JFrame.NORMAL);
+                this.setLocationRelativeTo(null);
                 Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
                 int x = (int) ((dimension.getWidth() - Main.WIDTH) / 2);
                 int y = (int) ((dimension.getHeight() - Main.HEIGHT) / 2);
-                setBounds(x, y, Main.WIDTH, Main.HEIGHT);
+                this.setBounds(x, y, Main.WIDTH, Main.HEIGHT);
                 resize_btn.setIcon(new ImageIcon(resizeUp_image));
             }
             Main.maxmized = !Main.maxmized;
-        }
-    }
+        });
 
+        minimize_btn.addChangeListener(evt -> {
+            if (minimize_btn.getModel().isPressed()) {
+                this.setState(JFrame.ICONIFIED);
+                minimize_btn.setForeground(Colors.primaryColor);
+            } else if (minimize_btn.getModel().isRollover()) {
+                minimize_btn.setForeground(Colors.secondaryColor);
+            } else {
+                minimize_btn.setForeground(Colors.primaryColor);
+            }
+        });
+    }
 }
