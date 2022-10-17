@@ -9,7 +9,7 @@ import static org.howmuch.Main.*;
 
 public class MenuFrame extends JFrame {
 
-    MenuPanel menuPanel;
+    BackgroundPanel backgroundPanel;
     JButton chooseTopic_btn;
     JButton viewHighscore_btn;
     JButton helpAndCredits_btn;
@@ -19,7 +19,7 @@ public class MenuFrame extends JFrame {
     JLabel darkMode_lbl;
 
     MenuFrame() {
-        menuPanel = new MenuPanel();
+        backgroundPanel = new BackgroundPanel();
 
         this.setTitle("How Much? ");
         if (maxmized) {
@@ -53,7 +53,7 @@ public class MenuFrame extends JFrame {
         this.add(darkMode_tglbtn);
         this.add(darkMode_lbl);
         this.add(basicButtons_pnl);
-        this.add(menuPanel);
+        this.add(backgroundPanel);
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -74,7 +74,7 @@ public class MenuFrame extends JFrame {
         darkMode_tglbtn.setBounds((int) (0.17 * screenSize.getWidth()), (int) (0.805 * screenSize.getHeight()), 60, 40);
 
         // Options panel
-        options_panel.setBounds((int) (0.63 * screenSize.getWidth()), (int) (0.34 * screenSize.getHeight()), (int) (0.4 * screenSize.getWidth()), 700);
+        options_panel.setBounds((int) (0.60 * screenSize.getWidth()), (int) (0.34 * screenSize.getHeight()), (int) (0.45 * screenSize.getWidth()), 700);
 
         // Buttons in the Options Panel
         chooseTopic_btn.setBounds(new Rectangle(300, 70));
@@ -90,9 +90,9 @@ public class MenuFrame extends JFrame {
     private void reassignColors() {
 
         if (Colors.DarkMode) {
-            menuPanel.setBackground("src/main/resources/images/Main_Menu_bg_dark.png");
+            backgroundPanel.setBackground("src/main/resources/images/Main_Menu_bg_dark.png");
         } else {
-            menuPanel.setBackground("src/main/resources/images/Main_Menu_bg.png");
+            backgroundPanel.setBackground("src/main/resources/images/Main_Menu_bg.png");
         }
         Colors.reassignColors();
         basicButtons_pnl.setBackground(Colors.bgColor);
@@ -152,7 +152,7 @@ public class MenuFrame extends JFrame {
                     darkMode_tglbtn.setIcon(toggle_on);
 
                     Colors.DarkMode = true;
-                    menuPanel.setBackground("src/main/resources/images/Main_Menu_bg_dark.png");
+                    backgroundPanel.setBackground("src/main/resources/images/Main_Menu_bg_dark.png");
                     reassignColors();
                     repaint();
 
@@ -161,7 +161,7 @@ public class MenuFrame extends JFrame {
                     darkMode_tglbtn.setIcon(toggle_off);
 
                     Colors.DarkMode = false;
-                    menuPanel.setBackground("src/main/resources/images/Main_Menu_bg.png");
+                    backgroundPanel.setBackground("src/main/resources/images/Main_Menu_bg.png");
                     reassignColors();
                     repaint();
                 }
@@ -263,7 +263,9 @@ public class MenuFrame extends JFrame {
         });
 
         chooseTopic_btn.addActionListener(e -> {
-            Main.changeFrame(0);
+            this.setVisible(false);
+            this.dispose();
+            Main.changeFrame(2);
         });
 
         viewHighscore_btn = new JButton();
@@ -331,7 +333,7 @@ public class MenuFrame extends JFrame {
             }
         });
         updateDatabase_btn.addActionListener(e -> {
-            Main.changeFrame(0);
+            Main.changeFrame(5);
         });
     }
 

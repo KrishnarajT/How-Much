@@ -3,21 +3,19 @@ package org.howmuch;
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import java.util.Arrays;
 
 import static org.howmuch.Main.*;
-import static org.howmuch.MenuFrame.*;
 
 
-public class HighscoreFrame extends JFrame {
+public class GameOverFrame extends JFrame {
     BackgroundPanel backgroundPanel;
-    JButton backToMenu_btn;
+    JButton backtoTopic_btn;
+    JLabel score_lbl;
 
-    HighscoreFrame() {
+    GameOverFrame() {
         backgroundPanel = new BackgroundPanel();
 
         this.setTitle("How Much? ");
@@ -33,6 +31,7 @@ public class HighscoreFrame extends JFrame {
 
         createFonts();
         createBasicButtonPanel();
+        createLabels();
         createButtons();
         reassignColors();
         reassignBounds();
@@ -45,7 +44,8 @@ public class HighscoreFrame extends JFrame {
             }
         });
 
-        this.add(backToMenu_btn);
+        this.add(score_lbl);
+        this.add(backtoTopic_btn);
         this.add(basicButtons_pnl);
         this.add(backgroundPanel);
         this.pack();
@@ -57,54 +57,67 @@ public class HighscoreFrame extends JFrame {
         Dimension screenSize = this.getSize();
 
         // The back to menu mode label
-        backToMenu_btn.setBounds((int) (0.015 * screenSize.getWidth()), (int) (0.80 * screenSize.getHeight()), (int) (0.20 * screenSize.getWidth()), (int) (0.07 * screenSize.getHeight()));
-        backToMenu_btn.setFont(buttonFont.deriveFont((float) (0.05 * getHeight())));
+        backtoTopic_btn.setBounds((int) (0.001 * screenSize.getWidth()), (int) (0.80 * screenSize.getHeight()), (int) (0.20 * screenSize.getWidth()), (int) (0.07 * screenSize.getHeight()));
+        backtoTopic_btn.setFont(buttonFont.deriveFont((float) (0.05 * getHeight())));
 
         // The Entire basic button panel for closing minimizing and stuff
         basicButtons_pnl.setBounds(this.getWidth() - (exit_btn.getWidth() * 3) - 40, 10, exit_btn.getWidth() * 3 + 35, exit_btn.getHeight());
 
+        // Score Label
+        score_lbl.setBounds((int) (0.76 * screenSize.getWidth()), (int) (0.80 * screenSize.getHeight()), 400, 100);
+        score_lbl.setFont(buttonFont.deriveFont((float) (0.14 * getHeight())));
     }
 
     private void reassignColors() {
         Colors.reassignColors();
         if (Colors.DarkMode) {
-            backgroundPanel.setBackground("src/main/resources/images/highscore dark.png");
+            backgroundPanel.setBackground("src/main/resources/images/game over dark.png");
         } else {
-            backgroundPanel.setBackground("src/main/resources/images/highscore.png");
+            backgroundPanel.setBackground("src/main/resources/images/game over.png");
         }
-        backToMenu_btn.setBackground(Colors.primaryColor);
-        backToMenu_btn.setForeground(Colors.bgColor);
+        backtoTopic_btn.setBackground(Colors.primaryColor);
+        backtoTopic_btn.setForeground(Colors.bgColor);
+
+        score_lbl.setBackground(Colors.bgColor);
+        score_lbl.setForeground(Colors.accentColor);
 
         basicButtons_pnl.setBackground(Colors.bgColor);
         exit_btn.setBackground(Colors.bgColor);
         resize_btn.setBackground(Colors.bgColor);
         minimize_btn.setBackground(Colors.bgColor);
     }
+    private void createLabels() {
+        score_lbl = new JLabel();
+        score_lbl.setText("775");
+        score_lbl.setAlignmentY(Box.CENTER_ALIGNMENT);
+        score_lbl.setAlignmentX(Box.CENTER_ALIGNMENT);
+        score_lbl.setOpaque(true);
+        score_lbl.setBorder(null);
+    }
 
     private void createButtons() {
-        backToMenu_btn = new JButton();
-        backToMenu_btn.setText("Back to Menu");
-        backToMenu_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
-        backToMenu_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
-        backToMenu_btn.setFocusPainted(false);
-        backToMenu_btn.setContentAreaFilled(false);
-        backToMenu_btn.setOpaque(true);
-        backToMenu_btn.setBorder(null);
-        backToMenu_btn.addChangeListener(evt -> {
-            if (backToMenu_btn.getModel().isPressed()) {
-                backToMenu_btn.setForeground(Colors.bgColor);
-            } else if (backToMenu_btn.getModel().isRollover()) {
-                backToMenu_btn.setForeground(Colors.accentColor);
+        backtoTopic_btn = new JButton();
+        backtoTopic_btn.setText("Try Again");
+        backtoTopic_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
+        backtoTopic_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
+        backtoTopic_btn.setFocusPainted(false);
+        backtoTopic_btn.setContentAreaFilled(false);
+        backtoTopic_btn.setOpaque(true);
+        backtoTopic_btn.setBorder(null);
+        backtoTopic_btn.addChangeListener(evt -> {
+            if (backtoTopic_btn.getModel().isPressed()) {
+                backtoTopic_btn.setForeground(Colors.bgColor);
+            } else if (backtoTopic_btn.getModel().isRollover()) {
+                backtoTopic_btn.setForeground(Colors.accentColor);
             } else {
-                backToMenu_btn.setForeground(Colors.bgColor);
+                backtoTopic_btn.setForeground(Colors.bgColor);
             }
         });
-        backToMenu_btn.addActionListener(e -> {
+        backtoTopic_btn.addActionListener(e -> {
             this.setVisible(false);
             this.dispose();
-            Main.changeFrame(1);
+            Main.changeFrame(2);
         });
-
 
         // Removing Change and Action Listeners.
         for (ActionListener listener : exit_btn.getActionListeners()) {

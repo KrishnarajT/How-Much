@@ -2,12 +2,8 @@ package org.howmuch;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
 import static org.howmuch.Main.createFonts;
-import static org.howmuch.Main.buttonFont;
+import static org.howmuch.Main.textFont;
 import static org.howmuch.Main.textFont;
 import static org.howmuch.Main.password_font;
 
@@ -50,7 +46,7 @@ public class LoginFrame extends JFrame {
         login_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         login_btn.setAlignmentX(Box.CENTER_ALIGNMENT);
         login_btn.setBounds(775, 532, 200, 40);
-        login_btn.setFont(buttonFont.deriveFont(44f));
+        login_btn.setFont(textFont.deriveFont(44f));
         login_btn.setFocusPainted(false);
         login_btn.setContentAreaFilled(false);
         login_btn.setOpaque(true);
@@ -78,7 +74,7 @@ public class LoginFrame extends JFrame {
         guest_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         guest_btn.setAlignmentX(Box.CENTER_ALIGNMENT);
         guest_btn.setBounds(940, 532, 200, 40);
-        guest_btn.setFont(buttonFont.deriveFont(44f));
+        guest_btn.setFont(textFont.deriveFont(44f));
         guest_btn.setFocusPainted(false);
         guest_btn.setContentAreaFilled(false);
         guest_btn.setOpaque(true);
@@ -104,7 +100,7 @@ public class LoginFrame extends JFrame {
         newAccount_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         newAccount_btn.setAlignmentX(Box.CENTER_ALIGNMENT);
         newAccount_btn.setBounds(615, 590, 800, 40);
-        newAccount_btn.setFont(buttonFont.deriveFont(44f));
+        newAccount_btn.setFont(textFont.deriveFont(44f));
         newAccount_btn.setFocusPainted(false);
         newAccount_btn.setContentAreaFilled(false);
         newAccount_btn.setOpaque(true);
@@ -139,7 +135,7 @@ public class LoginFrame extends JFrame {
         exit_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         exit_btn.setAlignmentX(Box.CENTER_ALIGNMENT);
         exit_btn.setBounds(1230, 15, 25, 25);
-        exit_btn.setFont(buttonFont.deriveFont(44f));
+        exit_btn.setFont(textFont.deriveFont(44f));
         exit_btn.setFocusPainted(false);
         exit_btn.setContentAreaFilled(false);
         exit_btn.setOpaque(true);
@@ -164,7 +160,7 @@ public class LoginFrame extends JFrame {
         resize_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         resize_btn.setAlignmentX(Box.CENTER_ALIGNMENT);
         resize_btn.setBounds(1195, 15, 25, 25);
-        resize_btn.setFont(buttonFont.deriveFont(44f));
+        resize_btn.setFont(textFont.deriveFont(44f));
         resize_btn.setFocusPainted(false);
         resize_btn.setContentAreaFilled(false);
         resize_btn.setOpaque(true);
@@ -187,7 +183,7 @@ public class LoginFrame extends JFrame {
         minimize_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         minimize_btn.setAlignmentX(Box.CENTER_ALIGNMENT);
         minimize_btn.setBounds(1195, 15, 25, 25);
-        minimize_btn.setFont(buttonFont.deriveFont(44f));
+        minimize_btn.setFont(textFont.deriveFont(44f));
         minimize_btn.setFocusPainted(false);
         minimize_btn.setContentAreaFilled(false);
         minimize_btn.setOpaque(true);

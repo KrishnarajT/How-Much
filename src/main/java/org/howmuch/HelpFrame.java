@@ -3,22 +3,19 @@ package org.howmuch;
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import java.util.Arrays;
 
 import static org.howmuch.Main.*;
-import static org.howmuch.MenuFrame.*;
 
 
 public class HelpFrame extends JFrame {
-    HelpPanel helpPanel;
+    BackgroundPanel backgroundPanel;
     JButton backToMenu_btn;
 
     HelpFrame() {
-        helpPanel = new HelpPanel();
+        backgroundPanel = new BackgroundPanel();
 
         this.setTitle("How Much? ");
         if (maxmized) {
@@ -47,7 +44,7 @@ public class HelpFrame extends JFrame {
 
         this.add(backToMenu_btn);
         this.add(basicButtons_pnl);
-        this.add(helpPanel);
+        this.add(backgroundPanel);
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -57,7 +54,7 @@ public class HelpFrame extends JFrame {
         Dimension screenSize = this.getSize();
 
         // The back to menu mode label
-        backToMenu_btn.setBounds((int) (0.025 * screenSize.getWidth()), (int) (0.80 * screenSize.getHeight()), (int) (0.16 * screenSize.getWidth()), (int) (0.07 * screenSize.getHeight()));
+        backToMenu_btn.setBounds((int) (0.015 * screenSize.getWidth()), (int) (0.80 * screenSize.getHeight()), (int) (0.20 * screenSize.getWidth()), (int) (0.07 * screenSize.getHeight()));
         backToMenu_btn.setFont(buttonFont.deriveFont((float) (0.05 * getHeight())));
 
         // The Entire basic button panel for closing minimizing and stuff
@@ -68,9 +65,9 @@ public class HelpFrame extends JFrame {
     private void reassignColors() {
         Colors.reassignColors();
         if (Colors.DarkMode) {
-            helpPanel.setBackground("src/main/resources/images/help and credits dark.png");
+            backgroundPanel.setBackground("src/main/resources/images/help and credits dark.png");
         } else {
-            helpPanel.setBackground("src/main/resources/images/help and credits.png");
+            backgroundPanel.setBackground("src/main/resources/images/help and credits.png");
         }
         backToMenu_btn.setBackground(Colors.primaryColor);
         backToMenu_btn.setForeground(Colors.bgColor);

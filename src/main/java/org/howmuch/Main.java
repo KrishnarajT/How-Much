@@ -13,6 +13,8 @@ public class Main {
     static HelpFrame helpFrame;
     static HighscoreFrame highscoreFrame;
     static TopicsFrame topicsFrame;
+    static GameFrame gameFrame;
+    static GameOverFrame gameOverFrame;
     static final int WIDTH = 1280;
     static final int HEIGHT = 720;
     static Font buttonFont, textFont, password_font;
@@ -36,7 +38,7 @@ public class Main {
 
     public static void createFonts() {
         try {
-            buttonFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/Fonts/MomcakeBold-WyonA.otf")).deriveFont(50f);
+            buttonFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/Fonts/BelgradoItalic-OVArd.ttf")).deriveFont(50f);
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             //register the font
             ge.registerFont(buttonFont);
@@ -44,11 +46,11 @@ public class Main {
 //
             textFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/Fonts/MomcakeBold-WyonA.otf")).deriveFont(50f);
             //register the font
-            ge.registerFont(buttonFont);
+            ge.registerFont(textFont);
 //
             password_font = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/Fonts/CaeciliaLTPro45Light.TTF")).deriveFont(35f);
             //register the font
-            ge.registerFont(buttonFont);
+            ge.registerFont(password_font);
 
         } catch (FontFormatException | IOException e) {
             e.printStackTrace();
@@ -103,16 +105,18 @@ public class Main {
         basicButtons_pnl.add(exit_btn);
     }
 
-
+    /**
+     * status = 1: Call Main Menu <br>
+     * status = 2: Call Topic Selection<br>
+     * status = 3: Call Help and Credits<br>
+     * status = 4: View Highscores<br>
+     * status = 5: Update Database<br>
+     * status = 6: Start Game<br>
+     * status = 7: Game over Screen<br>
+     * status = 0: Exit Game<br>
+     **/
     public static void changeFrame(int status) {
-        /*
-        status = 1: Call Main Menu
-        status = 2: Call Topic Selection
-        status = 3: Call Help and Credits
-        status = 4: View Highscores
-        status = 5: Update Database
-        status = 0: Exit Game
-         */
+
 
         switch (status) {
             case 1 -> {
@@ -120,6 +124,7 @@ public class Main {
                 menuFrame = new MenuFrame();
             }
             case 2 -> {
+                // Showing the TopicsFrame
                 topicsFrame = new TopicsFrame();
             }
             case 3 -> {
@@ -129,6 +134,17 @@ public class Main {
             case 4 -> {
                 // Showing Highscores
                 highscoreFrame = new HighscoreFrame();
+            }
+            case 5 -> {
+                System.out.println("Updating Database");
+            }
+            case 6 -> {
+                // Showing Game Screen
+                gameFrame = new GameFrame();
+            }
+            case 7 -> {
+                // Show GameOverScreen
+                gameOverFrame = new GameOverFrame();
             }
             default -> {
                 // Exit game
@@ -140,7 +156,6 @@ public class Main {
         }
 
     }
-
 
     public static void main(String[] args) {
 

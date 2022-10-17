@@ -3,7 +3,7 @@ package org.howmuch;
 import javax.swing.*;
 import java.awt.*;
 
-public class HelpPanel extends JPanel {
+public class BackgroundPanel extends JPanel {
     private Image background;
 
     public void paintComponent(Graphics g) {
