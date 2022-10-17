@@ -5,47 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c3445363-49b9-4e94-934c-5274cca32d9f" name="Changes" comment="created login page">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/GameOverFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/game over dark.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/game over dark.xcf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/game over.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/game over.xcf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/Product Sans Regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/ProductSans-Bold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/ProductSans-Medium.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/ProductSans-Regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/gamescreen dark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/gamescreen dark.xcf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/gamescreen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/gamescreen.xcf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/GameFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/HelpFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/HelpFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/HelpPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/BackgroundPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/HighscoreFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/HighscoreFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/HighscorePanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/LoginFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/GameOverFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/GameOverFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/MenuFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/MenuFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/MenuPanel.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/TopicsFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/TopicsFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/TopicsPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Main_Menu_bg_dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Main_Menu_bg_dark.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/choose topic dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/choose topic dark.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/choose topic dark.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/choose topic dark.xcf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/choose topic.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/choose topic.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/choose topic.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/choose topic.xcf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/choose topic dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/choose topic dark.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/choose topic dark.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/choose topic dark.xcf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/choose topic.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/choose topic.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/choose topic.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/choose topic.xcf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Main_Menu_bg_dark.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Main_Menu_bg_dark.xcf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Main_Menu_bg_dark.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Main_Menu_bg_dark.xcf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/GameFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/GameFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/GamePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/HelpFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/HelpFrame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/HelpFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/HelpFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/HelpPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/HighscoreFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/HighscoreFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/HighscorePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/LoginFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/LoginFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/GameOverFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/GameOverFrame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/MenuFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/MenuFrame$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/MenuFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/MenuFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/MenuPanel.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/TopicsFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/TopicsFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/TopicsPanel.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +118,7 @@
       <workItem from="1665842243244" duration="124000" />
       <workItem from="1665842379950" duration="47312000" />
       <workItem from="1665985247809" duration="1173000" />
-      <workItem from="1666016673498" duration="5059000" />
+      <workItem from="1666016673498" duration="10065000" />
     </task>
     <task id="LOCAL-00001" summary="created login page">
       <created>1665855114321</created>

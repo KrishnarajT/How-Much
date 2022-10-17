@@ -194,7 +194,7 @@ public class TopicsFrame extends JFrame {
 
 
         backToMenu_btn = new JButton();
-        backToMenu_btn.setText("Back to Menu");
+        backToMenu_btn.setText("Back to Menu ");
         backToMenu_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         backToMenu_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
         backToMenu_btn.setFocusPainted(false);
@@ -218,7 +218,7 @@ public class TopicsFrame extends JFrame {
 
 
         technology_btn = new JButton();
-        technology_btn.setText("Technology");
+        technology_btn.setText("Technology ");
         technology_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         technology_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
         technology_btn.setFocusPainted(false);
@@ -243,7 +243,7 @@ public class TopicsFrame extends JFrame {
         });
 
         fashion_btn = new JButton();
-        fashion_btn.setText("Fashion");
+        fashion_btn.setText("Fashion ");
         fashion_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         fashion_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
         fashion_btn.setFocusPainted(false);
@@ -266,7 +266,7 @@ public class TopicsFrame extends JFrame {
         });
 
         household_btn = new JButton();
-        household_btn.setText("Household");
+        household_btn.setText("Household ");
         household_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         household_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
         household_btn.setFocusPainted(false);
@@ -289,7 +289,7 @@ public class TopicsFrame extends JFrame {
         });
 
         miscellaneous_btn = new JButton();
-        miscellaneous_btn.setText("Miscellaneous");
+        miscellaneous_btn.setText("Miscellaneous ");
         miscellaneous_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         miscellaneous_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
         miscellaneous_btn.setFont(buttonFont.deriveFont(44f));

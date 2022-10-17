@@ -17,7 +17,7 @@ public class Main {
     static GameOverFrame gameOverFrame;
     static final int WIDTH = 1280;
     static final int HEIGHT = 720;
-    static Font buttonFont, textFont, password_font;
+    static Font buttonFont, textFont, password_font, options_font;
 
     static boolean maxmized = false;
 
@@ -51,6 +51,11 @@ public class Main {
             password_font = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/Fonts/CaeciliaLTPro45Light.TTF")).deriveFont(35f);
             //register the font
             ge.registerFont(password_font);
+
+            options_font = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/Fonts/ProductSans-Regular.ttf")).deriveFont(35f);
+            //register the font
+            ge.registerFont(options_font);
+
 
         } catch (FontFormatException | IOException e) {
             e.printStackTrace();
@@ -165,6 +170,7 @@ public class Main {
 
         // The Game frame is basically the window
         // and we basically just call the frame. That's almost all we have to do here.
-        loginFrame = new LoginFrame();
+//        loginFrame = new LoginFrame();
+        gameFrame = new GameFrame();
     }
 }

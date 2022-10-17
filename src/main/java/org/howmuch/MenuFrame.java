@@ -244,7 +244,7 @@ public class MenuFrame extends JFrame {
         });
 
         chooseTopic_btn = new JButton();
-        chooseTopic_btn.setText("Choose Topic");
+        chooseTopic_btn.setText("Choose Topic ");
         chooseTopic_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         chooseTopic_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
         chooseTopic_btn.setFocusPainted(false);
@@ -269,7 +269,7 @@ public class MenuFrame extends JFrame {
         });
 
         viewHighscore_btn = new JButton();
-        viewHighscore_btn.setText("View Highscore");
+        viewHighscore_btn.setText("View Highscore ");
         viewHighscore_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         viewHighscore_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
         viewHighscore_btn.setFocusPainted(false);
@@ -292,7 +292,7 @@ public class MenuFrame extends JFrame {
         });
 
         helpAndCredits_btn = new JButton();
-        helpAndCredits_btn.setText("Help and Credits");
+        helpAndCredits_btn.setText("Help and Credits ");
         helpAndCredits_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         helpAndCredits_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
         helpAndCredits_btn.setFocusPainted(false);
@@ -315,7 +315,7 @@ public class MenuFrame extends JFrame {
         });
 
         updateDatabase_btn = new JButton();
-        updateDatabase_btn.setText("Update Database");
+        updateDatabase_btn.setText("Update Database ");
         updateDatabase_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         updateDatabase_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
         updateDatabase_btn.setFont(buttonFont.deriveFont(44f));

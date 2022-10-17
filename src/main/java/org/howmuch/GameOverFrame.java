@@ -58,7 +58,7 @@ public class GameOverFrame extends JFrame {
 
         // The back to menu mode label
         backtoTopic_btn.setBounds((int) (0.001 * screenSize.getWidth()), (int) (0.80 * screenSize.getHeight()), (int) (0.20 * screenSize.getWidth()), (int) (0.07 * screenSize.getHeight()));
-        backtoTopic_btn.setFont(buttonFont.deriveFont((float) (0.05 * getHeight())));
+        backtoTopic_btn.setFont(buttonFont.deriveFont((float) (0.06 * getHeight())));
 
         // The Entire basic button panel for closing minimizing and stuff
         basicButtons_pnl.setBounds(this.getWidth() - (exit_btn.getWidth() * 3) - 40, 10, exit_btn.getWidth() * 3 + 35, exit_btn.getHeight());
