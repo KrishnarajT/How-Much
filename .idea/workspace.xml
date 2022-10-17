@@ -5,13 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c3445363-49b9-4e94-934c-5274cca32d9f" name="Changes" comment="created login page">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/help and credits dark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/help and credits.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/highscore dark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/highscore.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/Colors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/Colors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/HelpFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/HelpFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/HelpPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/HelpPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/HighscoreFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/HighscoreFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/HighscorePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/HighscorePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/LoginFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/MenuFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/MenuFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/images/help and credits dark.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/help and credits dark.xcf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/Untitled.xcf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/help and credits.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/help and credits.xcf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/highscore dark.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/highscore dark.xcf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/highscore.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/highscore.xcf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/help and credits dark.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/help and credits dark.xcf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/help and credits.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/help and credits.xcf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/highscore dark.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/highscore dark.xcf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/highscore.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/highscore.xcf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/Colors.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/Colors.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/HelpFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/HelpFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/HelpPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/HelpPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/HighscoreFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/HighscoreFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/HighscorePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/HighscorePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/LoginFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/LoginFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/MenuFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/MenuFrame$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/MenuFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/MenuFrame$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/MenuFrame$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/MenuFrame$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/MenuFrame$3.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/MenuFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/MenuFrame.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,7 +126,7 @@
       <workItem from="1665165156879" duration="2817000" />
       <workItem from="1665748724977" duration="12439000" />
       <workItem from="1665842243244" duration="124000" />
-      <workItem from="1665842379950" duration="35432000" />
+      <workItem from="1665842379950" duration="44600000" />
     </task>
     <task id="LOCAL-00001" summary="created login page">
       <created>1665855114321</created>

@@ -6,9 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import static org.howmuch.Main.createFonts;
+import static org.howmuch.Main.buttonFont;
+import static org.howmuch.Main.textFont;
+import static org.howmuch.Main.password_font;
 
 public class LoginFrame extends JFrame {
-    Font buttonFont, textFont, password_font;
     JLabel username, password, background_lbl;
     JButton login_btn, guest_btn, newAccount_btn, exit_btn, resize_btn, minimize_btn;
     JTextField username_txt_fld;
@@ -19,7 +22,7 @@ public class LoginFrame extends JFrame {
         this.setUndecorated(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        createFont();
+        createFonts();
         createButtons();
         createLabels();
         createTextFields();
@@ -39,27 +42,6 @@ public class LoginFrame extends JFrame {
         this.pack();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
-    }
-
-    public void createFont() {
-        try {
-            buttonFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/Fonts/MomcakeBold-WyonA.otf")).deriveFont(50f);
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            //register the font
-            ge.registerFont(buttonFont);
-
-
-            textFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/Fonts/MomcakeBold-WyonA.otf")).deriveFont(50f);
-            //register the font
-            ge.registerFont(buttonFont);
-
-            password_font = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/Fonts/CaeciliaLTPro45Light.TTF")).deriveFont(35f);
-            //register the font
-            ge.registerFont(buttonFont);
-
-        } catch (FontFormatException | IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public void createButtons() {
@@ -86,6 +68,8 @@ public class LoginFrame extends JFrame {
         });
 
         login_btn.addActionListener(e -> {
+            this.setVisible(false);
+            this.dispose();
             Main.changeFrame(1);
         });
 
@@ -110,6 +94,8 @@ public class LoginFrame extends JFrame {
             }
         });
         guest_btn.addActionListener(e -> {
+            this.setVisible(false);
+            this.dispose();
             Main.changeFrame(1);
         });
 
@@ -135,6 +121,8 @@ public class LoginFrame extends JFrame {
         });
 
         newAccount_btn.addActionListener(e -> {
+            this.setVisible(false);
+            this.dispose();
             Main.changeFrame(1);
         });
 
@@ -160,6 +148,8 @@ public class LoginFrame extends JFrame {
         exit_btn.addChangeListener(evt -> {
             if (exit_btn.getModel().isPressed()) {
                 exit_btn.setForeground(Colors.primaryColor);
+                this.setVisible(false);
+                this.dispose();
                 Main.changeFrame(0);
             } else if (exit_btn.getModel().isRollover()) {
                 exit_btn.setForeground(Colors.secondaryColor);

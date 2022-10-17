@@ -24,7 +24,7 @@ public class Colors {
     static Color secondaryColor = DarkMode ? dark_secondaryColor : light_secondaryColor;
     static Color accentColor = DarkMode ? dark_accentColor : light_accentColor;
 
-    public static void resetColors() {
+    public static void reassignColors() {
         bgColor = DarkMode ? dark_bg_color : light_bgColor;
         primaryColor = DarkMode ? dark_primaryColor : light_primaryColor;
         secondaryColor = DarkMode ? dark_secondaryColor : light_secondaryColor;

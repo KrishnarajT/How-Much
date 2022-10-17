@@ -3,21 +3,23 @@ package org.howmuch;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
-import java.io.IOException;
+
+import static org.howmuch.Main.*;
 
 public class MenuFrame extends JFrame {
 
     MenuPanel menuPanel;
-    JButton exit_btn, resize_btn, minimize_btn, chooseTopic_btn, viewHighscore_btn, helpAndCredits_btn, updateDatabase_btn;
+    JButton chooseTopic_btn;
+    JButton viewHighscore_btn;
+    JButton helpAndCredits_btn;
+    JButton updateDatabase_btn;
     JToggleButton darkMode_tglbtn;
-    JPanel basicButtons_pnl, options_panel;
+    JPanel options_panel;
     JLabel darkMode_lbl;
-    Font buttonFont;
+    Resize_action_listener resize_action_listener;
 
     MenuFrame() {
         menuPanel = new MenuPanel();
-        menuPanel.setBackground("src/main/resources/images/Main_Menu_bg.png");
 
         this.setTitle("How Much? ");
         this.setPreferredSize(new Dimension(Main.WIDTH, Main.HEIGHT));
@@ -27,6 +29,7 @@ public class MenuFrame extends JFrame {
         this.setMinimumSize(new Dimension(1280, 720));
 
         createFonts();
+        createBasicButtonPanel();
         createButtons();
         createLabels();
         createToggles();
@@ -52,6 +55,7 @@ public class MenuFrame extends JFrame {
         this.setVisible(true);
     }
 
+
     private void reassignBounds() {
         Dimension screenSize = this.getSize();
 
@@ -63,10 +67,10 @@ public class MenuFrame extends JFrame {
         darkMode_lbl.setFont(buttonFont.deriveFont((float) (0.05 * getHeight())));
 
         // The Dark Mode toggle button
-        darkMode_tglbtn.setBounds((int) (0.17 * screenSize.getWidth()), (int) (0.80 * screenSize.getHeight()), 60, 40);
+        darkMode_tglbtn.setBounds((int) (0.17 * screenSize.getWidth()), (int) (0.805 * screenSize.getHeight()), 60, 40);
 
         // Options panel
-        options_panel.setBounds((int) (0.63 * screenSize.getWidth()), (int) (0.34 * screenSize.getHeight()), 500, 700);
+        options_panel.setBounds((int) (0.63 * screenSize.getWidth()), (int) (0.34 * screenSize.getHeight()), (int) (0.4 * screenSize.getWidth()), 700);
 
         // Buttons in the Options Panel
         chooseTopic_btn.setBounds(new Rectangle(300, 70));
@@ -75,12 +79,18 @@ public class MenuFrame extends JFrame {
         viewHighscore_btn.setFont(buttonFont.deriveFont((float) (0.07 * getHeight())));
         helpAndCredits_btn.setBounds(new Rectangle(300, 70));
         helpAndCredits_btn.setFont(buttonFont.deriveFont((float) (0.07 * getHeight())));
-        updateDatabase_btn.setBounds(new Rectangle(300, 70));
+        updateDatabase_btn.setBounds(new Rectangle((int) (0.23 * screenSize.getWidth()), 70));
         updateDatabase_btn.setFont(buttonFont.deriveFont((float) (0.07 * getHeight())));
     }
 
     private void reassignColors() {
-        Colors.resetColors();
+
+        if (Colors.DarkMode) {
+            menuPanel.setBackground("src/main/resources/images/Main_Menu_bg_dark.png");
+        } else {
+            menuPanel.setBackground("src/main/resources/images/Main_Menu_bg.png");
+        }
+        Colors.reassignColors();
         basicButtons_pnl.setBackground(Colors.bgColor);
         darkMode_tglbtn.setBackground(Colors.bgColor);
         darkMode_lbl.setBackground(Colors.primaryColor);
@@ -98,14 +108,9 @@ public class MenuFrame extends JFrame {
         helpAndCredits_btn.setForeground(Colors.primaryColor);
     }
 
-    private void createPanels() {
-        basicButtons_pnl = new JPanel();
-        FlowLayout fl = new FlowLayout(FlowLayout.LEFT, 10, 0);
-        basicButtons_pnl.setLayout(fl);
-        basicButtons_pnl.add(minimize_btn);
-        basicButtons_pnl.add(resize_btn);
-        basicButtons_pnl.add(exit_btn);
 
+
+    private void createPanels() {
         options_panel = new JPanel();
         BoxLayout bl = new BoxLayout(options_panel, BoxLayout.Y_AXIS);
         options_panel.setLayout(bl);
@@ -120,26 +125,6 @@ public class MenuFrame extends JFrame {
 
     }
 
-    public void createFonts() {
-        try {
-            buttonFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/Fonts/MomcakeBold-WyonA.otf")).deriveFont(50f);
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            //register the font
-            ge.registerFont(buttonFont);
-
-//
-//            textFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/Fonts/MomcakeBold-WyonA.otf")).deriveFont(50f);
-//            //register the font
-//            ge.registerFont(buttonFont);
-//
-//            password_font = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/Fonts/CaeciliaLTPro45Light.TTF")).deriveFont(35f);
-//            //register the font
-//            ge.registerFont(buttonFont);
-
-        } catch (FontFormatException | IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     private void createToggles() {
         ImageIcon toggle_on = new ImageIcon("src/main/resources/icons/toggle_on.png");
@@ -191,87 +176,30 @@ public class MenuFrame extends JFrame {
 
     private void createButtons() {
 
+//        exit_btn.addChangeListener(evt -> {
+//            if (exit_btn.getModel().isPressed()) {
+//                exit_btn.setForeground(Colors.primaryColor);
+//                Main.changeFrame(0);
+//            } else if (exit_btn.getModel().isRollover()) {
+//                exit_btn.setForeground(Colors.secondaryColor);
+//            } else {
+//                exit_btn.setForeground(Colors.primaryColor);
+//            }
+//        });
 
-        ImageIcon exit = new ImageIcon("src/main/resources/icons/circle_delete.png");
-        Image exit_image = exit.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
-        ImageIcon minimize = new ImageIcon("src/main/resources/icons/circle_minus.png");
-        Image minimize_image = minimize.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
-        ImageIcon resizeUp = new ImageIcon("src/main/resources/icons/resize_3.png");
-        Image resizeUp_image = resizeUp.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
-        ImageIcon resizeDown = new ImageIcon("src/main/resources/icons/resize_4.png");
-        Image resizeDown_image = resizeDown.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
+//        resize_btn.addChangeListener(evt -> {
+//            if (exit_btn.getModel().isPressed()) {
+//                exit_btn.setForeground(Colors.primaryColor);
+//            } else if (exit_btn.getModel().isRollover()) {
+//                exit_btn.setForeground(Colors.secondaryColor);
+//            } else {
+//                exit_btn.setForeground(Colors.primaryColor);
+//            }
+//        });
 
-        exit_btn = new JButton();
-        exit_btn.setIcon(new ImageIcon(exit_image));
-        exit_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
-        exit_btn.setAlignmentX(Box.CENTER_ALIGNMENT);
-        exit_btn.setBounds(new Rectangle(25, 25));
-        exit_btn.setFont(buttonFont.deriveFont(44f));
-        exit_btn.setFocusPainted(false);
-        exit_btn.setContentAreaFilled(false);
-        exit_btn.setOpaque(true);
-        exit_btn.setBorder(null);
-        exit_btn.addChangeListener(evt -> {
-            if (exit_btn.getModel().isPressed()) {
-                exit_btn.setForeground(Colors.primaryColor);
-                Main.changeFrame(0);
-            } else if (exit_btn.getModel().isRollover()) {
-                exit_btn.setForeground(Colors.secondaryColor);
-            } else {
-                exit_btn.setForeground(Colors.primaryColor);
-            }
-        });
+        resize_action_listener = new Resize_action_listener();
+        resize_btn.addActionListener(resize_action_listener);
 
-        resize_btn = new JButton();
-        resize_btn.setIcon(new ImageIcon(resizeUp_image));
-        resize_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
-        resize_btn.setAlignmentX(Box.CENTER_ALIGNMENT);
-        resize_btn.setBounds(new Rectangle(25, 25));
-        resize_btn.setFont(buttonFont.deriveFont(44f));
-        resize_btn.setFocusPainted(false);
-        resize_btn.setContentAreaFilled(false);
-        resize_btn.setOpaque(true);
-        resize_btn.setBorder(null);
-        resize_btn.addChangeListener(evt -> {
-            if (exit_btn.getModel().isPressed()) {
-                exit_btn.setForeground(Colors.primaryColor);
-            } else if (exit_btn.getModel().isRollover()) {
-                exit_btn.setForeground(Colors.secondaryColor);
-            } else {
-                exit_btn.setForeground(Colors.primaryColor);
-            }
-        });
-
-        resize_btn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (!Main.maxmized) {
-                    setExtendedState(JFrame.MAXIMIZED_BOTH);
-                    resize_btn.setIcon(new ImageIcon(resizeDown_image));
-
-                } else {
-                    setExtendedState(JFrame.NORMAL);
-                    setLocationRelativeTo(null);
-                    Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-                    int x = (int) ((dimension.getWidth() - Main.WIDTH) / 2);
-                    int y = (int) ((dimension.getHeight() - Main.HEIGHT) / 2);
-                    setBounds(x, y, Main.WIDTH, Main.HEIGHT);
-                    resize_btn.setIcon(new ImageIcon(resizeUp_image));
-                }
-                Main.maxmized = !Main.maxmized;
-            }
-        });
-
-        minimize_btn = new JButton();
-        minimize_btn.setIcon(new ImageIcon(minimize_image));
-        minimize_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
-        minimize_btn.setAlignmentX(Box.CENTER_ALIGNMENT);
-        minimize_btn.setBounds(new Rectangle(25, 25));
-        minimize_btn.setFont(buttonFont.deriveFont(44f));
-        minimize_btn.setFocusPainted(false);
-        minimize_btn.setContentAreaFilled(false);
-        minimize_btn.setOpaque(true);
-        minimize_btn.setBorder(null);
         minimize_btn.addChangeListener(evt -> {
             if (minimize_btn.getModel().isPressed()) {
                 this.setState(JFrame.ICONIFIED);
@@ -324,7 +252,9 @@ public class MenuFrame extends JFrame {
             }
         });
         viewHighscore_btn.addActionListener(e -> {
-            Main.changeFrame(0);
+            this.setVisible(false);
+            this.dispose();
+            Main.changeFrame(4);
         });
 
         helpAndCredits_btn = new JButton();
@@ -345,7 +275,10 @@ public class MenuFrame extends JFrame {
             }
         });
         helpAndCredits_btn.addActionListener(e -> {
-            Main.changeFrame(0);
+            resize_btn.removeActionListener(resize_action_listener);
+            this.setVisible(false);
+            this.dispose();
+            Main.changeFrame(3);
         });
 
         updateDatabase_btn = new JButton();
@@ -369,6 +302,24 @@ public class MenuFrame extends JFrame {
         updateDatabase_btn.addActionListener(e -> {
             Main.changeFrame(0);
         });
+    }
+    class Resize_action_listener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (!Main.maxmized) {
+                setExtendedState(MAXIMIZED_BOTH);
+                resize_btn.setIcon(new ImageIcon(resizeDown_image));
+            } else {
+                setExtendedState(JFrame.NORMAL);
+                setLocationRelativeTo(null);
+                Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+                int x = (int) ((dimension.getWidth() - Main.WIDTH) / 2);
+                int y = (int) ((dimension.getHeight() - Main.HEIGHT) / 2);
+                setBounds(x, y, Main.WIDTH, Main.HEIGHT);
+                resize_btn.setIcon(new ImageIcon(resizeUp_image));
+            }
+            Main.maxmized = !Main.maxmized;
+        }
     }
 
 }
