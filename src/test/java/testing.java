@@ -55,4 +55,7 @@ public class testing extends JFrame {
         super.setBounds(x, y, width, height);
         }
     }
+
 }
+
+

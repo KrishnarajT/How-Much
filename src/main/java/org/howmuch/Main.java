@@ -142,6 +142,13 @@ public class Main {
             }
             case 5 -> {
                 System.out.println("Updating Database");
+
+                // delete local database by a class function from the assigndatabase class or sth
+                // Scrap Data so that would be a function in the webscrapper class
+                // within that function make sure to call the local database allocation function from the assigndatabase class or something
+                // establish connection with mongodb with another class
+                // clear mongodb database.
+                // update mongodb database once connections are made.
             }
             case 6 -> {
                 // Showing Game Screen

@@ -44,6 +44,11 @@ public class GameFrame extends JFrame {
         reassignColors();
         reassignBounds();
 
+        // establish connection with mongodb
+        // read a random value from it
+        // showImage(filepath);
+        // show the text things and the mcq values
+
         this.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
@@ -224,6 +229,12 @@ public class GameFrame extends JFrame {
         });
 
         option_1_btn.addActionListener(e -> {
+            // check if this is the right option from getting text or from a preassigned variable
+            // if it is correct then go to changing menu and call this class again,
+            // if its wrong then changeframe to lost.
+            // add an option to go back on this screen.
+            // turn off the timer clock thing if you did something like that.
+            
             this.setVisible(false);
             this.dispose();
             Main.changeFrame(6);
