@@ -2,15 +2,20 @@ package org.howmuch;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Objects;
 
 import static org.howmuch.Main.*;
 
-public class LoginFrame extends JFrame {
+public class LoginFrame extends JFrame implements Runnable {
     JLabel username, password, background_lbl;
     JButton login_btn, guest_btn, newAccount_btn, exit_btn, resize_btn, minimize_btn;
     JTextField username_txt_fld;
     JPasswordField password_txt_fld;
+    public static boolean running = true;
+    Thread loginThread;
+
     LoginFrame() {
         this.setTitle("How Much? ");
         this.setResizable(false);
@@ -33,6 +38,7 @@ public class LoginFrame extends JFrame {
         this.add(username_txt_fld);
         this.add(password_txt_fld);
         this.add(background_lbl);
+        startThread();
 
         this.pack();
         this.setVisible(true);
@@ -65,6 +71,7 @@ public class LoginFrame extends JFrame {
         login_btn.addActionListener(e -> {
             this.setVisible(false);
             this.dispose();
+            running = false;;
             Main.changeFrame(1);
         });
         login_btn.setEnabled(false);
@@ -95,6 +102,7 @@ public class LoginFrame extends JFrame {
             DataBaseManager.currentUsername = "guest";
             this.setVisible(false);
             this.dispose();
+            running = false;
             Main.changeFrame(1);
         });
 
@@ -121,14 +129,15 @@ public class LoginFrame extends JFrame {
 
         newAccount_btn.addActionListener(e -> {
             Main.isGuest = false;
-            if (!Objects.equals(DataBaseManager.currentUsername, "guest")){
-                if(!Objects.equals(DataBaseManager.currentPassword, "guest")){
+            if (!Objects.equals(DataBaseManager.currentUsername, "guest")) {
+                if (!Objects.equals(DataBaseManager.currentPassword, "guest")) {
                     DataBaseManager.addUser();
                     grantAccess = true;
                 }
             }
             this.setVisible(false);
             this.dispose();
+            running = false;
             Main.changeFrame(1);
         });
         newAccount_btn.setEnabled(false);
@@ -157,6 +166,7 @@ public class LoginFrame extends JFrame {
                 exit_btn.setForeground(Colors.primaryColor);
                 this.setVisible(false);
                 this.dispose();
+                running = false;
                 Main.changeFrame(0);
             } else if (exit_btn.getModel().isRollover()) {
                 exit_btn.setForeground(Colors.secondaryColor);
@@ -237,8 +247,7 @@ public class LoginFrame extends JFrame {
         password.setForeground(Colors.primaryColor);
     }
 
-    public void createTextFields()
-    {
+    public void createTextFields() {
         username_txt_fld = new JTextField("");
         username_txt_fld.setFont(password_font);
         username_txt_fld.setBounds(822, 319, 300, 50);
@@ -246,6 +255,12 @@ public class LoginFrame extends JFrame {
         username_txt_fld.setOpaque(true);
         username_txt_fld.setBorder(null);
         username_txt_fld.setForeground(Colors.accentColor);
+        username_txt_fld.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println(username_txt_fld.getText());
+            }
+        });
 
         password_txt_fld = new JPasswordField("");
         password_txt_fld.setFont(password_font);
@@ -256,5 +271,37 @@ public class LoginFrame extends JFrame {
         password_txt_fld.setEchoChar('*');
         password_txt_fld.setForeground(Colors.accentColor);
         password_txt_fld.setAlignmentY(Box.CENTER_ALIGNMENT);
+    }
+
+    @Override
+    public void run() {
+        long lastTime = System.nanoTime();
+        double amountOfTicks = 5.00;
+        double ns = 1000000000 / amountOfTicks;
+        double delta = 0;
+
+        while(running){
+            // basic game loop logic to ensure 60 fps, dont think too much about it, it makes sense.
+            // you can reuse it for consistancy, or make a new one.
+
+            long now = System.nanoTime();
+            delta += (now - lastTime) / ns;
+            lastTime = now;
+
+            if(delta >= 1){
+                System.out.println(username_txt_fld.getText());
+                System.out.println(password_txt_fld.getPassword());
+//                if(username_txt_fld.getText().)
+                delta--;
+            }
+
+        }
+    }
+    public void startThread(){
+
+        // Creating the Game Thread
+        loginThread = new Thread(this);
+        loginThread.start();
+
     }
 }
