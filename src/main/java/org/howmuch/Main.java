@@ -18,7 +18,7 @@ public class Main {
     static DataBaseManager dataBaseManager;
     static final int WIDTH = 1280;
     static final int HEIGHT = 720;
-    static Font buttonFont, textFont, password_font, options_font;
+    static Font buttonFont, textFont, password_font, options_font, emoji_font;
 
     static boolean maximized = false;
     static boolean isGuest = true;
@@ -52,6 +52,11 @@ public class Main {
             password_font = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/Fonts/CaeciliaLTPro45Light.TTF")).deriveFont(35f);
             //register the font
             ge.registerFont(password_font);
+
+            emoji_font = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/Fonts/NotoEmoji-VariableFont_wght.ttf")).deriveFont(35f);
+            //register the font
+            ge.registerFont(password_font);
+
 
             options_font = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/Fonts/ProductSans-Regular.ttf")).deriveFont(35f);
             //register the font
@@ -112,7 +117,7 @@ public class Main {
     }
 
     /**
-     * status = 1: Call Main Menu <br>
+     * @param status = 1: Call Main Menu <br>
      * status = 2: Call Topic Selection<br>
      * status = 3: Call Help and Credits<br>
      * status = 4: View Highscores<br>
@@ -122,7 +127,7 @@ public class Main {
      * status = 0: Exit Game<br>
      **/
     public static void changeFrame(int status) {
-        if (!grantAccess) {
+        if (grantAccess) {
             System.out.println("Access Granted!");
             switch (status) {
                 case 1 -> {

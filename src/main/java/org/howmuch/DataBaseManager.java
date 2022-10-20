@@ -1,20 +1,16 @@
 package org.howmuch;
 
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.MongoClient;
+import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
-import org.bson.Document;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.stream.Stream;
+import java.util.List;
 
 
 public class DataBaseManager {
@@ -25,6 +21,7 @@ public class DataBaseManager {
     public static int MONGO_PORT_NO = 27017;
     public static String MONGO_HOST = "localhost";
     static String currentUsername = "guest";
+    static int USER_INDEX = -1;
     static String currentPassword = "guest";
     static int currentScore = 0;
     MongoDatabase database;
@@ -123,7 +120,7 @@ public class DataBaseManager {
         }
     }
 
-    public static void addUser() {
+    public static void addNewUser() {
         System.out.println("gonna add new user");
         File userDatafile = new File(USERDATA_FILEPATH);
 
@@ -131,22 +128,115 @@ public class DataBaseManager {
         try (FileWriter userDataFileWriter = new FileWriter(userDatafile, true)) {
 
             // create CSVWriter object filewriter object as parameter
-            try (CSVWriter writer = new CSVWriter(userDataFileWriter)) {
-
-                // adding header to csv only if its empty
-                if (userDatafile.length() == 0) {
-                    String[] header = {"Username", "Password", "Score"};
-                    writer.writeNext(header);
-                    System.out.println("added header");
-                }
+            try (CSVWriter writer = new CSVWriter(userDataFileWriter,
+                    CSVWriter.DEFAULT_SEPARATOR,
+                    CSVWriter.NO_QUOTE_CHARACTER,
+                    CSVWriter.DEFAULT_ESCAPE_CHARACTER,
+                    CSVWriter.DEFAULT_LINE_END)) {
 
                 String[] data = {currentUsername, currentPassword, String.valueOf(currentScore)};
                 writer.writeNext(data);
-                System.out.println("added header");
+                System.out.println("added new user");
             }
 
         } catch (IOException e) {
             System.out.println("Cant open user data file. ");
+        }
+    }
+
+    public static void updateCSV(String fileToUpdate, String replace,
+                                 int row, int col) throws IOException {
+
+        File inputFile = new File(fileToUpdate);
+
+// Read existing file
+        CSVReader reader = new CSVReader(new FileReader(inputFile), ',');
+        List<String[]> csvBody = reader.readAll();
+// get CSV row column  and replace with by using row and column
+        csvBody.get(row)[col] = replace;
+        reader.close();
+
+// Write to CSV file which is open
+        CSVWriter writer = new CSVWriter(new FileWriter(inputFile), ',');
+        writer.writeAll(csvBody);
+        writer.flush();
+        writer.close();
+    }
+
+    public static boolean doesUsernameExist(String username) {
+        File inputFile = new File(USERDATA_FILEPATH);
+        try (CSVReader reader = new CSVReader(new FileReader(inputFile), ',')) {
+            List<String[]> csvBody = reader.readAll();
+            for (String[] s :
+                    csvBody) {
+                if (s[0].equals(username)) {
+                    System.out.println("User Already Exists");
+                    return true;
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("couldnt create csvreader in username exists checker method. ");
+        }
+        return false;
+    }
+
+    public static boolean doesPasswordMatch(String username, String password) {
+        File inputFile = new File(USERDATA_FILEPATH);
+        try (CSVReader reader = new CSVReader(new FileReader(inputFile), ',')) {
+            List<String[]> csvBody = reader.readAll();
+            for (int i = 0; i < csvBody.size(); i++) {
+                String[] s = csvBody.get(i);
+                if (s[0].equals(username)) {
+                    System.out.println("User Found");
+                    if (s[1].equals(password)) {
+                        System.out.println("Password Matches");
+                        USER_INDEX = i;
+                        return true;
+                    } else return false;
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("couldnt create csvreader in password matching method");
+        }
+        return false;
+    }
+
+    public static int getUserScore(String username) {
+        File inputFile = new File(USERDATA_FILEPATH);
+        try (CSVReader reader = new CSVReader(new FileReader(inputFile), ',')) {
+            List<String[]> csvBody = reader.readAll();
+            if (USER_INDEX == -1) {
+                for (int i = 0; i < csvBody.size(); i++) {
+                    String[] s = csvBody.get(i);
+                    if (s[0].equals(username)) {
+                        USER_INDEX = i;
+                    }
+                }
+            } else {
+                return Integer.parseInt(csvBody.get(USER_INDEX)[2]);
+            }
+        } catch (IOException e) {
+            System.out.println("couldnt create csvreader in userscore method");
+        }
+        return 0;
+    }
+
+    public static void updateUserScore() {
+        File inputFile = new File(USERDATA_FILEPATH);
+
+        List<String[]> csvBody;
+        try (CSVReader reader = new CSVReader(new FileReader(inputFile), ',')) {
+            csvBody = reader.readAll();
+            csvBody.get(USER_INDEX)[2] = String.valueOf(currentScore);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        try (CSVWriter writer = new CSVWriter(new FileWriter(inputFile), ',')) {
+            writer.writeAll(csvBody);
+            writer.flush();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }

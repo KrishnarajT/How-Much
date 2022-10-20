@@ -4,16 +4,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Objects;
+import java.util.Arrays;
 
 import static org.howmuch.Main.*;
 
 public class LoginFrame extends JFrame implements Runnable {
-    JLabel username, password, background_lbl;
+    JLabel username_lbl, password_lbl, background_lbl, status_lbl, status_emoji_lbl;
     JButton login_btn, guest_btn, newAccount_btn, exit_btn, resize_btn, minimize_btn;
     JTextField username_txt_fld;
     JPasswordField password_txt_fld;
-    public static boolean running = true;
+    public static boolean running = true, userExists = false, incorrectPassword = false, newUser = false;
     Thread loginThread;
 
     LoginFrame() {
@@ -27,13 +27,14 @@ public class LoginFrame extends JFrame implements Runnable {
         createLabels();
         createTextFields();
 
+        this.add(status_lbl);
+        this.add(status_emoji_lbl);
         this.add(login_btn);
-        this.add(username);
-        this.add(password);
+        this.add(username_lbl);
+        this.add(password_lbl);
         this.add(guest_btn);
         this.add(newAccount_btn);
         this.add(exit_btn);
-//        this.add(resize_btn);
         this.add(minimize_btn);
         this.add(username_txt_fld);
         this.add(password_txt_fld);
@@ -69,10 +70,26 @@ public class LoginFrame extends JFrame implements Runnable {
         });
 
         login_btn.addActionListener(e -> {
-            this.setVisible(false);
-            this.dispose();
-            running = false;;
-            Main.changeFrame(1);
+
+            if (DataBaseManager.doesUsernameExist(username_txt_fld.getText())) {
+                if (DataBaseManager.doesPasswordMatch(username_txt_fld.getText(), String.valueOf(password_txt_fld.getPassword()))) {
+                    DataBaseManager.currentUsername = username_txt_fld.getText();
+                    DataBaseManager.currentPassword = String.valueOf(password_txt_fld.getPassword());
+                    DataBaseManager.currentScore = DataBaseManager.getUserScore(DataBaseManager.currentUsername);
+                    this.setVisible(false);
+                    this.dispose();
+                    running = false;
+                    grantAccess = true;
+                    Main.changeFrame(1);
+                } else {
+                    grantAccess = false;
+                    incorrectPassword = true;
+                }
+            }
+            else{
+                newUser = true;
+            }
+
         });
         login_btn.setEnabled(false);
 
@@ -103,6 +120,7 @@ public class LoginFrame extends JFrame implements Runnable {
             this.setVisible(false);
             this.dispose();
             running = false;
+            grantAccess = true;
             Main.changeFrame(1);
         });
 
@@ -129,16 +147,21 @@ public class LoginFrame extends JFrame implements Runnable {
 
         newAccount_btn.addActionListener(e -> {
             Main.isGuest = false;
-            if (!Objects.equals(DataBaseManager.currentUsername, "guest")) {
-                if (!Objects.equals(DataBaseManager.currentPassword, "guest")) {
-                    DataBaseManager.addUser();
-                    grantAccess = true;
-                }
+            if (!DataBaseManager.doesUsernameExist(username_txt_fld.getText())) {
+                DataBaseManager.currentUsername = username_txt_fld.getText();
+                DataBaseManager.currentPassword = String.valueOf(password_txt_fld.getPassword());
+                DataBaseManager.currentScore = 0;
+
+                DataBaseManager.addNewUser();
+                running = false;
+                this.setVisible(false);
+                this.dispose();
+                grantAccess = true;
+                Main.changeFrame(1);
+            } else {
+                System.out.println("User Already Exists");
+                userExists = true;
             }
-            this.setVisible(false);
-            this.dispose();
-            running = false;
-            Main.changeFrame(1);
         });
         newAccount_btn.setEnabled(false);
 
@@ -176,7 +199,6 @@ public class LoginFrame extends JFrame implements Runnable {
         });
 
         resize_btn = new JButton();
-//        resize_btn.setText("-");
         resize_btn.setIcon(new ImageIcon(resize_image));
         resize_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         resize_btn.setAlignmentX(Box.CENTER_ALIGNMENT);
@@ -231,20 +253,34 @@ public class LoginFrame extends JFrame implements Runnable {
         background_lbl = new JLabel();
         background_lbl.setIcon(new ImageIcon(bg_image));
 
-        username = new JLabel();
-        username.setText("Enter Username");
-        username.setFont(textFont.deriveFont(44f));
-        username.setAlignmentX(Box.CENTER_ALIGNMENT);
-        username.setBounds(822, 244, 800, 80);
-        username.setForeground(Colors.primaryColor);
+        username_lbl = new JLabel();
+        username_lbl.setText("Enter Username");
+        username_lbl.setFont(textFont.deriveFont(44f));
+        username_lbl.setAlignmentX(Box.CENTER_ALIGNMENT);
+        username_lbl.setBounds(822, 244, 800, 80);
+        username_lbl.setForeground(Colors.primaryColor);
 
 
-        password = new JLabel();
-        password.setText("Password");
-        password.setFont(textFont.deriveFont(44f));
-        password.setAlignmentX(Box.CENTER_ALIGNMENT);
-        password.setBounds(822, 340, 800, 150);
-        password.setForeground(Colors.primaryColor);
+        password_lbl = new JLabel();
+        password_lbl.setText("Password");
+        password_lbl.setFont(textFont.deriveFont(44f));
+        password_lbl.setAlignmentX(Box.CENTER_ALIGNMENT);
+        password_lbl.setBounds(822, 340, 800, 150);
+        password_lbl.setForeground(Colors.primaryColor);
+
+        status_lbl = new JLabel();
+        status_lbl.setText("");
+        status_lbl.setFont(password_font.deriveFont(30f).deriveFont(Font.ITALIC));
+        status_lbl.setAlignmentX(Box.CENTER_ALIGNMENT);
+        status_lbl.setBounds(30, 580, 800, 40);
+        status_lbl.setForeground(Colors.bgColor);
+
+        status_emoji_lbl = new JLabel();
+        status_emoji_lbl.setText("");
+        status_emoji_lbl.setFont(emoji_font.deriveFont(50f));
+        status_emoji_lbl.setAlignmentX(Box.CENTER_ALIGNMENT);
+        status_emoji_lbl.setBounds(25, 500, 80, 80);
+        status_emoji_lbl.setForeground(Colors.bgColor);
     }
 
     public void createTextFields() {
@@ -280,7 +316,7 @@ public class LoginFrame extends JFrame implements Runnable {
         double ns = 1000000000 / amountOfTicks;
         double delta = 0;
 
-        while(running){
+        while (running) {
             // basic game loop logic to ensure 60 fps, dont think too much about it, it makes sense.
             // you can reuse it for consistancy, or make a new one.
 
@@ -288,16 +324,87 @@ public class LoginFrame extends JFrame implements Runnable {
             delta += (now - lastTime) / ns;
             lastTime = now;
 
-            if(delta >= 1){
+            if (delta >= 1) {
                 System.out.println(username_txt_fld.getText());
                 System.out.println(password_txt_fld.getPassword());
-//                if(username_txt_fld.getText().)
+                if (username_txt_fld.getText().length() == 0) {
+                    newAccount_btn.setEnabled(false);
+                    status_lbl.setText("Enter Username & Password");
+                    status_emoji_lbl.setText("\uD83E\uDEE3");
+//                    status_emoji_lbl.setText("🙈");
+                } else if (newUser) {
+                    status_lbl.setText("Welcome! Create New Account");
+                    status_emoji_lbl.setText("\uD83D\uDE4F");
+//                    status_emoji_lbl.setText("\uD83D\uDE1E");
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                    newUser = false;
+                } else if (incorrectPassword) {
+                    status_lbl.setText("Password doesn't Match!");
+                    status_emoji_lbl.setText("\uD83D\uDE16");
+//                    status_emoji_lbl.setText("\uD83D\uDE1E");
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                    incorrectPassword = false;
+                } else if (userExists) {
+                    status_lbl.setText("User Already Exists, Try to Login");
+                    status_emoji_lbl.setText("\uD83D\uDE15");
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                    userExists = false;
+                } else if (password_txt_fld.getPassword().length < 8) {
+                    newAccount_btn.setEnabled(false);
+                    status_lbl.setText("Nope, Password is too Short");
+//                    status_emoji_lbl.setText("\uD83D\uDE0F");
+//                    status_emoji_lbl.setText("\uD83E\uDD0F");
+                    status_emoji_lbl.setText("\uD83D\uDE15");
+
+                } else if (Arrays.equals(password_txt_fld.getPassword(), "abcdefgh".toCharArray())) {
+                    newAccount_btn.setEnabled(false);
+                    status_lbl.setText("Anyone can guess that bruh");
+                    status_emoji_lbl.setText("\uD83D\uDC80");
+                } else if (Arrays.equals(password_txt_fld.getPassword(), "12345678".toCharArray())) {
+                    newAccount_btn.setEnabled(false);
+                    status_lbl.setText("12345678? Really?");
+                    status_emoji_lbl.setText("\uD83E\uDEE0");
+                } else if (Arrays.equals(password_txt_fld.getPassword(), "asdfghjk".toCharArray())) {
+                    newAccount_btn.setEnabled(false);
+                    status_lbl.setText("Be Lazy, but not thaaat lazy");
+//                    status_emoji_lbl.setText("\uD83D\uDE42");
+                    status_emoji_lbl.setText("\uD83D\uDC80");
+                } else if (Arrays.equals(password_txt_fld.getPassword(), "asdfasdf".toCharArray())) {
+                    newAccount_btn.setEnabled(false);
+                    status_lbl.setText("Even Krishnaraj isnt this lazy");
+//                    status_emoji_lbl.setText("\uD83E\uDD21");
+                    status_emoji_lbl.setText("\uD83D\uDC80");
+                } else if (password_txt_fld.getPassword().length > 30) {
+                    newAccount_btn.setEnabled(false);
+                    status_lbl.setText("Woah, Its too big");
+                    status_emoji_lbl.setText("\uD83D\uDE0F");
+                } else {
+                    status_lbl.setText("All Good!");
+                    status_emoji_lbl.setText("\uD83D\uDC4C");
+//                    status_emoji_lbl.setText("\uD83D\uDE0E" );
+//                    status_emoji_lbl.setText("🤝" );
+                    newAccount_btn.setEnabled(true);
+                    login_btn.setEnabled(true);
+                }
                 delta--;
             }
 
         }
     }
-    public void startThread(){
+
+    public void startThread() {
 
         // Creating the Game Thread
         loginThread = new Thread(this);
