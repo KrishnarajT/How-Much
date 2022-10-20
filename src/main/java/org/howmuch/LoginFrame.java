@@ -2,10 +2,9 @@ package org.howmuch;
 
 import javax.swing.*;
 import java.awt.*;
-import static org.howmuch.Main.createFonts;
-import static org.howmuch.Main.textFont;
-import static org.howmuch.Main.textFont;
-import static org.howmuch.Main.password_font;
+import java.util.Objects;
+
+import static org.howmuch.Main.*;
 
 public class LoginFrame extends JFrame {
     JLabel username, password, background_lbl;
@@ -68,6 +67,7 @@ public class LoginFrame extends JFrame {
             this.dispose();
             Main.changeFrame(1);
         });
+        login_btn.setEnabled(false);
 
         guest_btn = new JButton();
         guest_btn.setText("Guest");
@@ -90,6 +90,9 @@ public class LoginFrame extends JFrame {
             }
         });
         guest_btn.addActionListener(e -> {
+            Main.isGuest = true;
+            DataBaseManager.currentPassword = "guest";
+            DataBaseManager.currentUsername = "guest";
             this.setVisible(false);
             this.dispose();
             Main.changeFrame(1);
@@ -117,10 +120,18 @@ public class LoginFrame extends JFrame {
         });
 
         newAccount_btn.addActionListener(e -> {
+            Main.isGuest = false;
+            if (!Objects.equals(DataBaseManager.currentUsername, "guest")){
+                if(!Objects.equals(DataBaseManager.currentPassword, "guest")){
+                    DataBaseManager.addUser();
+                    grantAccess = true;
+                }
+            }
             this.setVisible(false);
             this.dispose();
             Main.changeFrame(1);
         });
+        newAccount_btn.setEnabled(false);
 
         ImageIcon exit = new ImageIcon("src/main/resources/icons/circle_delete.png");
         Image exit_image = exit.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);

@@ -18,7 +18,7 @@ public class HelpFrame extends JFrame {
         backgroundPanel = new BackgroundPanel();
 
         this.setTitle("How Much? ");
-        if (maxmized) {
+        if (maximized) {
             this.setExtendedState(MAXIMIZED_BOTH);
         } else {
             this.setPreferredSize(new Dimension(Main.WIDTH, Main.HEIGHT));
@@ -137,7 +137,7 @@ public class HelpFrame extends JFrame {
             }
         });
         resize_btn.addActionListener(e -> {
-            if (!Main.maxmized) {
+            if (!Main.maximized) {
                 this.setExtendedState(MAXIMIZED_BOTH);
                 resize_btn.setIcon(new ImageIcon(resizeDown_image));
             } else {
@@ -149,7 +149,7 @@ public class HelpFrame extends JFrame {
                 this.setBounds(x, y, Main.WIDTH, Main.HEIGHT);
                 resize_btn.setIcon(new ImageIcon(resizeUp_image));
             }
-            Main.maxmized = !Main.maxmized;
+            Main.maximized = !Main.maximized;
         });
 
         minimize_btn.addChangeListener(evt -> {

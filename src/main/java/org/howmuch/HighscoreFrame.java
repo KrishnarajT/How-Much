@@ -3,14 +3,11 @@ package org.howmuch;
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import java.util.Arrays;
 
 import static org.howmuch.Main.*;
-import static org.howmuch.MenuFrame.*;
 
 
 public class HighscoreFrame extends JFrame {
@@ -21,7 +18,7 @@ public class HighscoreFrame extends JFrame {
         backgroundPanel = new BackgroundPanel();
 
         this.setTitle("How Much? ");
-        if (maxmized) {
+        if (maximized) {
             this.setExtendedState(MAXIMIZED_BOTH);
         } else {
             this.setPreferredSize(new Dimension(Main.WIDTH, Main.HEIGHT));
@@ -140,7 +137,7 @@ public class HighscoreFrame extends JFrame {
             }
         });
         resize_btn.addActionListener(e -> {
-            if (!Main.maxmized) {
+            if (!Main.maximized) {
                 this.setExtendedState(MAXIMIZED_BOTH);
                 resize_btn.setIcon(new ImageIcon(resizeDown_image));
             } else {
@@ -152,7 +149,7 @@ public class HighscoreFrame extends JFrame {
                 this.setBounds(x, y, Main.WIDTH, Main.HEIGHT);
                 resize_btn.setIcon(new ImageIcon(resizeUp_image));
             }
-            Main.maxmized = !Main.maxmized;
+            Main.maximized = !Main.maximized;
         });
 
         minimize_btn.addChangeListener(evt -> {

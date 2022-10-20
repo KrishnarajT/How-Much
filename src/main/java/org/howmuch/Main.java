@@ -15,13 +15,14 @@ public class Main {
     static TopicsFrame topicsFrame;
     static GameFrame gameFrame;
     static GameOverFrame gameOverFrame;
+    static DataBaseManager dataBaseManager;
     static final int WIDTH = 1280;
     static final int HEIGHT = 720;
     static Font buttonFont, textFont, password_font, options_font;
 
-    static boolean maxmized = false;
-
-
+    static boolean maximized = false;
+    static boolean isGuest = true;
+    static boolean grantAccess = false;
     static JButton exit_btn;
     static JButton resize_btn;
     static JButton minimize_btn;
@@ -79,7 +80,7 @@ public class Main {
         exit_btn.setBorder(null);
 
         resize_btn = new JButton();
-        if (Main.maxmized) {
+        if (Main.maximized) {
             resize_btn.setIcon(new ImageIcon(resizeDown_image));
         } else {
             resize_btn.setIcon(new ImageIcon(resizeUp_image));
@@ -121,52 +122,65 @@ public class Main {
      * status = 0: Exit Game<br>
      **/
     public static void changeFrame(int status) {
+        if (!grantAccess) {
+            System.out.println("Access Granted!");
+            switch (status) {
+                case 1 -> {
+                    // Showing Main Menu
+                    grantAccess = false;
+                    menuFrame = new MenuFrame();
+                }
+                case 2 -> {
+                    // Showing the TopicsFrame
+                    grantAccess = false;
+                    topicsFrame = new TopicsFrame();
+                }
+                case 3 -> {
+                    // Showing the Help Screen
+                    grantAccess = false;
+                    helpFrame = new HelpFrame();
+                }
+                case 4 -> {
+                    // Showing Highscores
+                    grantAccess = false;
+                    highscoreFrame = new HighscoreFrame();
+                }
+                case 5 -> {
+                    System.out.println("Updating Database");
+
+                    // esltablishes connections with mongodb
+                    // clears local database.
+                    dataBaseManager = new DataBaseManager();
 
 
-        switch (status) {
-            case 1 -> {
-                // Showing Main Menu
-                menuFrame = new MenuFrame();
-            }
-            case 2 -> {
-                // Showing the TopicsFrame
-                topicsFrame = new TopicsFrame();
-            }
-            case 3 -> {
-                // Showing the Help Screen
-                helpFrame = new HelpFrame();
-            }
-            case 4 -> {
-                // Showing Highscores
-                highscoreFrame = new HighscoreFrame();
-            }
-            case 5 -> {
-                System.out.println("Updating Database");
+                    // delete local database by a class function from the assigndatabase class or sth
+                    // Scrap Data so that would be a function in the webscrapper class
+                    // within that function make sure to call the local database allocation function from the assigndatabase class or something
+                    // establish connection with mongodb with another class
+                    // clear mongodb database.
+                    // update mongodb database once connections are made.
+                }
+                case 6 -> {
+                    // Showing Game Screen
+                    grantAccess = false;
+                    gameFrame = new GameFrame();
+                }
+                case 7 -> {
+                    // Show GameOverScreen
+                    gameOverFrame = new GameOverFrame();
+                }
+                default -> {
+                    // Exit game
+                    System.out.println("Thanks for Playing! ");
 
-                // delete local database by a class function from the assigndatabase class or sth
-                // Scrap Data so that would be a function in the webscrapper class
-                // within that function make sure to call the local database allocation function from the assigndatabase class or something
-                // establish connection with mongodb with another class
-                // clear mongodb database.
-                // update mongodb database once connections are made.
+                    // User Wants to Exit
+                    System.exit(0);
+                }
             }
-            case 6 -> {
-                // Showing Game Screen
-                gameFrame = new GameFrame();
-            }
-            case 7 -> {
-                // Show GameOverScreen
-                gameOverFrame = new GameOverFrame();
-            }
-            default -> {
-                // Exit game
-                System.out.println("Thanks for Playing! ");
-
-                // User Wants to Exit
-                System.exit(0);
-            }
+        } else {
+            System.out.println("Access Denied");
+            System.exit(0);
         }
-
     }
 
     public static void main(String[] args) {
@@ -177,7 +191,8 @@ public class Main {
 
         // The Game frame is basically the window
         // and we basically just call the frame. That's almost all we have to do here.
-//        loginFrame = new LoginFrame();
-        gameFrame = new GameFrame();
+        loginFrame = new LoginFrame();
+//        gameFrame = new GameFrame();
+//        menuFrame = new MenuFrame();
     }
 }
