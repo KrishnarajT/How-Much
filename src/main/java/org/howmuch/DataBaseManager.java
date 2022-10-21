@@ -11,11 +11,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 
-public class DataBaseManager {
+public class DataBaseManager{
 
     public static String LOCAL_DATAFOLDER = "src/main/resources/data";
+    public static String LOCAL_CSV_FOLDER = "src/main/resources/data/csvs";
+    public static String LOCAL_IMG_FOLDER = "src/main/resources/data/images";
     public static String USERDATA_FILEPATH = "src/main/resources/data/user_details.csv";
     public static String MONGO_DATABASE_NAME = "HowMuch";
     public static int MONGO_PORT_NO = 27017;
@@ -30,7 +33,7 @@ public class DataBaseManager {
         System.out.println("Database manager called");
 
         // Delete the files in the data directory // display them for now
-        clearLocalDatabase();
+//        clearLocalDatabase();
 
         // Establishing connection with mongo
         establishConnectionWithMongo();
@@ -66,18 +69,41 @@ public class DataBaseManager {
 //        }
     }
 
-    void clearLocalDatabase() {
+    /**
+     * Brutally Clear the images and csv in the local Database and start fresh with only files.
+     * **/
+    public static void clearLocalDatabase() {
         try {
-
-            File data_deleter = new File(LOCAL_DATAFOLDER);
+            // Delete all pre existing images
+            File data_deleter = new File(LOCAL_IMG_FOLDER);
             listFilesForFolder(data_deleter);
-
+            for (File subfile : Objects.requireNonNull(data_deleter.listFiles())) {
+                if (subfile.isDirectory()) {
+                    for (File f :
+                            Objects.requireNonNull(subfile.listFiles())) {
+                        f.delete();
+                    }
+                }
+            }
+            data_deleter = new File(LOCAL_CSV_FOLDER);
+            listFilesForFolder(data_deleter);
+            for (File subfile : Objects.requireNonNull(data_deleter.listFiles())) {
+                subfile.delete();
+            }
+            File createfiles = new File(LOCAL_CSV_FOLDER + "/fashion.csv");
+            createfiles.createNewFile();
+            createfiles = new File(LOCAL_CSV_FOLDER + "/technology.csv");
+            createfiles.createNewFile();
+            createfiles = new File(LOCAL_CSV_FOLDER + "/household.csv");
+            createfiles.createNewFile();
+            createfiles = new File(LOCAL_CSV_FOLDER + "/miscellaneous.csv");
+            createfiles.createNewFile();
         } catch (Exception e) {
             System.out.println("Some io excepition occured");
         }
     }
 
-    public void listFilesForFolder(final File folder) {
+    public static void listFilesForFolder(final File folder) {
         Arrays.stream(folder.listFiles()).forEach(fileEntry -> {
             if (fileEntry.isDirectory()) {
                 listFilesForFolder(fileEntry);
@@ -201,10 +227,13 @@ public class DataBaseManager {
         return false;
     }
 
-    public static int getUserScore(String username) {
+    public static int getStoredUserScore(String username) {
         File inputFile = new File(USERDATA_FILEPATH);
         try (CSVReader reader = new CSVReader(new FileReader(inputFile), ',')) {
             List<String[]> csvBody = reader.readAll();
+            if (USER_INDEX == -2) {
+                return currentScore;
+            }
             if (USER_INDEX == -1) {
                 for (int i = 0; i < csvBody.size(); i++) {
                     String[] s = csvBody.get(i);

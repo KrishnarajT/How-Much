@@ -18,10 +18,10 @@ import static org.howmuch.Main.*;
 public class TopicsFrame extends JFrame {
 
     BackgroundPanel backgroundPanel;
-    JButton technology_btn;
-    JButton fashion_btn;
-    JButton household_btn;
-    JButton miscellaneous_btn;
+    JButton option1_btn;
+    JButton option2_btn;
+    JButton option3_btn;
+    JButton option4_btn;
     JButton backToMenu_btn;
     JPanel options_panel;
 
@@ -78,17 +78,17 @@ public class TopicsFrame extends JFrame {
         options_panel.setBounds((int) (0.60 * screenSize.getWidth()), (int) (0.34 * screenSize.getHeight()), (int) (0.45 * screenSize.getWidth()), 700);
 
         // Buttons in the Options Panel
-        technology_btn.setBounds(new Rectangle((int) (0.45 * screenSize.getWidth()), 80));
-        technology_btn.setFont(buttonFont.deriveFont((float) (0.07 * getHeight())));
+        option1_btn.setBounds(new Rectangle((int) (0.45 * screenSize.getWidth()), 80));
+        option1_btn.setFont(buttonFont.deriveFont((float) (0.07 * getHeight())));
 
-        fashion_btn.setBounds(new Rectangle((int) (0.45 * screenSize.getWidth()), 80));
-        fashion_btn.setFont(buttonFont.deriveFont((float) (0.07 * getHeight())));
+        option2_btn.setBounds(new Rectangle((int) (0.45 * screenSize.getWidth()), 80));
+        option2_btn.setFont(buttonFont.deriveFont((float) (0.07 * getHeight())));
 
-        household_btn.setBounds(new Rectangle((int) (0.45 * screenSize.getWidth()), 70));
-        household_btn.setFont(buttonFont.deriveFont((float) (0.07 * getHeight())));
+        option3_btn.setBounds(new Rectangle((int) (0.45 * screenSize.getWidth()), 70));
+        option3_btn.setFont(buttonFont.deriveFont((float) (0.07 * getHeight())));
 
-        miscellaneous_btn.setBounds(new Rectangle((int) (0.45 * screenSize.getWidth()), 70));
-        miscellaneous_btn.setFont(buttonFont.deriveFont((float) (0.07 * getHeight())));
+        option4_btn.setBounds(new Rectangle((int) (0.45 * screenSize.getWidth()), 70));
+        option4_btn.setFont(buttonFont.deriveFont((float) (0.07 * getHeight())));
     }
 
     private void reassignColors() {
@@ -105,14 +105,14 @@ public class TopicsFrame extends JFrame {
         backToMenu_btn.setBackground(Colors.primaryColor);
         backToMenu_btn.setForeground(Colors.bgColor);
         minimize_btn.setBackground(Colors.bgColor);
-        technology_btn.setBackground(Colors.bgColor);
-        technology_btn.setForeground(Colors.primaryColor);
-        fashion_btn.setBackground(Colors.bgColor);
-        fashion_btn.setForeground(Colors.primaryColor);
-        miscellaneous_btn.setBackground(Colors.bgColor);
-        miscellaneous_btn.setForeground(Colors.primaryColor);
-        household_btn.setBackground(Colors.bgColor);
-        household_btn.setForeground(Colors.primaryColor);
+        option1_btn.setBackground(Colors.bgColor);
+        option1_btn.setForeground(Colors.primaryColor);
+        option2_btn.setBackground(Colors.bgColor);
+        option2_btn.setForeground(Colors.primaryColor);
+        option4_btn.setBackground(Colors.bgColor);
+        option4_btn.setForeground(Colors.primaryColor);
+        option3_btn.setBackground(Colors.bgColor);
+        option3_btn.setForeground(Colors.primaryColor);
     }
 
 
@@ -120,13 +120,13 @@ public class TopicsFrame extends JFrame {
         options_panel = new JPanel();
         BoxLayout bl = new BoxLayout(options_panel, BoxLayout.Y_AXIS);
         options_panel.setLayout(bl);
-        options_panel.add(technology_btn);
+        options_panel.add(option1_btn);
         options_panel.add(Box.createRigidArea(new Dimension(0, 25)));
-        options_panel.add(fashion_btn);
+        options_panel.add(option2_btn);
         options_panel.add(Box.createRigidArea(new Dimension(0, 25)));
-        options_panel.add(household_btn);
+        options_panel.add(option3_btn);
         options_panel.add(Box.createRigidArea(new Dimension(0, 25)));
-        options_panel.add(miscellaneous_btn);
+        options_panel.add(option4_btn);
         options_panel.setBackground(new Color(0, 0, 0, 0));
 
     }
@@ -217,96 +217,96 @@ public class TopicsFrame extends JFrame {
         });
 
 
-        technology_btn = new JButton();
-        technology_btn.setText("Technology ");
-        technology_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
-        technology_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
-        technology_btn.setFocusPainted(false);
-        technology_btn.setBounds(0, 0, 500, 500);
-        technology_btn.setContentAreaFilled(false);
-        technology_btn.setOpaque(true);
-        technology_btn.setBorder(null);
-        technology_btn.addChangeListener(evt -> {
-            if (technology_btn.getModel().isPressed()) {
-                technology_btn.setForeground(Colors.accentColor);
-            } else if (technology_btn.getModel().isRollover()) {
-                technology_btn.setForeground(Colors.accentColor);
+        option1_btn = new JButton();
+        option1_btn.setText(Topics[0] +  " ");
+        option1_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
+        option1_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
+        option1_btn.setFocusPainted(false);
+        option1_btn.setBounds(0, 0, 500, 500);
+        option1_btn.setContentAreaFilled(false);
+        option1_btn.setOpaque(true);
+        option1_btn.setBorder(null);
+        option1_btn.addChangeListener(evt -> {
+            if (option1_btn.getModel().isPressed()) {
+                option1_btn.setForeground(Colors.accentColor);
+            } else if (option1_btn.getModel().isRollover()) {
+                option1_btn.setForeground(Colors.accentColor);
             } else {
-                technology_btn.setForeground(Colors.primaryColor);
+                option1_btn.setForeground(Colors.primaryColor);
             }
         });
 
-        technology_btn.addActionListener(e -> {
+        option1_btn.addActionListener(e -> {
             this.setVisible(false);
             this.dispose();
             Main.changeFrame(6);
         });
 
-        fashion_btn = new JButton();
-        fashion_btn.setText("Fashion ");
-        fashion_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
-        fashion_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
-        fashion_btn.setFocusPainted(false);
-        fashion_btn.setContentAreaFilled(false);
-        fashion_btn.setOpaque(true);
-        fashion_btn.setBorder(null);
-        fashion_btn.addChangeListener(evt -> {
-            if (fashion_btn.getModel().isPressed()) {
-                fashion_btn.setForeground(Colors.accentColor);
-            } else if (fashion_btn.getModel().isRollover()) {
-                fashion_btn.setForeground(Colors.accentColor);
+        option2_btn = new JButton();
+        option2_btn.setText(Topics[1] +  " ");
+        option2_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
+        option2_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
+        option2_btn.setFocusPainted(false);
+        option2_btn.setContentAreaFilled(false);
+        option2_btn.setOpaque(true);
+        option2_btn.setBorder(null);
+        option2_btn.addChangeListener(evt -> {
+            if (option2_btn.getModel().isPressed()) {
+                option2_btn.setForeground(Colors.accentColor);
+            } else if (option2_btn.getModel().isRollover()) {
+                option2_btn.setForeground(Colors.accentColor);
             } else {
-                fashion_btn.setForeground(Colors.primaryColor);
+                option2_btn.setForeground(Colors.primaryColor);
             }
         });
-        fashion_btn.addActionListener(e -> {
+        option2_btn.addActionListener(e -> {
             this.setVisible(false);
             this.dispose();
             Main.changeFrame(6);
         });
 
-        household_btn = new JButton();
-        household_btn.setText("Household ");
-        household_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
-        household_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
-        household_btn.setFocusPainted(false);
-        household_btn.setContentAreaFilled(false);
-        household_btn.setOpaque(true);
-        household_btn.setBorder(null);
-        household_btn.addChangeListener(evt -> {
-            if (household_btn.getModel().isPressed()) {
-                household_btn.setForeground(Colors.accentColor);
-            } else if (household_btn.getModel().isRollover()) {
-                household_btn.setForeground(Colors.accentColor);
+        option3_btn = new JButton();
+        option3_btn.setText(Topics[2] +  " ");
+        option3_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
+        option3_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
+        option3_btn.setFocusPainted(false);
+        option3_btn.setContentAreaFilled(false);
+        option3_btn.setOpaque(true);
+        option3_btn.setBorder(null);
+        option3_btn.addChangeListener(evt -> {
+            if (option3_btn.getModel().isPressed()) {
+                option3_btn.setForeground(Colors.accentColor);
+            } else if (option3_btn.getModel().isRollover()) {
+                option3_btn.setForeground(Colors.accentColor);
             } else {
-                household_btn.setForeground(Colors.primaryColor);
+                option3_btn.setForeground(Colors.primaryColor);
             }
         });
-        household_btn.addActionListener(e -> {
+        option3_btn.addActionListener(e -> {
             this.setVisible(false);
             this.dispose();
             Main.changeFrame(6);
         });
 
-        miscellaneous_btn = new JButton();
-        miscellaneous_btn.setText("Miscellaneous ");
-        miscellaneous_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
-        miscellaneous_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
-        miscellaneous_btn.setFont(buttonFont.deriveFont(44f));
-        miscellaneous_btn.setFocusPainted(false);
-        miscellaneous_btn.setContentAreaFilled(false);
-        miscellaneous_btn.setOpaque(true);
-        miscellaneous_btn.setBorder(null);
-        miscellaneous_btn.addChangeListener(evt -> {
-            if (miscellaneous_btn.getModel().isPressed()) {
-                miscellaneous_btn.setForeground(Colors.accentColor);
-            } else if (miscellaneous_btn.getModel().isRollover()) {
-                miscellaneous_btn.setForeground(Colors.accentColor);
+        option4_btn = new JButton();
+        option4_btn.setText(Topics[3] +  " ");
+        option4_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
+        option4_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
+        option4_btn.setFont(buttonFont.deriveFont(44f));
+        option4_btn.setFocusPainted(false);
+        option4_btn.setContentAreaFilled(false);
+        option4_btn.setOpaque(true);
+        option4_btn.setBorder(null);
+        option4_btn.addChangeListener(evt -> {
+            if (option4_btn.getModel().isPressed()) {
+                option4_btn.setForeground(Colors.accentColor);
+            } else if (option4_btn.getModel().isRollover()) {
+                option4_btn.setForeground(Colors.accentColor);
             } else {
-                miscellaneous_btn.setForeground(Colors.primaryColor);
+                option4_btn.setForeground(Colors.primaryColor);
             }
         });
-        miscellaneous_btn.addActionListener(e -> {
+        option4_btn.addActionListener(e -> {
             this.setVisible(false);
             this.dispose();
             Main.changeFrame(7);

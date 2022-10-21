@@ -44,6 +44,9 @@ public class LoginFrame extends JFrame implements Runnable {
         this.pack();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
+
+        // scrap and update database
+//        DataBaseManager.up
     }
 
     public void createButtons() {
@@ -75,7 +78,7 @@ public class LoginFrame extends JFrame implements Runnable {
                 if (DataBaseManager.doesPasswordMatch(username_txt_fld.getText(), String.valueOf(password_txt_fld.getPassword()))) {
                     DataBaseManager.currentUsername = username_txt_fld.getText();
                     DataBaseManager.currentPassword = String.valueOf(password_txt_fld.getPassword());
-                    DataBaseManager.currentScore = DataBaseManager.getUserScore(DataBaseManager.currentUsername);
+                    DataBaseManager.currentScore = DataBaseManager.getStoredUserScore(DataBaseManager.currentUsername);
                     this.setVisible(false);
                     this.dispose();
                     running = false;
@@ -117,6 +120,7 @@ public class LoginFrame extends JFrame implements Runnable {
             Main.isGuest = true;
             DataBaseManager.currentPassword = "guest";
             DataBaseManager.currentUsername = "guest";
+            DataBaseManager.USER_INDEX = -2;
             this.setVisible(false);
             this.dispose();
             running = false;
@@ -365,9 +369,8 @@ public class LoginFrame extends JFrame implements Runnable {
                     newAccount_btn.setEnabled(false);
                     status_lbl.setText("Nope, Password is too Short");
 //                    status_emoji_lbl.setText("\uD83D\uDE0F");
-//                    status_emoji_lbl.setText("\uD83E\uDD0F");
-                    status_emoji_lbl.setText("\uD83D\uDE15");
-
+                    status_emoji_lbl.setText("\uD83E\uDD0F");
+//                    status_emoji_lbl.setText("\uD83D\uDE15");
                 } else if (Arrays.equals(password_txt_fld.getPassword(), "abcdefgh".toCharArray())) {
                     newAccount_btn.setEnabled(false);
                     status_lbl.setText("Anyone can guess that bruh");

@@ -1,12 +1,24 @@
 package org.howmuch;
 
+/*
+ TODO scrap amazon and store images in their respective folders,
+ todo design a naming scheme for those images.
+ todo run the game from it
+ todo transfer to mongodb
+*/
+
+
+import org.xml.sax.SAXException;
+
 import javax.swing.*;
+import javax.xml.parsers.ParserConfigurationException;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
 public class Main {
 
+    public static String[] Topics = new String[] {"Technology", "Fashion", "Household", "Miscellaneous"};
     //    static GameFrame gameFrame;
     static LoginFrame loginFrame;
     static MenuFrame menuFrame;
@@ -193,11 +205,25 @@ public class Main {
         // So fonts render properly
         System.setProperty("awt.useSystemAAFontSettings", "on");
         System.setProperty("swing.aatext", "true");
-
+//
+//        // do this for safety when you call the game
+//        AmazonScrapper.fillSearchQueries();
         // The Game frame is basically the window
         // and we basically just call the frame. That's almost all we have to do here.
-        loginFrame = new LoginFrame();
+//        loginFrame = new LoginFrame();
 //        gameFrame = new GameFrame();
 //        menuFrame = new MenuFrame();
+//        DataBaseManager.clearLocalDatabase();
+        AmazonScrapper obj = new AmazonScrapper();
+        try {
+            AmazonScrapper.scrapAndSave();
+        } catch (ParserConfigurationException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (SAXException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
