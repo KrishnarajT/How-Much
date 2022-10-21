@@ -213,7 +213,7 @@ public class Main {
 //        loginFrame = new LoginFrame();
 //        gameFrame = new GameFrame();
 //        menuFrame = new MenuFrame();
-//        DataBaseManager.clearLocalDatabase();
+        DataBaseManager.clearLocalDatabase();
         AmazonScrapper obj = new AmazonScrapper();
         try {
             AmazonScrapper.scrapAndSave();
