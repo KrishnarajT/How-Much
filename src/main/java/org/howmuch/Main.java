@@ -224,6 +224,12 @@ public class Main {
         } catch (SAXException e) {
             throw new RuntimeException(e);
         }
-
+//        String productName;
+//        productName = "Sponsored Ad - FABUNIK led Lights for Home Decoration 16 RGB Color-Changing Desk Lamp, Rose Touch Crystal, Dimmable LED Ni";
+//        productName = productName.replace(",", " -");
+//        if(productName.contains("Sponsored Ad - ")){
+//            productName = productName.replace("Sponsored Ad - ", "");
+//        }
+//        System.out.println(productName);
     }
 }

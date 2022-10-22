@@ -141,7 +141,6 @@ public class DataBaseManager{
             // closing writer connection
             writer.close();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -170,23 +169,25 @@ public class DataBaseManager{
         }
     }
 
-    public static void updateCSV(String fileToUpdate, String replace,
-                                 int row, int col) throws IOException {
+    public static void addDataToCSV(String filePath, String[] data){
+        File userDatafile = new File(filePath);
 
-        File inputFile = new File(fileToUpdate);
+        // append the new user to the login file.
+        try (FileWriter userDataFileWriter = new FileWriter(userDatafile, true)) {
 
-// Read existing file
-        CSVReader reader = new CSVReader(new FileReader(inputFile), ',');
-        List<String[]> csvBody = reader.readAll();
-// get CSV row column  and replace with by using row and column
-        csvBody.get(row)[col] = replace;
-        reader.close();
+            // create CSVWriter object filewriter object as parameter
+            try (CSVWriter writer = new CSVWriter(userDataFileWriter,
+                    CSVWriter.DEFAULT_SEPARATOR,
+                    CSVWriter.NO_QUOTE_CHARACTER,
+                    CSVWriter.DEFAULT_ESCAPE_CHARACTER,
+                    CSVWriter.DEFAULT_LINE_END)) {
+//                System.out.println(Arrays.toString(data));
+                writer.writeNext(data);
+            }
 
-// Write to CSV file which is open
-        CSVWriter writer = new CSVWriter(new FileWriter(inputFile), ',');
-        writer.writeAll(csvBody);
-        writer.flush();
-        writer.close();
+        } catch (IOException e) {
+            System.out.println("Cant open user data file. ");
+        }
     }
 
     public static boolean doesUsernameExist(String username) {
