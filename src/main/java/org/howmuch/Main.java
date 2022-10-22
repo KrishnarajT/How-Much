@@ -19,6 +19,7 @@ import java.io.IOException;
 public class Main {
 
     public static String[] Topics = new String[] {"Technology", "Fashion", "Household", "Miscellaneous"};
+    public static String currentTopic = Topics[0];
     //    static GameFrame gameFrame;
     static LoginFrame loginFrame;
     static MenuFrame menuFrame;
@@ -35,6 +36,9 @@ public class Main {
     static boolean maximized = false;
     static boolean isGuest = true;
     static boolean grantAccess = false;
+    static boolean isLocalDatabaseUpToDate = false;
+    static boolean isMongoUpToDate = false;
+    static boolean usingMongo = false;
     static JButton exit_btn;
     static JButton resize_btn;
     static JButton minimize_btn;
@@ -211,25 +215,19 @@ public class Main {
         // The Game frame is basically the window
         // and we basically just call the frame. That's almost all we have to do here.
 //        loginFrame = new LoginFrame();
-//        gameFrame = new GameFrame();
+        gameFrame = new GameFrame();
 //        menuFrame = new MenuFrame();
-        DataBaseManager.clearLocalDatabase();
-        AmazonScrapper obj = new AmazonScrapper();
-        try {
-            AmazonScrapper.scrapAndSave();
-        } catch (ParserConfigurationException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (SAXException e) {
-            throw new RuntimeException(e);
-        }
-//        String productName;
-//        productName = "Sponsored Ad - FABUNIK led Lights for Home Decoration 16 RGB Color-Changing Desk Lamp, Rose Touch Crystal, Dimmable LED Ni";
-//        productName = productName.replace(",", " -");
-//        if(productName.contains("Sponsored Ad - ")){
-//            productName = productName.replace("Sponsored Ad - ", "");
+//        DataBaseManager.clearLocalDatabase();
+//        AmazonScrapper obj = new AmazonScrapper();
+//        try {
+//            AmazonScrapper.scrapAndSave();
+//        } catch (ParserConfigurationException e) {
+//            throw new RuntimeException(e);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        } catch (SAXException e) {
+//            throw new RuntimeException(e);
 //        }
-//        System.out.println(productName);
+//        DataBaseManager.createLocalDatabaseBackup();
     }
 }

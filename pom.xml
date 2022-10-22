@@ -14,6 +14,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>groupdocs-artifacts-repository</id>
+            <name>GroupDocs Artifacts Repository</name>
+            <url>https://releases.groupdocs.com/java/repo/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
 
@@ -38,6 +46,13 @@
             <artifactId>opencsv</artifactId>
             <version>4.1</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.groupdocs</groupId>
+            <artifactId>groupdocs-conversion</artifactId>
+            <version>22.8.1</version>
+        </dependency>
+
     </dependencies>
 
 </project>

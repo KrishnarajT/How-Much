@@ -4,21 +4,28 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.MongoClient;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
+import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 
-public class DataBaseManager{
+public class DataBaseManager {
 
     public static String LOCAL_DATAFOLDER = "src/main/resources/data";
     public static String LOCAL_CSV_FOLDER = "src/main/resources/data/csvs";
     public static String LOCAL_IMG_FOLDER = "src/main/resources/data/images";
+    public static String LOCAL_BACKUP_DATAFOLDER = "src/main/resources/data_backup";
+    public static String LOCAL_BACKUP_CSV_FOLDER = "src/main/resources/data_backup/csvs";
+    public static String LOCAL_BACKUP_IMG_FOLDER = "src/main/resources/data_backup/images";
     public static String USERDATA_FILEPATH = "src/main/resources/data/user_details.csv";
     public static String MONGO_DATABASE_NAME = "HowMuch";
     public static int MONGO_PORT_NO = 27017;
@@ -51,7 +58,7 @@ public class DataBaseManager{
         }
     }
 
-    void fetchDataFromMongo() {
+    public static String[] fetchDataFromMongo(String currentTopic, int randomIndex) {
 //        Creating a collection object
 //        MongoCollection<org.bson.Document> collection = database.getCollection("Test-with-Java");
 //        //Retrieving the documents
@@ -67,11 +74,12 @@ public class DataBaseManager{
 //        {
 //            System.out.println(list[j]);
 //        }
+        return new String[]{"a", "a", "a"};
     }
 
     /**
      * Brutally Clear the images and csv in the local Database and start fresh with only files.
-     * **/
+     **/
     public static void clearLocalDatabase() {
         try {
             // Delete all pre existing images
@@ -90,13 +98,13 @@ public class DataBaseManager{
             for (File subfile : Objects.requireNonNull(data_deleter.listFiles())) {
                 subfile.delete();
             }
-            File createfiles = new File(LOCAL_CSV_FOLDER + "/fashion.csv");
+            File createfiles = new File(LOCAL_BACKUP_CSV_FOLDER + "/" + Main.Topics[0].toLowerCase() + ".csv");
             createfiles.createNewFile();
-            createfiles = new File(LOCAL_CSV_FOLDER + "/technology.csv");
+            createfiles = new File(LOCAL_BACKUP_CSV_FOLDER + "/" + Main.Topics[1].toLowerCase() + ".csv");
             createfiles.createNewFile();
-            createfiles = new File(LOCAL_CSV_FOLDER + "/household.csv");
+            createfiles = new File(LOCAL_BACKUP_CSV_FOLDER + "/" + Main.Topics[2].toLowerCase() + ".csv");
             createfiles.createNewFile();
-            createfiles = new File(LOCAL_CSV_FOLDER + "/miscellaneous.csv");
+            createfiles = new File(LOCAL_BACKUP_CSV_FOLDER + "/" + Main.Topics[3].toLowerCase() + ".csv");
             createfiles.createNewFile();
         } catch (Exception e) {
             System.out.println("Some io excepition occured");
@@ -169,7 +177,7 @@ public class DataBaseManager{
         }
     }
 
-    public static void addDataToCSV(String filePath, String[] data){
+    public static void addDataToCSV(String filePath, String[] data) {
         File userDatafile = new File(filePath);
 
         // append the new user to the login file.
@@ -269,4 +277,63 @@ public class DataBaseManager{
             throw new RuntimeException(e);
         }
     }
+
+    public static void createLocalDatabaseBackup() {
+        try {
+            // Delete all pre existing images
+            File data_deleter = new File(LOCAL_BACKUP_IMG_FOLDER);
+            listFilesForFolder(data_deleter);
+            for (File subfile : Objects.requireNonNull(data_deleter.listFiles())) {
+                if (subfile.isDirectory()) {
+                    for (File f :
+                            Objects.requireNonNull(subfile.listFiles())) {
+                        f.delete();
+                    }
+                }
+            }
+            data_deleter = new File(LOCAL_BACKUP_CSV_FOLDER);
+            listFilesForFolder(data_deleter);
+            for (File subfile : Objects.requireNonNull(data_deleter.listFiles())) {
+                subfile.delete();
+            }
+            File createfiles = new File(LOCAL_BACKUP_CSV_FOLDER + "/" + Main.Topics[0].toLowerCase() + ".csv");
+            createfiles.createNewFile();
+            createfiles = new File(LOCAL_BACKUP_CSV_FOLDER + "/" + Main.Topics[1].toLowerCase() + ".csv");
+            createfiles.createNewFile();
+            createfiles = new File(LOCAL_BACKUP_CSV_FOLDER + "/" + Main.Topics[2].toLowerCase() + ".csv");
+            createfiles.createNewFile();
+            createfiles = new File(LOCAL_BACKUP_CSV_FOLDER + "/" + Main.Topics[3].toLowerCase() + ".csv");
+            createfiles.createNewFile();
+        } catch (Exception e) {
+            System.out.println("Some io excepition occured");
+        }
+
+        try {
+            File sourceDirectory = new File(LOCAL_DATAFOLDER);
+            File destinationDirectory = new File(LOCAL_BACKUP_DATAFOLDER);
+            FileUtils.copyDirectory(sourceDirectory, destinationDirectory);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static String[] readFromLocalDatabase(String Topic, int index) {
+        File inputFile;
+        if (Main.isLocalDatabaseUpToDate) {
+            inputFile = new File(LOCAL_CSV_FOLDER + '/' + Topic.toLowerCase() + ".csv");
+        } else {
+            inputFile = new File(LOCAL_BACKUP_CSV_FOLDER + '/' + Topic.toLowerCase() + ".csv");
+        }
+        try (CSVReader reader = new CSVReader(new FileReader(inputFile), ',')) {
+            List<String[]> csvBody = reader.readAll();
+            if (index > csvBody.size()) {
+                return csvBody.get(csvBody.size() - 1);
+            }
+            return csvBody.get(index);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
+

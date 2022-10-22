@@ -5,9 +5,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
+import com.groupdocs.conversion.Converter;
+import com.groupdocs.conversion.filetypes.ImageFileType;
+import com.groupdocs.conversion.options.convert.ImageConvertOptions;
 import org.apache.commons.io.FileExistsException;
 import org.w3c.dom.*;
 
@@ -19,6 +23,8 @@ import com.gargoylesoftware.htmlunit.html.*;
 import org.xml.sax.SAXException;
 
 public class AmazonScrapper {
+    static Converter converter;
+    static ImageConvertOptions options;
     static WebClient webClient;
     static DocumentBuilder builder;
     static DocumentBuilderFactory factory;
@@ -26,6 +32,8 @@ public class AmazonScrapper {
     public static String AMAZON_PREFIX_URL = "https://www.amazon.in/s?k=";
 
     AmazonScrapper() {
+        options = new ImageConvertOptions();
+        options.setFormat(ImageFileType.Png);
         fillSearchQueries();
 
         factory = DocumentBuilderFactory.newInstance();
@@ -106,13 +114,13 @@ public class AmazonScrapper {
 
         productName = imageElement.getAttribute("alt");
         productName = productName.replace(",", " -");
-        if(productName.contains("Sponsored Ad - ")){
+        if (productName.contains("Sponsored Ad - ")) {
             productName = productName.replace("Sponsored Ad - ", "");
         }
         System.out.println(productName);
 
         saveImage(hdImageIrl, imageFilePath);
-        productImagePath = imageFilePath;
+        productImagePath = imageFilePath.replace(".webp", ".png");
 
         NodeList nList = doc.getElementsByTagName("span");
         for (int i = 0; i < nList.getLength(); i++) {
@@ -125,7 +133,7 @@ public class AmazonScrapper {
             }
         }
         String[] data = new String[]{productName, productPrice, productImagePath};
-        if(productName.equalsIgnoreCase("Sadly Not Found") || productPrice.equalsIgnoreCase("Sadly Not Found") || productImagePath.equalsIgnoreCase("Sadly Not Found")){
+        if (productName.equalsIgnoreCase("Sadly Not Found") || productPrice.equalsIgnoreCase("Sadly Not Found") || productImagePath.equalsIgnoreCase("Sadly Not Found")) {
             System.out.println("Not adding this data");
         } else {
             DataBaseManager.addDataToCSV(DataBaseManager.LOCAL_CSV_FOLDER + '/' + Topic + ".csv", data);
@@ -133,24 +141,21 @@ public class AmazonScrapper {
     }
 
     public static void saveImage(String URLst, String filepath) {
+        if (new File(filepath).exists()) {
+            System.out.println("File Exists, gonna replace it");
+            new File(filepath).delete();
+        }
+
         try (InputStream in = new URL(URLst).openStream()) {
-            try {
-                Files.copy(in, Paths.get(filepath));
-            } catch (FileExistsException e) {
-                try {
-                    Files.delete(Paths.get(filepath));
-                    System.out.println("File Exists, gonna replace it");
-                    Files.copy(in, Paths.get(filepath));
-                } catch (IOException ex) {
-                    System.out.println("Still cant do anything here, got some error so dropping this");
-                }
-            } catch (IOException e) {
-                System.out.println("we got some issue here with this file");
-            }
-        } catch (MalformedURLException e) {
-            System.out.println("we got some issue opening this file");
+            Files.copy(in, Paths.get(filepath));
+            converter = new Converter(filepath);
+            filepath = filepath.replace(".webp", ".png");
+            converter.convert(filepath, options);
+            Files.delete(Path.of(filepath.replace(".png", ".webp")));
+
         } catch (IOException e) {
-            System.out.println("we got some issue opening this file");
+            System.out.println("we got some issue here with this file");
         }
     }
+
 }

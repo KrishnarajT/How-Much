@@ -4,6 +4,8 @@ import javax.swing.*;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileReader;
+import java.util.Arrays;
 
 import static org.howmuch.Main.*;
 
@@ -18,9 +20,12 @@ import static org.howmuch.Main.*;
 public class GameFrame extends JFrame {
 
     BackgroundPanel backgroundPanel;
+    GamePanel productImagePanel;
     JButton option_1_btn, option_2_btn, option_3_btn, option_4_btn;
     JPanel options_panel;
     JLabel time_lbl;
+    public static int randomIndex = 0;
+    String[] currentData;
 
     GameFrame() {
         backgroundPanel = new BackgroundPanel();
@@ -41,13 +46,21 @@ public class GameFrame extends JFrame {
         createButtons();
         createPanels();
         createLabels();
+
+
+        // Main stuff
+        findRandomIndex();
+        currentData = new String[]{"", "", ""};
+        if (!usingMongo) {
+            currentData = DataBaseManager.readFromLocalDatabase(currentTopic, randomIndex);
+        } else {
+            currentData = DataBaseManager.fetchDataFromMongo(currentTopic, randomIndex);
+        }
+
+        // Important Updates
         reassignColors();
         reassignBounds();
 
-        // establish connection with mongodb
-        // read a random value from it
-        // showImage(filepath);
-        // show the text things and the mcq values
 
         this.addComponentListener(new ComponentAdapter() {
             @Override
@@ -57,6 +70,7 @@ public class GameFrame extends JFrame {
             }
         });
 
+        this.add(productImagePanel);
         this.add(time_lbl);
         this.add(options_panel);
         this.add(basicButtons_pnl);
@@ -64,6 +78,39 @@ public class GameFrame extends JFrame {
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+    }
+
+    private void findRandomIndex() {
+        randomIndex = 5;
+    }
+
+    private void loadGameDataOnScreen() {
+
+        Image productImage = new ImageIcon(currentData[2]).getImage();
+        int maxWidth = (int) (0.4 * this.getWidth());
+        int maxHeight = (int) (0.4 * this.getWidth());
+
+        int[] imageSize = calculateImageSize(maxWidth, maxHeight, productImage.getWidth(productImagePanel), productImage.getHeight(productImagePanel));
+
+        productImagePanel.setBounds((int) (0.07 * this.getWidth()) + maxWidth / 2 - imageSize[0] / 2, (int) (0.07 * this.getHeight()) + maxHeight/ 2 - imageSize[1] / 2, imageSize[0], imageSize[1]);
+        productImagePanel.setBackground(currentData[2]);
+    }
+
+    private int[] calculateImageSize(int maxWidth, int maxHeight, double width, double height) {
+        int wt = 600, ht = 550;
+        double aspectRatio = width / height;
+        System.out.println(aspectRatio);
+        if (aspectRatio > 1) {
+            // landscape
+            wt = maxWidth;
+            ht = (int) (wt / aspectRatio);
+        } else {
+            // portrait image
+            ht = maxHeight;
+            wt = (int) (ht * aspectRatio);
+        }
+
+        return new int[]{wt, ht};
     }
 
     private void createLabels() {
@@ -97,11 +144,14 @@ public class GameFrame extends JFrame {
         option_4_btn.setBounds(new Rectangle((int) (0.45 * screenSize.getWidth()), 70));
         option_4_btn.setFont(options_font.deriveFont((float) (0.05 * getHeight())));
 
+
         // The Score label
         time_lbl.setBounds((int) (0.890 * screenSize.getWidth()), (int) (0.14 * screenSize.getHeight()), (int) (0.05 * screenSize.getWidth()), (int) (0.11 * screenSize.getHeight()));
         time_lbl.setFont(buttonFont.deriveFont((float) (0.09 * getHeight())));
 
+        loadGameDataOnScreen();
     }
+
     private void reassignColors() {
 
         if (Colors.DarkMode) {
@@ -122,15 +172,14 @@ public class GameFrame extends JFrame {
         option_4_btn.setForeground(Colors.bgColor);
         option_3_btn.setBackground(Colors.primaryColor);
         option_3_btn.setForeground(Colors.bgColor);
-        if(Colors.DarkMode)
-        {
+        if (Colors.DarkMode) {
             time_lbl.setBackground(Colors.bgColor);
-        }
-        else{
+        } else {
             time_lbl.setBackground(Colors.secondaryColor);
         }
         time_lbl.setForeground(Colors.primaryColor);
     }
+
     private void createPanels() {
         options_panel = new JPanel();
         BoxLayout bl = new BoxLayout(options_panel, BoxLayout.Y_AXIS);
@@ -144,7 +193,10 @@ public class GameFrame extends JFrame {
         options_panel.add(option_4_btn);
         options_panel.setBackground(new Color(0, 0, 0, 0));
 
+        productImagePanel = new GamePanel();
+//        productImagePanel.setBackground(new Color(44, 44, 244));
     }
+
     private void createButtons() {
 
         // Removing Change and Action Listeners.
@@ -206,7 +258,6 @@ public class GameFrame extends JFrame {
                 minimize_btn.setForeground(Colors.primaryColor);
             }
         });
-
 
 
         option_1_btn = new JButton();
