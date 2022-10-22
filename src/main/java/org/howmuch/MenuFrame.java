@@ -263,6 +263,7 @@ public class MenuFrame extends JFrame {
         });
 
         chooseTopic_btn.addActionListener(e -> {
+            grantAccess = true;
             this.setVisible(false);
             this.dispose();
             Main.changeFrame(2);
@@ -286,6 +287,7 @@ public class MenuFrame extends JFrame {
             }
         });
         viewHighscore_btn.addActionListener(e -> {
+            grantAccess = true;
             this.setVisible(false);
             this.dispose();
             Main.changeFrame(4);
@@ -309,6 +311,7 @@ public class MenuFrame extends JFrame {
             }
         });
         helpAndCredits_btn.addActionListener(e -> {
+            grantAccess = true;
             this.setVisible(false);
             this.dispose();
             Main.changeFrame(3);
@@ -333,6 +336,7 @@ public class MenuFrame extends JFrame {
             }
         });
         updateDatabase_btn.addActionListener(e -> {
+            grantAccess = true;
             Main.changeFrame(5);
         });
     }

@@ -237,6 +237,8 @@ public class TopicsFrame extends JFrame {
         });
 
         option1_btn.addActionListener(e -> {
+            grantAccess = true;
+            currentTopic = Topics[0];
             this.setVisible(false);
             this.dispose();
             Main.changeFrame(6);
@@ -260,6 +262,8 @@ public class TopicsFrame extends JFrame {
             }
         });
         option2_btn.addActionListener(e -> {
+            grantAccess = true;
+            currentTopic = Topics[1];
             this.setVisible(false);
             this.dispose();
             Main.changeFrame(6);
@@ -283,6 +287,8 @@ public class TopicsFrame extends JFrame {
             }
         });
         option3_btn.addActionListener(e -> {
+            grantAccess = true;
+            currentTopic = Topics[2];
             this.setVisible(false);
             this.dispose();
             Main.changeFrame(6);
@@ -307,9 +313,11 @@ public class TopicsFrame extends JFrame {
             }
         });
         option4_btn.addActionListener(e -> {
+            grantAccess = true;
+            currentTopic = Topics[3];
             this.setVisible(false);
             this.dispose();
-            Main.changeFrame(7);
+            Main.changeFrame(6);
         });
     }
 

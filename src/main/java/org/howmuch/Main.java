@@ -143,6 +143,15 @@ public class Main {
      * status = 0: Exit Game<br>
      **/
     public static void changeFrame(int status) {
+        if(status == 0){
+            DataBaseManager.createLocalDatabaseBackup();
+
+            // Exit game
+            System.out.println("Thanks for Playing! ");
+
+            // User Wants to Exit
+            System.exit(0);
+        }
         if (grantAccess) {
             System.out.println("Access Granted!");
             switch (status) {
@@ -171,8 +180,18 @@ public class Main {
 
                     // esltablishes connections with mongodb
                     // clears local database.
-                    dataBaseManager = new DataBaseManager();
-
+//                    dataBaseManager = new DataBaseManager();
+                    DataBaseManager.clearLocalDatabase();
+                    AmazonScrapper obj = new AmazonScrapper();
+                    try {
+                        AmazonScrapper.scrapAndSave();
+                    } catch (ParserConfigurationException e) {
+                        throw new RuntimeException(e);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    } catch (SAXException e) {
+                        throw new RuntimeException(e);
+                    }
 
                     // delete local database by a class function from the assigndatabase class or sth
                     // Scrap Data so that would be a function in the webscrapper class
@@ -191,6 +210,8 @@ public class Main {
                     gameOverFrame = new GameOverFrame();
                 }
                 default -> {
+                    DataBaseManager.createLocalDatabaseBackup();
+
                     // Exit game
                     System.out.println("Thanks for Playing! ");
 
@@ -214,8 +235,8 @@ public class Main {
 //        AmazonScrapper.fillSearchQueries();
         // The Game frame is basically the window
         // and we basically just call the frame. That's almost all we have to do here.
-//        loginFrame = new LoginFrame();
-        gameFrame = new GameFrame();
+        loginFrame = new LoginFrame();
+//        gameFrame = new GameFrame();
 //        menuFrame = new MenuFrame();
 //        DataBaseManager.clearLocalDatabase();
 //        AmazonScrapper obj = new AmazonScrapper();

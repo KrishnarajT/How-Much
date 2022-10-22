@@ -43,7 +43,7 @@ public class DataBaseManager {
 //        clearLocalDatabase();
 
         // Establishing connection with mongo
-        establishConnectionWithMongo();
+//        establishConnectionWithMongo();
 
     }
 
@@ -331,6 +331,20 @@ public class DataBaseManager {
                 return csvBody.get(csvBody.size() - 1);
             }
             return csvBody.get(index);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static int findLength(String Topic){
+        File inputFile;
+        if (Main.isLocalDatabaseUpToDate) {
+            inputFile = new File(LOCAL_CSV_FOLDER + '/' + Topic.toLowerCase() + ".csv");
+        } else {
+            inputFile = new File(LOCAL_BACKUP_CSV_FOLDER + '/' + Topic.toLowerCase() + ".csv");
+        }
+        try (CSVReader reader = new CSVReader(new FileReader(inputFile), ',')) {
+            List<String[]> csvBody = reader.readAll();
+            return csvBody.size();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

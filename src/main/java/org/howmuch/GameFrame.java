@@ -4,8 +4,8 @@ import javax.swing.*;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.FileReader;
 import java.util.Arrays;
+import java.util.Random;
 
 import static org.howmuch.Main.*;
 
@@ -24,6 +24,7 @@ public class GameFrame extends JFrame {
     JButton option_1_btn, option_2_btn, option_3_btn, option_4_btn;
     JPanel options_panel;
     JLabel time_lbl;
+    JTextArea productName_txtArea;
     public static int randomIndex = 0;
     String[] currentData;
 
@@ -50,12 +51,7 @@ public class GameFrame extends JFrame {
 
         // Main stuff
         findRandomIndex();
-        currentData = new String[]{"", "", ""};
-        if (!usingMongo) {
-            currentData = DataBaseManager.readFromLocalDatabase(currentTopic, randomIndex);
-        } else {
-            currentData = DataBaseManager.fetchDataFromMongo(currentTopic, randomIndex);
-        }
+        assignCurrentData();
 
         // Important Updates
         reassignColors();
@@ -70,6 +66,7 @@ public class GameFrame extends JFrame {
             }
         });
 
+        this.add(productName_txtArea);
         this.add(productImagePanel);
         this.add(time_lbl);
         this.add(options_panel);
@@ -80,20 +77,39 @@ public class GameFrame extends JFrame {
         this.setVisible(true);
     }
 
+    private void assignCurrentData() {
+        currentData = new String[]{"", "", ""};
+        if (!usingMongo) {
+            currentData = DataBaseManager.readFromLocalDatabase(currentTopic, randomIndex);
+        } else {
+            currentData = DataBaseManager.fetchDataFromMongo(currentTopic, randomIndex);
+        }
+    }
+
     private void findRandomIndex() {
-        randomIndex = 5;
+        int max = DataBaseManager.findLength(currentTopic);
+        Random random = new Random();
+        random.setSeed(random.nextLong(1000030045));
+        // Generates random integers 0 to 49
+        randomIndex = random.nextInt(max);
     }
 
     private void loadGameDataOnScreen() {
-
+        System.out.println(Arrays.toString(currentData));
         Image productImage = new ImageIcon(currentData[2]).getImage();
         int maxWidth = (int) (0.4 * this.getWidth());
         int maxHeight = (int) (0.4 * this.getWidth());
 
         int[] imageSize = calculateImageSize(maxWidth, maxHeight, productImage.getWidth(productImagePanel), productImage.getHeight(productImagePanel));
-
+        System.out.println(Arrays.toString(imageSize));
         productImagePanel.setBounds((int) (0.07 * this.getWidth()) + maxWidth / 2 - imageSize[0] / 2, (int) (0.07 * this.getHeight()) + maxHeight/ 2 - imageSize[1] / 2, imageSize[0], imageSize[1]);
         productImagePanel.setBackground(currentData[2]);
+
+        productName_txtArea.setBounds((int) (0.07 * this.getWidth()), (int) (0.8 * this.getHeight()), (int) (0.5 * this.getWidth()), (int) (0.2 * this.getHeight()));
+        productName_txtArea.setText(currentData[0]);
+
+        // setting price
+        option_1_btn.setText(currentData[1]);
     }
 
     private int[] calculateImageSize(int maxWidth, int maxHeight, double width, double height) {
@@ -120,6 +136,13 @@ public class GameFrame extends JFrame {
         time_lbl.setOpaque(true);
         time_lbl.setBorder(null);
         time_lbl.setText("9");
+
+        productName_txtArea = new JTextArea();
+        productName_txtArea.setAlignmentY(Box.CENTER_ALIGNMENT);
+        productName_txtArea.setAlignmentX(Box.LEFT_ALIGNMENT);
+        productName_txtArea.setOpaque(true);
+        productName_txtArea.setBorder(null);
+        productName_txtArea.setLineWrap(true);
     }
 
     private void reassignBounds() {
@@ -144,6 +167,7 @@ public class GameFrame extends JFrame {
         option_4_btn.setBounds(new Rectangle((int) (0.45 * screenSize.getWidth()), 70));
         option_4_btn.setFont(options_font.deriveFont((float) (0.05 * getHeight())));
 
+        productName_txtArea.setFont(password_font.deriveFont((float) (0.05 * getHeight())));
 
         // The Score label
         time_lbl.setBounds((int) (0.890 * screenSize.getWidth()), (int) (0.14 * screenSize.getHeight()), (int) (0.05 * screenSize.getWidth()), (int) (0.11 * screenSize.getHeight()));
@@ -155,7 +179,7 @@ public class GameFrame extends JFrame {
     private void reassignColors() {
 
         if (Colors.DarkMode) {
-            backgroundPanel.setBackground("src/main/resources/images/gamescreen dark.png");
+            backgroundPanel.setBackground("src/main/resources/images/gamescreen.png");
         } else {
             backgroundPanel.setBackground("src/main/resources/images/gamescreen.png");
         }
@@ -172,6 +196,8 @@ public class GameFrame extends JFrame {
         option_4_btn.setForeground(Colors.bgColor);
         option_3_btn.setBackground(Colors.primaryColor);
         option_3_btn.setForeground(Colors.bgColor);
+        productName_txtArea.setBackground(Color.WHITE);
+        productName_txtArea.setForeground(Colors.primaryColor);
         if (Colors.DarkMode) {
             time_lbl.setBackground(Colors.bgColor);
         } else {
@@ -261,7 +287,7 @@ public class GameFrame extends JFrame {
 
 
         option_1_btn = new JButton();
-        option_1_btn.setText("~₹45000");
+        option_1_btn.setText("");
         option_1_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         option_1_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
         option_1_btn.setFocusPainted(false);
@@ -292,7 +318,7 @@ public class GameFrame extends JFrame {
         });
 
         option_2_btn = new JButton();
-        option_2_btn.setText("~46000 - 39000");
+        option_2_btn.setText("123600");
         option_2_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         option_2_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
         option_2_btn.setFocusPainted(false);
@@ -315,7 +341,7 @@ public class GameFrame extends JFrame {
         });
 
         option_3_btn = new JButton();
-        option_3_btn.setText("56000 - 49350  ");
+        option_3_btn.setText("37000");
         option_3_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         option_3_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
         option_3_btn.setFocusPainted(false);
@@ -338,7 +364,7 @@ public class GameFrame extends JFrame {
         });
 
         option_4_btn = new JButton();
-        option_4_btn.setText("Miscellaneous");
+        option_4_btn.setText("₹80350");
         option_4_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         option_4_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
         option_4_btn.setFont(buttonFont.deriveFont(44f));
