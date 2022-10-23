@@ -329,8 +329,8 @@ public class LoginFrame extends JFrame implements Runnable {
             lastTime = now;
 
             if (delta >= 1) {
-                System.out.println(username_txt_fld.getText());
-                System.out.println(password_txt_fld.getPassword());
+//                System.out.println(username_txt_fld.getText());
+//                System.out.println(password_txt_fld.getPassword());
                 if (username_txt_fld.getText().length() == 0) {
                     newAccount_btn.setEnabled(false);
                     status_lbl.setText("Enter Username & Password");

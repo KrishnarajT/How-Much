@@ -4,8 +4,11 @@ import javax.swing.*;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.TimerTask;
+import java.util.Timer;
 
 import static org.howmuch.Main.*;
 
@@ -18,17 +21,24 @@ import static org.howmuch.Main.*;
 
 
 public class GameFrame extends JFrame {
+    static Timer timer;
+    public static int time_left = 9;
 
     BackgroundPanel backgroundPanel;
     GamePanel productImagePanel;
-    JButton option_1_btn, option_2_btn, option_3_btn, option_4_btn;
+    static JButton option_1_btn;
+    static JButton option_2_btn;
+    static JButton option_3_btn;
+    static JButton option_4_btn;
     JPanel options_panel;
-    JLabel time_lbl;
+    static JLabel time_lbl;
     JTextArea productName_txtArea;
     public static int randomIndex = 0;
-    String[] currentData;
+    static String[] currentData;
 
     GameFrame() {
+        randomIndex = 0;
+        time_left = 9;
         backgroundPanel = new BackgroundPanel();
 
         this.setTitle("How Much?");
@@ -57,6 +67,8 @@ public class GameFrame extends JFrame {
         reassignColors();
         reassignBounds();
 
+        startTimer();
+
 
         this.addComponentListener(new ComponentAdapter() {
             @Override
@@ -77,6 +89,26 @@ public class GameFrame extends JFrame {
         this.setVisible(true);
     }
 
+    public static void startTimer() {
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                System.out.println(time_left);
+                if (time_left == 0) {
+                    timer.cancel();
+                    timer.purge();
+                    grantAccess = true;
+                    Main.changeFrame(7);
+                }
+                time_left--;
+                changeTimeOnTimer();
+            }
+        }, 1000, 1000);
+    }
+    public static void changeTimeOnTimer(){
+        time_lbl.setText(String.valueOf(time_left));
+    }
     private void assignCurrentData() {
         currentData = new String[]{"", "", ""};
         if (!usingMongo) {
@@ -89,7 +121,6 @@ public class GameFrame extends JFrame {
     private void findRandomIndex() {
         int max = DataBaseManager.findLength(currentTopic);
         Random random = new Random();
-        random.setSeed(random.nextLong(1000030045));
         // Generates random integers 0 to 49
         randomIndex = random.nextInt(max);
     }
@@ -102,14 +133,48 @@ public class GameFrame extends JFrame {
 
         int[] imageSize = calculateImageSize(maxWidth, maxHeight, productImage.getWidth(productImagePanel), productImage.getHeight(productImagePanel));
         System.out.println(Arrays.toString(imageSize));
-        productImagePanel.setBounds((int) (0.07 * this.getWidth()) + maxWidth / 2 - imageSize[0] / 2, (int) (0.07 * this.getHeight()) + maxHeight/ 2 - imageSize[1] / 2, imageSize[0], imageSize[1]);
+        productImagePanel.setBounds((int) (0.07 * this.getWidth()) + maxWidth / 2 - imageSize[0] / 2, (int) (0.07 * this.getHeight()) + maxHeight / 2 - imageSize[1] / 2, imageSize[0], imageSize[1]);
         productImagePanel.setBackground(currentData[2]);
 
-        productName_txtArea.setBounds((int) (0.07 * this.getWidth()), (int) (0.8 * this.getHeight()), (int) (0.5 * this.getWidth()), (int) (0.2 * this.getHeight()));
+        productName_txtArea.setBounds((int) (0.065 * this.getWidth()), (int) (0.8 * this.getHeight()), (int) (0.5 * this.getWidth()), (int) (0.2 * this.getHeight()));
         productName_txtArea.setText(currentData[0]);
 
         // setting price
-        option_1_btn.setText(currentData[1]);
+        setPrices();
+    }
+
+    public static void setPrices() {
+        int correctPrice;
+        Random random = new Random();
+        int[] wrongPrices = new int[]{0, 0, 0};
+        correctPrice = Math.round(Integer.parseInt(currentData[1]));
+        System.out.println("Correct price is: ");
+        System.out.println(correctPrice);
+
+        double randomMultiplier = 0.3 + random.nextDouble(2.7);
+        System.out.println(randomMultiplier);
+        wrongPrices[0] = (int) (correctPrice * randomMultiplier);
+
+        randomMultiplier = 0.3 + random.nextDouble(2.7);
+        System.out.println(randomMultiplier);
+        wrongPrices[1] = (int) (correctPrice * randomMultiplier);
+
+        randomMultiplier = 0.3 + random.nextDouble(2.7);
+        System.out.println(randomMultiplier);
+        wrongPrices[2] = (int) (correctPrice * randomMultiplier);
+
+        ArrayList<Integer> list = new ArrayList<Integer>(4);
+        list.add(correctPrice);
+        for (int i = 0; i < 3; i++) {
+            list.add(wrongPrices[i]);
+        }
+        System.out.println(list);
+
+        option_1_btn.setText(String.valueOf(list.remove(random.nextInt(list.size()))));
+        option_2_btn.setText(String.valueOf(list.remove(random.nextInt(list.size()))));
+        option_3_btn.setText(String.valueOf(list.remove(random.nextInt(list.size()))));
+        option_4_btn.setText(String.valueOf(list.remove(random.nextInt(list.size()))));
+
     }
 
     private int[] calculateImageSize(int maxWidth, int maxHeight, double width, double height) {
@@ -135,7 +200,7 @@ public class GameFrame extends JFrame {
         time_lbl.setAlignmentX(Box.CENTER_ALIGNMENT);
         time_lbl.setOpaque(true);
         time_lbl.setBorder(null);
-        time_lbl.setText("9");
+        time_lbl.setText(String.valueOf(time_left));
 
         productName_txtArea = new JTextArea();
         productName_txtArea.setAlignmentY(Box.CENTER_ALIGNMENT);
@@ -167,7 +232,7 @@ public class GameFrame extends JFrame {
         option_4_btn.setBounds(new Rectangle((int) (0.45 * screenSize.getWidth()), 70));
         option_4_btn.setFont(options_font.deriveFont((float) (0.05 * getHeight())));
 
-        productName_txtArea.setFont(password_font.deriveFont((float) (0.05 * getHeight())));
+        productName_txtArea.setFont(password_font.deriveFont((float) (0.04 * getHeight())));
 
         // The Score label
         time_lbl.setBounds((int) (0.890 * screenSize.getWidth()), (int) (0.14 * screenSize.getHeight()), (int) (0.05 * screenSize.getWidth()), (int) (0.11 * screenSize.getHeight()));
@@ -184,26 +249,26 @@ public class GameFrame extends JFrame {
             backgroundPanel.setBackground("src/main/resources/images/gamescreen.png");
         }
         Colors.reassignColors();
-        basicButtons_pnl.setBackground(Colors.primaryColor);
-        exit_btn.setBackground(Colors.primaryColor);
-        resize_btn.setBackground(Colors.primaryColor);
-        minimize_btn.setBackground(Colors.primaryColor);
-        option_1_btn.setBackground(Colors.primaryColor);
-        option_1_btn.setForeground(Colors.bgColor);
-        option_2_btn.setBackground(Colors.primaryColor);
-        option_2_btn.setForeground(Colors.bgColor);
-        option_4_btn.setBackground(Colors.primaryColor);
-        option_4_btn.setForeground(Colors.bgColor);
-        option_3_btn.setBackground(Colors.primaryColor);
-        option_3_btn.setForeground(Colors.bgColor);
+        basicButtons_pnl.setBackground(Colors.light_primaryColor);
+        exit_btn.setBackground(Colors.light_primaryColor);
+        resize_btn.setBackground(Colors.light_primaryColor);
+        minimize_btn.setBackground(Colors.light_primaryColor);
+        option_1_btn.setBackground(Colors.light_primaryColor);
+        option_1_btn.setForeground(Colors.light_bgColor);
+        option_2_btn.setBackground(Colors.light_primaryColor);
+        option_2_btn.setForeground(Colors.light_bgColor);
+        option_4_btn.setBackground(Colors.light_primaryColor);
+        option_4_btn.setForeground(Colors.light_bgColor);
+        option_3_btn.setBackground(Colors.light_primaryColor);
+        option_3_btn.setForeground(Colors.light_bgColor);
         productName_txtArea.setBackground(Color.WHITE);
-        productName_txtArea.setForeground(Colors.primaryColor);
+        productName_txtArea.setForeground(Colors.light_primaryColor);
         if (Colors.DarkMode) {
-            time_lbl.setBackground(Colors.bgColor);
+            time_lbl.setBackground(Colors.light_secondaryColor);
         } else {
-            time_lbl.setBackground(Colors.secondaryColor);
+            time_lbl.setBackground(Colors.light_secondaryColor);
         }
-        time_lbl.setForeground(Colors.primaryColor);
+        time_lbl.setForeground(Colors.light_primaryColor);
     }
 
     private void createPanels() {
@@ -250,7 +315,11 @@ public class GameFrame extends JFrame {
 
         exit_btn.addChangeListener(evt -> {
             if (exit_btn.getModel().isPressed()) {
+                timer.cancel();
+                timer.purge();
                 exit_btn.setForeground(Colors.primaryColor);
+                this.setVisible(false);
+                this.dispose();
                 Main.changeFrame(0);
             } else if (exit_btn.getModel().isRollover()) {
                 exit_btn.setForeground(Colors.secondaryColor);
@@ -312,6 +381,8 @@ public class GameFrame extends JFrame {
             // add an option to go back on this screen.
             // turn off the timer clock thing if you did something like that.
 
+            timer.cancel();
+            timer.purge();
             this.setVisible(false);
             this.dispose();
             Main.changeFrame(6);
@@ -335,6 +406,8 @@ public class GameFrame extends JFrame {
             }
         });
         option_2_btn.addActionListener(e -> {
+            timer.cancel();
+            timer.purge();
             this.setVisible(false);
             this.dispose();
             Main.changeFrame(6);
@@ -358,6 +431,8 @@ public class GameFrame extends JFrame {
             }
         });
         option_3_btn.addActionListener(e -> {
+            timer.cancel();
+            timer.purge();
             this.setVisible(false);
             this.dispose();
             Main.changeFrame(6);
@@ -382,6 +457,8 @@ public class GameFrame extends JFrame {
             }
         });
         option_4_btn.addActionListener(e -> {
+            timer.cancel();
+            timer.purge();
             this.setVisible(false);
             this.dispose();
             Main.changeFrame(7);

@@ -8,19 +8,22 @@ package org.howmuch;
 */
 
 
+import org.apache.commons.lang3.ObjectUtils;
 import org.xml.sax.SAXException;
 
 import javax.swing.*;
+import javax.xml.crypto.Data;
 import javax.xml.parsers.ParserConfigurationException;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-public class Main {
+public class Main extends Thread {
 
     public static String[] Topics = new String[] {"Technology", "Fashion", "Household", "Miscellaneous"};
     public static String currentTopic = Topics[0];
-    //    static GameFrame gameFrame;
     static LoginFrame loginFrame;
     static MenuFrame menuFrame;
     static HelpFrame helpFrame;
@@ -144,8 +147,26 @@ public class Main {
      **/
     public static void changeFrame(int status) {
         if(status == 0){
-            DataBaseManager.createLocalDatabaseBackup();
-
+            String lastUpdateDate = "";
+            File dateFile = new File(DataBaseManager.LOCAL_BACKUP_DATEFILE);
+            if(dateFile.exists()){
+                try(BufferedReader br = new BufferedReader(new FileReader(dateFile))) {
+                    lastUpdateDate = br.readLine();
+                    System.out.println(lastUpdateDate);
+                    if(lastUpdateDate.equals(String.valueOf(LocalDate.now()))){
+                        System.out.println("Backup DataBases are Up to Date!");
+                    }
+                    else{
+                        DataBaseManager.createLocalDatabaseBackup();
+                    }
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                } catch (NullPointerException exception){
+                    System.out.println("Nothing in the Date File. ");
+                }
+            } else {
+                DataBaseManager.createLocalDatabaseBackup();
+            }
             // Exit game
             System.out.println("Thanks for Playing! ");
 
@@ -206,6 +227,8 @@ public class Main {
                     gameFrame = new GameFrame();
                 }
                 case 7 -> {
+                    gameFrame.setVisible(false);
+                    gameFrame.dispose();
                     // Show GameOverScreen
                     gameOverFrame = new GameOverFrame();
                 }
@@ -225,19 +248,68 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) {
+    public void run()
+    {
+        String lastUpdateDate = "";
+        File dateFile = new File(DataBaseManager.LOCAL_DATEFILE);
+        if(dateFile.exists()){
+            try(BufferedReader br = new BufferedReader(new FileReader(dateFile))) {
+                lastUpdateDate = br.readLine();
+                System.out.println(lastUpdateDate);
+                if(lastUpdateDate.equals(String.valueOf(LocalDate.now()))){
+                    System.out.println("DataBases are Up to Date!");
+                    isLocalDatabaseUpToDate = true;
+                    isMongoUpToDate = true;
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (NullPointerException exception){
+                System.out.println("Nothing in the Date File. ");
+            }
+        }
 
-        // So fonts render properly
+        if(!isLocalDatabaseUpToDate){
+            System.out.println("Already Started Downloading DataBase bro...");
+            DataBaseManager.clearLocalDatabase();
+            AmazonScrapper obj = new AmazonScrapper();
+            try {
+                AmazonScrapper.scrapAndSave();
+            } catch (ParserConfigurationException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (SAXException e) {
+                throw new RuntimeException(e);
+            }
+
+            // writing to the date file
+            try(FileWriter f = new FileWriter(dateFile, false)){
+                f.write(String.valueOf(LocalDate.now()));
+            } catch (IOException e){
+                throw new RuntimeException(e);
+            }
+
+            System.out.println("Updated the local database, no need to depend on the backup anymore");
+            isLocalDatabaseUpToDate = true;
+        }
+        if(!isMongoUpToDate){
+            System.out.println("Updaing Mongodb");
+            // update mongodb
+//            isMongoUpToDate = true;
+//            usingMongo = true;
+        }
+    }
+    public static void main(String[] args) {
         System.setProperty("awt.useSystemAAFontSettings", "on");
         System.setProperty("swing.aatext", "true");
-//
-//        // do this for safety when you call the game
-//        AmazonScrapper.fillSearchQueries();
-        // The Game frame is basically the window
-        // and we basically just call the frame. That's almost all we have to do here.
+        Main t1 = new Main();
+        t1.start();
         loginFrame = new LoginFrame();
+
+//        DataBaseManager.createLocalDatabaseBackup();
+//        System.out.println(LocalDate.now());
 //        gameFrame = new GameFrame();
-//        menuFrame = new MenuFrame();
+//
 //        DataBaseManager.clearLocalDatabase();
 //        AmazonScrapper obj = new AmazonScrapper();
 //        try {
@@ -249,6 +321,5 @@ public class Main {
 //        } catch (SAXException e) {
 //            throw new RuntimeException(e);
 //        }
-//        DataBaseManager.createLocalDatabaseBackup();
     }
 }

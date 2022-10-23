@@ -27,6 +27,9 @@ public class DataBaseManager {
     public static String LOCAL_BACKUP_CSV_FOLDER = "src/main/resources/data_backup/csvs";
     public static String LOCAL_BACKUP_IMG_FOLDER = "src/main/resources/data_backup/images";
     public static String USERDATA_FILEPATH = "src/main/resources/data/user_details.csv";
+    public static String LOCAL_DATEFILE = "src/main/resources/data/dateUpdated.txt";
+    public static String LOCAL_BACKUP_DATEFILE = "src/main/resources/data_backup/dateUpdated.txt";
+
     public static String MONGO_DATABASE_NAME = "HowMuch";
     public static int MONGO_PORT_NO = 27017;
     public static String MONGO_HOST = "localhost";
@@ -280,9 +283,10 @@ public class DataBaseManager {
 
     public static void createLocalDatabaseBackup() {
         try {
+            System.out.println("---------------CREATING LOCAL DATABASE BACKUP------------");
             // Delete all pre existing images
             File data_deleter = new File(LOCAL_BACKUP_IMG_FOLDER);
-            listFilesForFolder(data_deleter);
+//            listFilesForFolder(data_deleter);
             for (File subfile : Objects.requireNonNull(data_deleter.listFiles())) {
                 if (subfile.isDirectory()) {
                     for (File f :
@@ -292,7 +296,6 @@ public class DataBaseManager {
                 }
             }
             data_deleter = new File(LOCAL_BACKUP_CSV_FOLDER);
-            listFilesForFolder(data_deleter);
             for (File subfile : Objects.requireNonNull(data_deleter.listFiles())) {
                 subfile.delete();
             }
@@ -321,19 +324,37 @@ public class DataBaseManager {
     public static String[] readFromLocalDatabase(String Topic, int index) {
         File inputFile;
         if (Main.isLocalDatabaseUpToDate) {
-            inputFile = new File(LOCAL_CSV_FOLDER + '/' + Topic.toLowerCase() + ".csv");
-        } else {
-            inputFile = new File(LOCAL_BACKUP_CSV_FOLDER + '/' + Topic.toLowerCase() + ".csv");
-        }
-        try (CSVReader reader = new CSVReader(new FileReader(inputFile), ',')) {
-            List<String[]> csvBody = reader.readAll();
-            if (index > csvBody.size()) {
-                return csvBody.get(csvBody.size() - 1);
+            System.out.println("running from the local database");
+            inputFile = new File(LOCAL_CSV_FOLDER + '/' + Topic.toLowerCase() + ".csv");try (CSVReader reader = new CSVReader(new FileReader(inputFile), ',')) {
+                List<String[]> csvBody = reader.readAll();
+                if (index > csvBody.size()) {
+                    return csvBody.get(csvBody.size() - 1);
+                }
+                return csvBody.get(index);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-            return csvBody.get(index);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+
+        } else {
+            System.out.println("running from the backup local database");
+            inputFile = new File(LOCAL_BACKUP_CSV_FOLDER + '/' + Topic.toLowerCase() + ".csv");
+            try (CSVReader reader = new CSVReader(new FileReader(inputFile), ',')) {
+                List<String[]> csvBody = reader.readAll();
+                if (index > csvBody.size()) {
+                    String[] s;
+                    s = csvBody.get(csvBody.size() - 1);
+                    s[2] = s[2].replace("/data/", "/data_backup/");
+                    return s;
+                }
+                String[] s;
+                s = csvBody.get(index);
+                s[2] = s[2].replace("/data/", "/data_backup/");
+                return s;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
+
     }
     public static int findLength(String Topic){
         File inputFile;
