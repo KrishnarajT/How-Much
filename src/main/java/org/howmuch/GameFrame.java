@@ -10,10 +10,11 @@ import java.util.Random;
 import java.util.TimerTask;
 import java.util.Timer;
 
+import static java.lang.Math.round;
 import static org.howmuch.Main.*;
 
 
-// The topics can be
+// The topics are
 // Technology
 // Fashion
 // Health and Household
@@ -23,6 +24,7 @@ import static org.howmuch.Main.*;
 public class GameFrame extends JFrame {
     static Timer timer;
     public static int time_left = 9;
+    public static boolean gameWon = false;
 
     BackgroundPanel backgroundPanel;
     GamePanel productImagePanel;
@@ -35,12 +37,14 @@ public class GameFrame extends JFrame {
     JTextArea productName_txtArea;
     public static int randomIndex = 0;
     static String[] currentData;
+    static int correctPrice;
+    static JLabel confetti;
 
     GameFrame() {
         randomIndex = 0;
         time_left = 9;
         backgroundPanel = new BackgroundPanel();
-
+        gameWon = false;
         this.setTitle("How Much?");
         if (maximized) {
             this.setExtendedState(MAXIMIZED_BOTH);
@@ -78,6 +82,7 @@ public class GameFrame extends JFrame {
             }
         });
 
+        this.add(confetti);
         this.add(productName_txtArea);
         this.add(productImagePanel);
         this.add(time_lbl);
@@ -144,7 +149,6 @@ public class GameFrame extends JFrame {
     }
 
     public static void setPrices() {
-        int correctPrice;
         Random random = new Random();
         int[] wrongPrices = new int[]{0, 0, 0};
         correctPrice = Math.round(Integer.parseInt(currentData[1]));
@@ -170,10 +174,23 @@ public class GameFrame extends JFrame {
         }
         System.out.println(list);
 
-        option_1_btn.setText(String.valueOf(list.remove(random.nextInt(list.size()))));
-        option_2_btn.setText(String.valueOf(list.remove(random.nextInt(list.size()))));
-        option_3_btn.setText(String.valueOf(list.remove(random.nextInt(list.size()))));
-        option_4_btn.setText(String.valueOf(list.remove(random.nextInt(list.size()))));
+//        option_1_btn.setText("₹" + String.format("%,.0f", (double)
+//                round((double) list.remove(random.nextInt(list.size())) / 100) * 100
+//        ));
+//        option_2_btn.setText("₹" + String.format("%,.0f", (double)
+//                round((double) list.remove(random.nextInt(list.size())) / 100) * 100
+//        ));
+//        option_3_btn.setText("₹" + String.format("%,.0f", (double)
+//                round((double) list.remove(random.nextInt(list.size())) / 100) * 100
+//        ));
+//        option_4_btn.setText("₹" + String.format("%,.0f", (double)
+//                round((double) list.remove(random.nextInt(list.size())) / 100) * 100
+//        ));
+
+        option_1_btn.setText("₹" + String.format("%,.0f", (double)list.remove(random.nextInt(list.size()))));
+        option_2_btn.setText("₹" + String.format("%,.0f", (double)list.remove(random.nextInt(list.size()))));
+        option_3_btn.setText("₹" + String.format("%,.0f", (double)list.remove(random.nextInt(list.size()))));
+        option_4_btn.setText("₹" + String.format("%,.0f", (double)list.remove(random.nextInt(list.size()))));
 
     }
 
@@ -208,6 +225,10 @@ public class GameFrame extends JFrame {
         productName_txtArea.setOpaque(true);
         productName_txtArea.setBorder(null);
         productName_txtArea.setLineWrap(true);
+
+        ImageIcon imageIcon = new ImageIcon("src/main/resources/images/giphy (1).gif");
+        confetti = new JLabel(imageIcon);
+        confetti.setVisible(false);
     }
 
     private void reassignBounds() {
@@ -238,6 +259,7 @@ public class GameFrame extends JFrame {
         time_lbl.setBounds((int) (0.890 * screenSize.getWidth()), (int) (0.14 * screenSize.getHeight()), (int) (0.05 * screenSize.getWidth()), (int) (0.11 * screenSize.getHeight()));
         time_lbl.setFont(buttonFont.deriveFont((float) (0.09 * getHeight())));
 
+        confetti.setBounds(0, 0, this.getWidth(), this.getHeight());
         loadGameDataOnScreen();
     }
 
@@ -285,7 +307,6 @@ public class GameFrame extends JFrame {
         options_panel.setBackground(new Color(0, 0, 0, 0));
 
         productImagePanel = new GamePanel();
-//        productImagePanel.setBackground(new Color(44, 44, 244));
     }
 
     private void createButtons() {
@@ -375,21 +396,21 @@ public class GameFrame extends JFrame {
         });
 
         option_1_btn.addActionListener(e -> {
-            // check if this is the right option from getting text or from a preassigned variable
-            // if it is correct then go to changing menu and call this class again,
-            // if its wrong then changeframe to lost.
-            // add an option to go back on this screen.
-            // turn off the timer clock thing if you did something like that.
-
-            timer.cancel();
-            timer.purge();
-            this.setVisible(false);
-            this.dispose();
-            Main.changeFrame(6);
+            int this_btn_price = Integer.parseInt(option_1_btn.getText().replace("₹", "").replace(",", ""));
+            if(correctPrice == this_btn_price){
+                System.out.println("You guessed correctly");
+                confetti.setVisible(true);
+                DataBaseManager.currentScore += time_left;
+                time_left = 2;
+                grantAccess = true;
+                gameWon = true;
+            } else {
+                runClosingErrands(this_btn_price);
+                Main.changeFrame(7);
+            }
         });
 
         option_2_btn = new JButton();
-        option_2_btn.setText("123600");
         option_2_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         option_2_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
         option_2_btn.setFocusPainted(false);
@@ -406,15 +427,21 @@ public class GameFrame extends JFrame {
             }
         });
         option_2_btn.addActionListener(e -> {
-            timer.cancel();
-            timer.purge();
-            this.setVisible(false);
-            this.dispose();
-            Main.changeFrame(6);
+            int this_btn_price = Integer.parseInt(option_2_btn.getText().replace("₹", "").replace(",", ""));
+            if(correctPrice == this_btn_price){
+                System.out.println("You guessed correctly");
+                DataBaseManager.currentScore += time_left;
+                confetti.setVisible(true);
+                time_left = 2;
+                grantAccess = true;
+                gameWon = true;
+            } else {
+                runClosingErrands(this_btn_price);
+                Main.changeFrame(7);
+            }
         });
 
         option_3_btn = new JButton();
-        option_3_btn.setText("37000");
         option_3_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         option_3_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
         option_3_btn.setFocusPainted(false);
@@ -431,15 +458,21 @@ public class GameFrame extends JFrame {
             }
         });
         option_3_btn.addActionListener(e -> {
-            timer.cancel();
-            timer.purge();
-            this.setVisible(false);
-            this.dispose();
-            Main.changeFrame(6);
+            int this_btn_price = Integer.parseInt(option_3_btn.getText().replace("₹", "").replace(",", ""));
+            if(correctPrice == this_btn_price){
+                System.out.println("You guessed correctly");
+                DataBaseManager.currentScore += time_left;
+                confetti.setVisible(true);
+                time_left = 2;
+                grantAccess = true;
+                gameWon = true;
+            } else {
+                runClosingErrands(this_btn_price);
+                Main.changeFrame(7);
+            }
         });
 
         option_4_btn = new JButton();
-        option_4_btn.setText("₹80350");
         option_4_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         option_4_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
         option_4_btn.setFont(buttonFont.deriveFont(44f));
@@ -457,12 +490,36 @@ public class GameFrame extends JFrame {
             }
         });
         option_4_btn.addActionListener(e -> {
-            timer.cancel();
-            timer.purge();
-            this.setVisible(false);
-            this.dispose();
-            Main.changeFrame(7);
+            int this_btn_price = Integer.parseInt(option_4_btn.getText().replace("₹", "").replace(",", ""));
+            if(correctPrice == this_btn_price){
+                System.out.println("You guessed correctly");
+                DataBaseManager.currentScore += time_left;
+                confetti.setVisible(true);
+                time_left = 2;
+                grantAccess = true;
+                gameWon = true;
+            } else {
+                runClosingErrands(this_btn_price);
+                Main.changeFrame(7);
+            }
         });
+    }
+
+    private void runClosingErrands(int this_btn_price) {
+        timer.cancel();
+        timer.purge();
+        option_1_btn.setForeground(Colors.accentColor);
+        System.out.println("That was an incorrect Guess");
+        System.out.println(this_btn_price);
+        try {
+            sleep(500);
+        } catch (InterruptedException ex) {
+            throw new RuntimeException(ex);
+        }
+        this.setVisible(false);
+        this.dispose();
+        gameWon = false;
+        grantAccess = true;
     }
 
 }

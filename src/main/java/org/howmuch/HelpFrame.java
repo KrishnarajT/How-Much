@@ -99,6 +99,7 @@ public class HelpFrame extends JFrame {
         backToMenu_btn.addActionListener(e -> {
             this.setVisible(false);
             this.dispose();
+            grantAccess = true;
             Main.changeFrame(1);
         });
 

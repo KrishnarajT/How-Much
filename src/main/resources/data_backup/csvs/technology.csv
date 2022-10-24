@@ -1,21 +1,286 @@
-OnePlus 163.8 cm (65 inches) U Series 4K LED Smart Android TV 65U1S (Black),59999,src/main/resources/data/images/technology/8k OLED Televisions0.png
-Hisense 139 cm (55 inches) 4K Ultra HD Smart Certified Android QLED TV 55U6G (Metal Gray),46990,src/main/resources/data/images/technology/8k OLED Televisions1.png
-Samsung 214 cm (85 inches) 8K Ultra HD Smart Neo QLED TV QA85QN900AKXXL (Steel),1147491,src/main/resources/data/images/technology/8k OLED Televisions2.png
-Samsung 163 cm (65 inches) 8K Ultra HD Smart Neo QLED TV QA65QN85BAKLXL (Bright Silver),190990,src/main/resources/data/images/technology/8k OLED Televisions3.png
-AmazonBasics 127 cm (50 inches) 4K Ultra HD Smart LED Fire TV with Dolby Atmos and Dolby Vision (Black),32999,src/main/resources/data/images/technology/8k OLED Televisions4.png
-Karbonn 80 cm (32 Inches) Millennium Series HD Ready Smart LED TV KJW32SKHD (Phantom Black) with Bezel-Less Design,8990,src/main/resources/data/images/technology/8k OLED Televisions5.png
-Redmi 108 cm (43 inches) Android 11 Series Full HD Smart LED TV L43M6-RA/L43M7-RA (Black),20239,src/main/resources/data/images/technology/8k OLED Televisions6.png
-Sony Bravia 139 cm (55 inches) 4K Ultra HD Smart LED Google TV S_KD-55X80K_1 (Black),79700,src/main/resources/data/images/technology/8k OLED Televisions7.png
-Samsung 125 cm (50 inches) 4K Ultra HD Smart NEO QLED TV QA50QN90BAKLXL (Titan Black),95990,src/main/resources/data/images/technology/8k OLED Televisions9.png
-Samsung 108 cm (43 inches) Crystal 4K Neo Series Ultra HD Smart LED TV UA43AUE65AKXXL (Black),30970,src/main/resources/data/images/technology/8k OLED Televisions10.png
-Toshiba 126 cm (50 inches) Bezelless Series 4K Ultra HD Smart LED Google TV 50C350LP (Silver),33990,src/main/resources/data/images/technology/8k OLED Televisions11.png
-Samsung 138 cm (55 inches) The Frame Series 4K Smart QLED TV QA55LS03BAKLXL (Black),90990,src/main/resources/data/images/technology/8k OLED Televisions12.png
-Samsung 163 cm (65 inches) 4K Ultra HD Smart QLED TV QA65QN85AAKLXL (Silver),174990,src/main/resources/data/images/technology/8k OLED Televisions13.png
-Samsung 163 cm (65 inches) 4K Ultra HD Smart Neo QLED TV QA65QN90BAKLXL (Titan Black),209990,src/main/resources/data/images/technology/8k OLED Televisions14.png
-Samsung 138 cm (55 inches) 4K Ultra HD Smart NEO QLED TV QA55QN90BAKLXL (Titan Black),142990,src/main/resources/data/images/technology/8k OLED Televisions15.png
-Sony Bravia 164 cm (65 inches) 4K Ultra HD Smart LED Google TV S_KD-65X80K_1 (Black),114990,src/main/resources/data/images/technology/8k OLED Televisions16.png
-Vu 189 cm (75 inches) The Masterpiece Glo Series 4K Ultra HD Smart Android QLED TV 75QMP (Armani Gold) (2022 Model) | Buil...,149990,src/main/resources/data/images/technology/8k OLED Televisions17.png
-Vu 215cm (85 inches) The Masterpiece 4K Ultra HD Android QLED TV 85QPX (Armani Gold) (2020 Model),259999,src/main/resources/data/images/technology/8k OLED Televisions18.png
-Cornea Frameless 218 cm (85 inch) 4K Ultra HD Smart Android LED TV - Black (2022 Model) (with No Cost EMI Offer on All Majo...,193999,src/main/resources/data/images/technology/8k OLED Televisions19.png
-AmazonBasics 81 cm (32 inches) HD Ready Smart LED Fire TV AB32E10SS (Black),12999,src/main/resources/data/images/technology/8k OLED Televisions20.png
-Karbonn 80 cm (32 Inches) Millennium Series HD Ready Smart LED TV KJW32SKHD (Phantom Black) with Bezel-Less...,8990,src/main/resources/data/images/technology/8k OLED Televisions21.png
+Sansui 140cm (55 inches) 4K Ultra HD Certified Android LED TV JSW55ASUHD (Mystique Black) With Dolby Audio ...,32310,src/main/resources/data/images/technology/Televisions0.png
+Sony Bravia 164 cm (65 inches) 4K Ultra HD Smart LED Google TV KD-65X74K (Black),80000,src/main/resources/data/images/technology/Televisions1.png
+Redmi 80 cm (32 inches) Android 11 Series HD Ready Smart LED TV | L32M6-RA/L32M7-RA (Black),10999,src/main/resources/data/images/technology/Televisions2.png
+Vu 126 cm (50 Inches) Premium 4K Series Smart Android LED TV 50PM (Grey),30360,src/main/resources/data/images/technology/Televisions3.png
+Vu 108 cm (43 Inches) Premium 4K Series 4K Ultra HD Smart Android LED TV 43PM (Grey),25001,src/main/resources/data/images/technology/Televisions4.png
+Mi 100 cm (40 inches) Horizon Edition Full HD Android LED TV 4A | L40M6-EI (Black),19999,src/main/resources/data/images/technology/Televisions5.png
+Samsung 80 cm (32 Inches) Wondertainment Series HD Ready LED Smart TV UA32T4340BKXXL (Glossy Black),13490,src/main/resources/data/images/technology/Televisions6.png
+Acer 80 cm (32 inches) I Series HD Ready Android Smart LED TV AR32AR2841HDFL (Black),10999,src/main/resources/data/images/technology/Televisions7.png
+Samsung 108 cm (43 inches) Crystal 4K Series Ultra HD Smart LED TV UA43AUE60AKLXL (Black),29990,src/main/resources/data/images/technology/Televisions8.png
+Mi 80 cm (32 inches) 5A Series HD Ready Smart Android LED TV L32M7-5AIN (Black),12999,src/main/resources/data/images/technology/Televisions9.png
+Samsung 108 cm (43 inches) Crystal 4K Neo Series Ultra HD Smart LED TV UA43AUE65AKXXL (Black),30970,src/main/resources/data/images/technology/Televisions10.png
+Redmi 80 cm (32 inches) Android 11 Series HD Ready Smart LED TV | L32M6-RA/L32M7-RA (Black),10999,src/main/resources/data/images/technology/Televisions11.png
+Redmi 108 cm (43 inches) Android 11 Series Full HD Smart LED TV L43M6-RA/L43M7-RA (Black),20999,src/main/resources/data/images/technology/Televisions12.png
+OnePlus 108 cm (43 inches) Y Series 4K Ultra HD Smart Android LED TV 43Y1S Pro (Black),27999,src/main/resources/data/images/technology/Televisions13.png
+OnePlus 80 cm (32 inches) Y Series HD Ready Smart Android LED TV 32 Y1S (Black),14999,src/main/resources/data/images/technology/Televisions14.png
+OnePlus 108 cm (43 inches) Y Series Full HD Smart Android LED TV 43 Y1S (Black),23999,src/main/resources/data/images/technology/Televisions15.png
+Samsung 138 cm (55 inches) Crystal 4K Neo Series Ultra HD Smart LED TV UA55AUE65AKXXL (Black),46990,src/main/resources/data/images/technology/Televisions16.png
+TCL 100 cm (40 inches) Full HD Certified Android R Smart LED TV 40S6505 (Black),17590,src/main/resources/data/images/technology/Televisions17.png
+Acer 139 cm (55 inches) I Series 4K Ultra HD Android Smart LED TV AR55AR2851UDFL (Black),31999,src/main/resources/data/images/technology/Televisions18.png
+Samsung 108 cm (43 Inches) Wondertainment Series Full HD LED Smart TV UA43TE50AAKXXL (Titan Gray),25990,src/main/resources/data/images/technology/Televisions19.png
+AmazonBasics 81 cm (32 inches) HD Ready Smart LED Fire TV AB32E10SS (Black),12999,src/main/resources/data/images/technology/Televisions20.png
+AmazonBasics 139 cm (55 inches) 4K Ultra HD Smart LED Fire TV with Dolby Atmos and Dolby Vision (Black),35999,src/main/resources/data/images/technology/Televisions21.png
+Samsung Galaxy M32 Prime Edition (Black - 6GB RAM - 128GB),12999,src/main/resources/data/images/technology/Mobile Phones0.png
+iQOO Neo 6 5G (Dark Nova - 8GB RAM - 128GB Storage) | Snapdragon® 870 5G | 80W FlashCharge,29999,src/main/resources/data/images/technology/Mobile Phones1.png
+Redmi 9A Sport (Coral Green - 2GB RAM - 32GB Storage) | 2GHz Octa-core Helio G25 Processor | 5000 mAh Battery,7499,src/main/resources/data/images/technology/Mobile Phones2.png
+OPPO A31 (Mystery Black - 6GB RAM - 128GB Storage) with No Cost EMI/Additional Exchange Offers,11990,src/main/resources/data/images/technology/Mobile Phones3.png
+OPPO A74 5G (Fantastic Purple -6GB RAM -128GB Storage) with No Cost EMI/Additional Exchange Offers,14990,src/main/resources/data/images/technology/Mobile Phones4.png
+Samsung Galaxy M13 (Aqua Green - 6GB - 128GB Storage) | 6000mAh Battery | Upto 12GB RAM with RAM Plus,12499,src/main/resources/data/images/technology/Mobile Phones5.png
+OPPO A74 5G (Fluid Black - 6GB RAM - 128GB Storage) with No Cost EMI/Additional Exchange Offers,14990,src/main/resources/data/images/technology/Mobile Phones6.png
+realme narzo 50i (Carbon Black - 4GB RAM+64GB Storage) - 6.5"" inch Large Display | 5000mAh Battery,8999,src/main/resources/data/images/technology/Mobile Phones7.png
+Samsung Galaxy M13 (Aqua Green - 4GB - 64GB Storage) | 6000mAh Battery | Upto 8GB RAM with RAM Plus,10499,src/main/resources/data/images/technology/Mobile Phones8.png
+Samsung Galaxy M13 (Midnight Blue - 6GB - 128GB Storage) | 6000mAh Battery | Upto 12GB RAM with RAM Plus,12499,src/main/resources/data/images/technology/Mobile Phones9.png
+Redmi Note 11 Pro + 5G (Stealth Black - 8GB RAM - 256GB Storage) | 67W Turbo Charge | 120Hz Super AMOLED Display | Additiona...,24999,src/main/resources/data/images/technology/Mobile Phones12.png
+Redmi 9A Sport (Carbon Black - 2GB RAM - 32GB Storage) | 2GHz Octa-core Helio G25 Processor | 5000 mAh Battery,7499,src/main/resources/data/images/technology/Mobile Phones13.png
+Nokia C01 Plus 4G - 5.45” HD+ Screen - Selfie Camera with Front Flash (Grey),5599,src/main/resources/data/images/technology/Mobile Phones14.png
+realme narzo 50A Prime (Flash Blue - 4GB RAM+128GB Storage) FHD+ Display | 50MP AI Triple Camera (No Charger Variant) | Fla...,12499,src/main/resources/data/images/technology/Mobile Phones15.png
+Redmi 10A (Charcoal Black - 4GB RAM - 64GB Storage) | 2 Ghz Octa Core Helio G25 | 5000 mAh Battery | Finger Print Sensor | U...,9499,src/main/resources/data/images/technology/Mobile Phones16.png
+realme narzo 50 (Speed Blue - 6GB RAM+128GB Storage) Helio G96 Processor | 50MP AI Triple Camera | 120Hz Ultra Smooth Display,15499,src/main/resources/data/images/technology/Mobile Phones17.png
+Samsung Galaxy M32 (Black - 4GB RAM - 64GB | FHD+ sAMOLED 90Hz Display | 6000mAh Battery | 64MP Quad Camera,12499,src/main/resources/data/images/technology/Mobile Phones18.png
+Redmi Note 11 (Horizon Blue - 6GB RAM - 128GB Storage)|90Hz FHD+ AMOLED Display | Qualcomm® Snapdragon™ 680-6nm | Alexa Buil...,14499,src/main/resources/data/images/technology/Mobile Phones19.png
+Lenovo IdeaPad Slim 3 Intel Core i5 12th Gen 15.6"" (39.62cm) FHD Thin & Light Laptop (8GB/512GB SSD/Windows...,54990,src/main/resources/data/images/technology/Laptops0.png
+Lenovo IdeaPad Slim 3 Intel Core i3 11th Gen 14"" (35.56cm) FHD Thin & Light Laptop (8GB/512GB SSD/Windows 1...,38990,src/main/resources/data/images/technology/Laptops1.png
+Lenovo IdeaPad Slim 1 AMD Ryzen 5 3500U 15.6"" (39.62cm) FHD Thin & Light Laptop (8GB/512GB SSD/Windows 11/Office 2021/3mon...,37990,src/main/resources/data/images/technology/Laptops2.png
+HP 15s -11th Gen Intel Core i3-1115G4 8GB RAM/512GB SSD 15.6-inch(39.6 cm) Micro-Edge Anti-Glare FHD Laptop/Alexa Built-in/...,40990,src/main/resources/data/images/technology/Laptops3.png
+Acer Extensa 15 Lightweight Laptop 11th Gen Intel Core i3 Processor with 15.6"" (39.6 cms) Full HD Display- (4 GB RAM/256GB...,30779,src/main/resources/data/images/technology/Laptops4.png
+Lenovo IdeaPad Slim 1 Intel Celeron N4020 4th Gen 11.6'' (29.46cm) HD Thin & Light Laptop (4GB/256GB SSD/Windows 11/Office...,23615,src/main/resources/data/images/technology/Laptops5.png
+Lenovo IdeaPad Slim 3 Intel Celeron N4020 4th Gen 15.6"" (39.62cm) HD Thin & Light Laptop (8GB/256GB SSD/Windows 11/Office ...,28990,src/main/resources/data/images/technology/Laptops6.png
+Mi Notebook Pro Qhd+ IPS Anti Glare Display Intel Core I5-11300H 11Th Gen 14 Inches Thin & Light Laptop (16Gb/512Gb Ssd/Ir...,56990,src/main/resources/data/images/technology/Laptops7.png
+ASUS Vivobook 14 - 14.0-inch (35.56 cms) FHD - Intel Core i5-1035G1 10th Gen - Thin and Light Laptop (8GB/512GB SSD/Integrate...,39990,src/main/resources/data/images/technology/Laptops8.png
+HP NB 255 G8 Laptop 15.6 inch (39.6 cm) AMD Ryzen 3-3250U/8GB DDR4 Ram/1TB HDD/HD/Windows 11/AMD Radeon Vega 8 Graphics/Da...,30499,src/main/resources/data/images/technology/Laptops9.png
+Lenovo IdeaPad Slim 1 AMD Ryzen 3 3250U 15.6"" (39.62cm) FHD Thin & Light Laptop (8GB/512GB SSD/Windows 11/O...,31018,src/main/resources/data/images/technology/Laptops10.png
+Lenovo IdeaPad 3 11th Gen Intel Core i3 15.6"" FHD Thin & Light Laptop(8GB/512GB SSD/Windows 11/Office 2021/...,37817,src/main/resources/data/images/technology/Laptops11.png
+Lenovo IdeaPad D330 Intel Celeron N4020 10.1"" (25cm)HD IPS Detachable 2-in-1 Laptop (4GB/128GB eMMC/Windows 10/1 Yr Warran...,17990,src/main/resources/data/images/technology/Laptops12.png
+Acer Extensa 15 Lightweight Laptop Intel Core i5 11th Gen Processor - (8 GB/ 512 GB SSD/ Windows 11 Home/ 1.7kg/ Black/ El...,48500,src/main/resources/data/images/technology/Laptops13.png
+HP 15- AMD Ryzen 3-3250U 15.6 inches 39.6 cm FHD - Micro-Edge - Thin & Light Laptop (8 GB RAM/1TB HDD + 256GB SSD/ AMD Radeo...,39499,src/main/resources/data/images/technology/Laptops14.png
+Acer Aspire Intel Core i5 11th Gen - (16 GB/ 512 GB SSD/Widows 11 Home/ MS Office/Silver/ 1.7 Kgs) A315-58 with 39.6 cm (1...,53995,src/main/resources/data/images/technology/Laptops15.png
+(Renewed) Dell Latitude E5470 Intel Core i5 6th Gen.6200u Processor 14.1 Inches HD Screen Notebook Computer (8 GB Ram & 25...,18965,src/main/resources/data/images/technology/Laptops16.png
+HP 14s - 12th Gen Intel Core i5 16GB RAM/512GB SSD 14-inch(35.6 cm) Micro-Edge - FHD Laptop/Intel Iris Xe Graphics/Alexa/Dua...,60999,src/main/resources/data/images/technology/Laptops17.png
+ASUS VivoBook 15 (2021) - 15.6-inch (39.62 cm) HD - Dual Core Intel Celeron N4020 - Thin and Light Laptop (4GB RAM/256GB SSD/...,25790,src/main/resources/data/images/technology/Laptops18.png
+Lenovo E41-55 AMD 14-inch (35.56cm) HD Thin and Light Laptop (AMD Athlon Pro 3045B / 8GB RAM/ 1TB HDD/Windows 11 /Integrat...,24499,src/main/resources/data/images/technology/Laptops19.png
+Lenovo IdeaPad Slim 3 Intel Core i3 11th Gen 15.6"" (39.62cm) FHD Thin & Light Laptop (8GB/512GB SDD/Windows...,38990,src/main/resources/data/images/technology/Laptops20.png
+Lenovo Ideapad 3 AMD Ryzen 5 5500U 15.6"" (39.62cm) FHD Thin & Light Laptop (8GB/512GB SSD/Windows 11/Office...,44990,src/main/resources/data/images/technology/Laptops21.png
+Apple iPhone 12 (128GB) - Purple,54900,src/main/resources/data/images/technology/Iphone0.png
+Apple iPhone 13 (128GB) - Blue,64990,src/main/resources/data/images/technology/Iphone1.png
+Apple iPhone 12 (64GB) - Blue,49900,src/main/resources/data/images/technology/Iphone2.png
+Apple iPhone 12 (128GB) - White,54900,src/main/resources/data/images/technology/Iphone3.png
+Apple iPhone 12 (64GB) - Black,49900,src/main/resources/data/images/technology/Iphone4.png
+Apple iPhone 12 (128GB) - Blue,54900,src/main/resources/data/images/technology/Iphone5.png
+Apple iPhone 12 (128GB) - Black,54900,src/main/resources/data/images/technology/Iphone6.png
+Apple iPhone 12 (128GB) - Green,54900,src/main/resources/data/images/technology/Iphone7.png
+Apple iPhone 12 (64GB) - White,49900,src/main/resources/data/images/technology/Iphone8.png
+Apple iPhone 14 128GB Midnight,79900,src/main/resources/data/images/technology/Iphone9.png
+Apple iPhone 13 (128GB) - Blue,64990,src/main/resources/data/images/technology/Iphone10.png
+Apple iPhone 12 (64GB) - Green,49900,src/main/resources/data/images/technology/Iphone11.png
+Apple iPhone 12 (128GB) - Purple,54900,src/main/resources/data/images/technology/Iphone12.png
+Apple iPhone 13 (128GB) - Midnight,65900,src/main/resources/data/images/technology/Iphone13.png
+Apple iPhone 14 Plus 128GB Purple,89900,src/main/resources/data/images/technology/Iphone14.png
+Apple iPhone 14 256GB Midnight,89900,src/main/resources/data/images/technology/Iphone15.png
+Apple iPhone 13 (128GB) - (Product) RED,65900,src/main/resources/data/images/technology/Iphone16.png
+Apple iPhone 12 (64GB) - (Product) RED,49900,src/main/resources/data/images/technology/Iphone17.png
+2020 Apple MacBook Air Laptop: Apple M1 chip - 13.3-inch/33.74 cm Retina Display - 8GB RAM - 256GB SSD Storag...,89990,src/main/resources/data/images/technology/Macbook0.png
+2022 Apple MacBook Air Laptop with M2 chip: 34.46 cm (13.6-inch) Liquid Retina Display - 8GB RAM - 256GB SSD ...,118900,src/main/resources/data/images/technology/Macbook1.png
+2020 Apple MacBook Air Laptop: Apple M1 chip - 13.3-inch/33.74 cm Retina Display - 8GB RAM - 256GB SSD Storage - Backlit Keybo...,89990,src/main/resources/data/images/technology/Macbook2.png
+2020 Apple MacBook Pro (13.3-inch/33.78 cm - Apple M1 chip with 8‑core CPU and 8‑core GPU - 8GB RAM - 512GB SSD) - Space Grey,132990,src/main/resources/data/images/technology/Macbook3.png
+2022 Apple MacBook Air Laptop with M2 chip: 34.46 cm (13.6-inch) Liquid Retina Display - 8GB RAM - 512GB SSD Storage - Backli...,149900,src/main/resources/data/images/technology/Macbook4.png
+2022 Apple MacBook Air Laptop with M2 chip: 34.46 cm (13.6-inch) Liquid Retina Display - 8GB RAM - 512GB SSD Storage - Backli...,149900,src/main/resources/data/images/technology/Macbook5.png
+2020 Apple MacBook Air Laptop: Apple M1 chip - 13.3-inch/33.74 cm Retina Display - 8GB RAM - 256GB SSD Storage - Backlit Keybo...,99900,src/main/resources/data/images/technology/Macbook6.png
+2022 Apple MacBook Air Laptop with M2 chip: 34.46 cm (13.6-inch) Liquid Retina Display - 8GB RAM - 256GB SSD Storage - Backli...,118900,src/main/resources/data/images/technology/Macbook7.png
+2022 Apple MacBook Air Laptop with M2 chip: 34.46 cm (13.6-inch) Liquid Retina Display - 8GB RAM - 512GB SSD Storage - Backli...,149900,src/main/resources/data/images/technology/Macbook8.png
+2022 Apple MacBook Air Laptop with M2 chip: 34.46 cm (13.6-inch) Liquid Retina Display - 8GB RAM - 256GB SSD Storage - Backli...,119900,src/main/resources/data/images/technology/Macbook9.png
+2022 Apple MacBook Air Laptop with M2 chip: 34.46 cm (13.6-inch) Liquid Retina Display - 8GB RAM - 256GB SSD Storage - Backli...,116900,src/main/resources/data/images/technology/Macbook10.png
+Dell Inspiron 7415 AMD R5 5500U 14 inches(35cm) FHD Touch Display 2 in 1 Business Laptop (8GB/512GB SSD/Intel Integrated G...,75900,src/main/resources/data/images/technology/Macbook11.png
+(Renewed) HP Probook x360 11 G1 11.6"" X360 Touch Laptop User Facing Webcam Intel Celeron ( N3350 ) 4 GB DDR3L SDRAM - 128G...,16999,src/main/resources/data/images/technology/Macbook12.png
+ASUS Zenbook Pro 14 Duo OLED (2022) - 14.5"" (36.83 cm) 2.8K OLED 120Hz Touch - Intel EVO Core i9 12th Gen - Dual Screen Lapto...,231071,src/main/resources/data/images/technology/Macbook14.png
+5 Ace HD Thanos Laptop Skin - for 10 to17inch for Dell - Lenovo - Acer - HP - Sony -Apple -MacBook (Multi Color -Vinyl),249,src/main/resources/data/images/technology/Macbook15.png
+5 Ace HD Thanos Laptop Skin - for 10 to17inch for Dell - Lenovo - Acer - HP - Sony -Apple -MacBook (Multi Color -Vinyl),249,src/main/resources/data/images/technology/Macbook16.png
+5 Ace HD Spider Man Laptop Skin - for 10 to17inch for Dell - Lenovo - Acer - HP - Sony -Apple -MacBook (Multi Color -Vinyl),249,src/main/resources/data/images/technology/Macbook17.png
+AmazonBasics 564 L Inverter Frost-Free Side-by-Side Refrigerator with Water Dispenser (2022 - Auto Defrost - ...,57500,src/main/resources/data/images/technology/Refrigerators0.png
+Panasonic 309 L 3 Star 6-Stage Smart Inverter Frost-Free Double Door Refrigerator (NR-TG321CUSN - Shining Si...,29990,src/main/resources/data/images/technology/Refrigerators1.png
+Samsung 192 L 2 Star Direct Cool Single Door Refrigerator (RR19A241BGS/NL - Grey Silver),12790,src/main/resources/data/images/technology/Refrigerators2.png
+Samsung 253L 3 Star Inverter Frost Free Double Door Refrigerator (RT28T3743S8/HL - Elegant Inox - Convertible),25090,src/main/resources/data/images/technology/Refrigerators3.png
+Whirlpool 245 L 3 Star Frost-Free Inverter Double Door Refrigerator (NEO DF258 ROY GERMAN STEEL (3S)-N - German Steel),25390,src/main/resources/data/images/technology/Refrigerators4.png
+LG 190 L 4 Star Inverter Direct-Cool Single Door Refrigerator (GL-D201ASCY - Scarlet Charm - Base stand with Drawer),15990,src/main/resources/data/images/technology/Refrigerators5.png
+Godrej 185 L 4 Star Inverter Direct-Cool Single Door Refrigerator (RD UNO 1854 PTI AQ WN - Aqua Wine - Cool Lock Technology),13990,src/main/resources/data/images/technology/Refrigerators6.png
+Whirlpool 240 L Frost Free Multi-Door Refrigerator (FP 263D PROTTON ROY - German Steel),26490,src/main/resources/data/images/technology/Refrigerators7.png
+Samsung 253 L 3 Star with Inverter Double Door Refrigerator (RT28A3453S8/HL - Elegant Inox),24190,src/main/resources/data/images/technology/Refrigerators8.png
+Samsung 253 L 2 Star Inverter Frost-Free Double Door Refrigerator (RT28A3032GS/HL - Gray Silver),21990,src/main/resources/data/images/technology/Refrigerators9.png
+Samsung 198 L 5 Star Digital Inverter Single Door Refrigerator (RR21A2H2WTU/HL - Base Stand with Drawer - Del...,17690,src/main/resources/data/images/technology/Refrigerators10.png
+Samsung 255 L 3 Star Inverter Direct Cool Single Door Refrigerator(RR26T389YUT/HL - Pebble Blue - Base Stand ...,20390,src/main/resources/data/images/technology/Refrigerators11.png
+Godrej 185 L 4 Star Inverter Direct-Cool Single Door Refrigerator (RD UNO 1854 PTI AQ BL - Aqua Blue - Cool Lock Technology),13990,src/main/resources/data/images/technology/Refrigerators12.png
+LG 190 L 5 Star Smart Inverter Direct-Cool Single Door Refrigerator (GL-D201ASCZ - Scarlet Charm - With Base stand with Draw...,18190,src/main/resources/data/images/technology/Refrigerators13.png
+LG 260L 3 Star Smart Inverter Frost-Free Double Door Refrigerator (GL-I292RPZX - Shiny Steel - Door Cooling+),24490,src/main/resources/data/images/technology/Refrigerators14.png
+LG 260L 3 Star Smart Inverter Frost-Free Double Door Refrigerator (GL-S292RDSX - Dazzle Steel - Convertible),25010,src/main/resources/data/images/technology/Refrigerators15.png
+Samsung 198 L 5 Star Digital Inverter Single Door Refrigerator (RR21A2H2WTU/HL - Base Stand with Drawer - Delight Indigo) - M...,17690,src/main/resources/data/images/technology/Refrigerators16.png
+Whirlpool 190 L 3 Star Direct-Cool Single Door Refrigerator (WDE 205 CLS 3S - Blue),13490,src/main/resources/data/images/technology/Refrigerators17.png
+Samsung 230 L 3 Star Inverter Single Door Refrigerator (RR24A2Y2YS8/NL - Elegant Inox),17090,src/main/resources/data/images/technology/Refrigerators18.png
+Whirlpool 205 L 5 Star Inverter Direct-Cool Single Door Refrigerator (220 IMPRO PRM 5S INV SAPPHIRE MULIA - Sapphire Mulia),19390,src/main/resources/data/images/technology/Refrigerators19.png
+Samsung 253 L 3 Star with Inverter Double Door Refrigerator (RT28A3453S8/HL - Elegant Inox),24190,src/main/resources/data/images/technology/Refrigerators20.png
+Panasonic 338 L 3 Star 6-Stage Smart Inverter Frost-Free Double Door Refrigerator (NR-TG351CUSN - Shining Si...,32990,src/main/resources/data/images/technology/Refrigerators21.png
+Samsung 6.0 Kg Inverter 5 star Fully-Automatic Front Loading Washing Machine (WW60R20GLSS/TL - Silver - Hygie...,22990,src/main/resources/data/images/technology/Washing Machines0.png
+Samsung 6.5 Kg 5 Star Inverter Fully-Automatic Top Loading Washing Machine (WA65T4262GG/TL - Gray - Wobble te...,15990,src/main/resources/data/images/technology/Washing Machines1.png
+Samsung 6.5 kg Fully-Automatic Top Loading Washing Machine (WA65A4002VS/TL - Imperial Silver - Diamond Drum),13990,src/main/resources/data/images/technology/Washing Machines2.png
+Whirlpool 7 Kg 5 Star Semi-Automatic Top Loading Washing Machine (SUPERB ATOM 7.0 - Grey Dazzle - TurboScrub Technology),9990,src/main/resources/data/images/technology/Washing Machines3.png
+Samsung 6.0 Kg 5 Star Semi-Automatic Top Loading Washing Machine (WT60R2000LL/TL - Light Grey - Center jet technology),8690,src/main/resources/data/images/technology/Washing Machines4.png
+IFB 7 Kg Fully-Automatic Top Loading Washing Machine (TL RES Aqua - Light Grey - Smart Sense -3D Wash Technology),18799,src/main/resources/data/images/technology/Washing Machines5.png
+Samsung 6.5 Kg 5 Star Inverter Fully-Automatic Top Loading Washing Machine (WA65T4262GG/TL - Gray - Wobble technology),15990,src/main/resources/data/images/technology/Washing Machines6.png
+IFB 6.5 Kg Fully-Automatic Front Loading Washing Machine (Elena SX 6510 - SX -Silver - In-Built Heater),24490,src/main/resources/data/images/technology/Washing Machines7.png
+LG 6.5 Kg 5 Star Smart Inverter Fully-Automatic Top Loading Washing Machine (T65SKSF4Z - Middle Free Silver),16490,src/main/resources/data/images/technology/Washing Machines8.png
+Whirlpool 7 Kg 5 Star Royal Fully-Automatic Top Loading Washing Machine (WHITEMAGIC ROYAL 7.0 GENX - Grey - Hard Water Wash),15240,src/main/resources/data/images/technology/Washing Machines9.png
+Samsung 7 Kg 5 Star Inverter - Hygiene Steam Fully-Automatic Front Loading Washing Machine (WW70T4020EE1TL - ...,27490,src/main/resources/data/images/technology/Washing Machines10.png
+Samsung 8 Kg 5 Star Inverter - Hygiene Steam Fully-Automatic Front Loading Washing Machine (WW80T4040CE1TL - ...,31490,src/main/resources/data/images/technology/Washing Machines11.png
+LG 7 Kg 5 Star Semi-Automatic Top Loading Washing Machine (P7020NGAZ - Dark Gray - Wind Jet Dry),11490,src/main/resources/data/images/technology/Washing Machines12.png
+Godrej 6.2 Kg Fully-Automatic Top Loading Washing Machine (WT EON 620 AP Gp Gr - Graphic Grey),11990,src/main/resources/data/images/technology/Washing Machines13.png
+Samsung 6.0 Kg Inverter 5 Star Fully-Automatic Front Loading Washing Machine (WW60R20GLMA/TL - White - Hygiene Steam),21990,src/main/resources/data/images/technology/Washing Machines14.png
+Whirlpool 7 Kg 5 Star Royal Plus Fully-Automatic Top Loading Washing Machine (WHITEMAGIC ROYAL PLUS 7.0 - Grey - Hard Water ...,15690,src/main/resources/data/images/technology/Washing Machines15.png
+Samsung 6.5 Kg 5 Star Semi-Automatic Top Loading Washing Machine (WT65R2200LL/TL - Blue - Air Turbo Drying System),9490,src/main/resources/data/images/technology/Washing Machines16.png
+LG 7 kg 5 Star Inverter Fully-Automatic Top Loading Washing Machine (‎T70SKSF1Z - Middle Free Silver - TurboDrum),17490,src/main/resources/data/images/technology/Washing Machines17.png
+Whirlpool 7.5 Kg 5 Star Royal Plus Fully-Automatic Top Loading Washing Machine (WHITEMAGIC ROYAL PLUS 7.5 - Grey - Hard Wate...,16690,src/main/resources/data/images/technology/Washing Machines18.png
+Godrej 6.2 Kg Fully-Automatic Top Loading Washing Machine (WT EON 620 A Gp Gr - Grey),12190,src/main/resources/data/images/technology/Washing Machines19.png
+AmazonBasics 7 kg Semi Automatic Washing Machine (with Heavy wash function - White/Blue color),9499,src/main/resources/data/images/technology/Washing Machines20.png
+Panasonic 8 Kg 5 Star Semi-Automatic Top Loading Washing Machine (NA-W80E5HRB - Grey - Powerful Motor),12790,src/main/resources/data/images/technology/Washing Machines21.png
+Amazfit GTS 4 Mini Smart Watch - Alexa Built-in Fitness Tracker with 24H Heart Rate Blood Oxygen Monitor - 5 ...,7999,src/main/resources/data/images/technology/Smart Watches0.png
+Amazfit GTS2 Mini (New Version) Smart Watch with Always-on AMOLED Display - Alexa Built-in - SpO2 - 14 Days' B...,5999,src/main/resources/data/images/technology/Smart Watches1.png
+boAt Xtend Smartwatch with Alexa Built-in - 1.69” HD Display - Multiple Watch Faces - Stress Monitor - Heart & SpO2 Monitorin...,2919,src/main/resources/data/images/technology/Smart Watches2.png
+Noise ColorFit Pulse Spo2 Smart Watch with 10 days battery life - 60+ Watch Faces - 1.4"" Full Touch HD Display Smartwatch - 2...,1999,src/main/resources/data/images/technology/Smart Watches3.png
+boAt Xtend/Xtend RTL Smartwatch with Alexa Built-in - 1.69” HD Display - Multiple Watch Faces - Stress Monitor - Heart & SpO2 ...,3499,src/main/resources/data/images/technology/Smart Watches4.png
+boAt Wave Lite Smartwatch with 1.69"" HD Display - Sleek Metal Body - HR & SpO2 Level Monitor - 140+ Watch Faces - Activity Tra...,1799,src/main/resources/data/images/technology/Smart Watches5.png
+boAt Wave Call Smart Watch - Smart Talk with Advanced Dedicated Bluetooth Calling Chip - 1.69” HD Display with 550 NITS & 7...,2499,src/main/resources/data/images/technology/Smart Watches6.png
+Noise ColorFit Pulse Grand Smart Watch with 1.69""(4.29cm) HD Display - 60 Sports Modes - 150 Watch Faces - Fast Charge - Spo2 -...,1899,src/main/resources/data/images/technology/Smart Watches7.png
+boAt Xtend Smart Watch with Alexa Built-in - 1.69” HD Display - Multiple Watch Faces - Stress Monitor - HR & SpO2 Monitoring - ...,2919,src/main/resources/data/images/technology/Smart Watches8.png
+boAt Wave Call Smart Watch - Smart Talk with Advanced Dedicated Bluetooth Calling Chip - 1.69” HD Display with 550 NITS & 7...,2499,src/main/resources/data/images/technology/Smart Watches9.png
+Fire-Boltt India's No 1 Smartwatch Brand Talk 2 Bluetooth Calling Smartwatch with Dual Button - Hands On Voi...,2199,src/main/resources/data/images/technology/Smart Watches10.png
+boAt Xtend Pro with Bluetooth Calling - Dial Pad - 1.78” AMOLED Display - Premium Metal Strap - ASAP™( Fast ) C...,5319,src/main/resources/data/images/technology/Smart Watches11.png
+Noise ColorFit Pulse Grand Smart Watch with 1.69"" HD Display - 60 Sports Modes - 150 Watch Faces - Spo2 Monitoring - Call Noti...,1999,src/main/resources/data/images/technology/Smart Watches12.png
+Noise Pulse Go Buzz Smart Watch with Smart Call & Advanced Bluetooth Tech - 1.69"" Display - Noise Health Suite - 150+ Cloud W...,2799,src/main/resources/data/images/technology/Smart Watches13.png
+TAGG Verve NEO Smartwatch 1.69"" HD Display | 60+ Sports Modes | 10 Days Battery | 150+ Maximum Watch Face Library | Waterp...,1499,src/main/resources/data/images/technology/Smart Watches14.png
+Fire-Boltt India's No 1 Smartwatch Brand Ring Bluetooth Calling with SpO2 & 1.7” Metal Body with Blood Oxygen Monitoring - ...,2499,src/main/resources/data/images/technology/Smart Watches15.png
+Fire-Boltt Ninja 3 Smartwatch Full Touch 1.69 & 60 Sports Modes with IP68 - Sp02 Tracking - Over 100 Cloud based watch faces...,1799,src/main/resources/data/images/technology/Smart Watches16.png
+Noise ColorFit Ultra Buzz Bluetooth Calling Smart Watch with 1.75"" HD Display - 320x385 px Resolution - 100 Sports Modes - St...,3299,src/main/resources/data/images/technology/Smart Watches17.png
+Noise Pulse 2 Max Advanced Bluetooth Calling Smart Watch with 1.85'' TFT and 550 Nits Brightness - Smart DND - 10 Days Batte...,2999,src/main/resources/data/images/technology/Smart Watches18.png
+Noise ColorFit Pulse Smartwatch with 1.4"" Full Touch HD Display - SpO2 - Heart Rate - Sleep Monitors & 10-Day Battery - Deep ...,1999,src/main/resources/data/images/technology/Smart Watches19.png
+Hammer Pulse Ace 1.69"" Bluetooth Calling Smart Watch with Call Function Dial Pad - Speaker - SpO2 - HR - Sleep ...,1999,src/main/resources/data/images/technology/Smart Watches20.png
+Amazfit GTS 2 (New Version) Smart Watch with Ultra HD AMOLED Display - Built-in Amazon Alexa - Built-in GPS - ...,7999,src/main/resources/data/images/technology/Smart Watches21.png
+Lenovo IdeaPad Gaming 3 Intel Core i5 11th Gen 15.6"" (39.62cm) FHD IPS Gaming Laptop (16GB/512GB SDD/4GB NV...,69490,src/main/resources/data/images/technology/Gaming Laptops0.png
+Lenovo Ideapad Gaming 3 AMD Ryzen 5 5600H 15.6"" (39.62cm) FHD IPS Gaming Laptop (8GB/512GB SSD/4GB NVIDIA G...,54990,src/main/resources/data/images/technology/Gaming Laptops1.png
+ASUS TUF Gaming A15 - 15.6-inch (39.62 cms) FHD 144Hz - AMD Ryzen 5 4600H - 4GB NVIDIA GeForce GTX 1650 - Gaming Laptop (8GB/5...,51820,src/main/resources/data/images/technology/Gaming Laptops2.png
+ASUS TUF Gaming F15 (2022) - 15.6""(39.62 cms) FHD 144Hz - Intel Core i7-12700H 12th Gen - RTX 3050 Ti 4GB Graphics - Gaming La...,99990,src/main/resources/data/images/technology/Gaming Laptops3.png
+ASUS TUF Gaming A15 - 15.6-inch (39.62 cms) FHD 144Hz - AMD Ryzen 5 4600H - 4GB NVIDIA GeForce GTX 1650 - Gaming Laptop (8GB/5...,60990,src/main/resources/data/images/technology/Gaming Laptops4.png
+Acer Nitro 5 Gaming Laptop Intel Core i5-11400H 11th Gen Processor (16GB/512GB SSD/ NVIDIA GeForce GTX 1650 4GB GDDR6 Grap...,69990,src/main/resources/data/images/technology/Gaming Laptops5.png
+MSI Katana GF76 - Intel 11th Gen. i7-11800H - 43CM FHD 144Hz Gaming Laptop (16GB/512GB NVMe SSD/Windows 11 Home/Nvidia RTX30...,86309,src/main/resources/data/images/technology/Gaming Laptops6.png
+Lenovo IdeaPad Gaming 3 AMD Ryzen 5 5600H 15.6"" (39.62cm) FHD IPS 120Hz Gaming Laptop 8GB/256GB SSD+1TB/ Windows 11 Home /...,52990,src/main/resources/data/images/technology/Gaming Laptops7.png
+Lenovo IdeaPad Gaming 3 Intel Core i5 11th Gen 15.6""(39.62cm) FHD IPS Gaming Laptop (8GB/512GB SDD/4GB NVIDIA RTX 3050/120...,65490,src/main/resources/data/images/technology/Gaming Laptops8.png
+ASUS TUF Gaming A15 - 15.6"" (39.62 cms) FHD 144Hz - AMD Ryzen 7 4800H - 4GB GeForce RTX 3050 Graphics - Gaming Laptop (16GB/51...,75952,src/main/resources/data/images/technology/Gaming Laptops9.png
+MSI Katana GF76 - Intel 11th Gen. i7-11800H - 43CM FHD 144Hz Gaming Laptop (16GB/512GB NVMe SSD/Windows 11 Ho...,86309,src/main/resources/data/images/technology/Gaming Laptops10.png
+MSI Katana GF66 Thin - Intel 12th Gen. i5-12450H - 40CM FHD 144Hz Gaming Laptop (16GB/512GB NVMe SSD/Windows ...,97361,src/main/resources/data/images/technology/Gaming Laptops11.png
+Lenovo IdeaPad Gaming 3 AMD Ryzen 7 5800H 15.6"" (39.62cm) FHD IPS Gaming Laptop (16GB/512GB SSD/4GB NVIDIA RTX 3050/120Hz/...,76999,src/main/resources/data/images/technology/Gaming Laptops12.png
+Lenovo IdeaPad Gaming 3 Intel Core i5 11th Gen 15.6"" (39.62cm) FHD IPS Gaming Laptop (8GB/512GB SSD/4GB NVIDIA GTX 1650/12...,56990,src/main/resources/data/images/technology/Gaming Laptops13.png
+Lenovo IdeaPad Gaming 3 Intel Core i5-11320H 15.6"" (39.62cm) FHD IPS 120Hz Gaming Laptop(16GB/256GB SSD+1TB/Win 11/Office ...,65990,src/main/resources/data/images/technology/Gaming Laptops14.png
+HP Victus 12th Gen Intel Core i5 15.6 inch(39.6 cm) FHD Gaming Laptop (8GB RAM/512GB SSD/GTX 1650 4GB Graphics/144Hz/9ms R...,63990,src/main/resources/data/images/technology/Gaming Laptops15.png
+ASUS TUF Gaming A15 - 15.6"" (39.62 cm) FHD 144Hz - AMD Ryzen 9 5900HX - 6GB RTX 3060 - Gaming Laptop (16GB/512GB SSD/90WHrs Ba...,99990,src/main/resources/data/images/technology/Gaming Laptops16.png
+Acer Aspire 5 Gaming Intel Core i5 12th gen (12-Cores) (8 GB/512 GB SSD/Windows 11 Home/4 GB Graphics/NVIDIA GeForce RTX 2...,56990,src/main/resources/data/images/technology/Gaming Laptops17.png
+MSI Gaming GF63 Thin - Intel 11th Gen. i5-11400H - 40CM FHD 144Hz Gaming Laptop (8GB/512GB NVMe SSD/Windows 11 Home/Nvidia G...,55990,src/main/resources/data/images/technology/Gaming Laptops18.png
+Dell New G15 5511 Gaming Laptop Intel i5-11260H 8Gb/512Gb SSD/Nvidia RTX 3050 4Gb GDDR6/15.6"" (39.62Cms) FHD WVA AG 250 Ni...,71990,src/main/resources/data/images/technology/Gaming Laptops19.png
+MSI Katana GF66 - Intel 12th Gen. i7-12650H - 40CM FHD 144Hz Gaming Laptop (16GB/1TB NVMe SSD/Windows 11 Hom...,126001,src/main/resources/data/images/technology/Gaming Laptops20.png
+HP Victus AMD Ryzen 5 5600H 16.1 inches(40cm) FHD Gaming Laptop (8GB RAM/512GB SSD/4GB Radeon RX5500M Graph...,56990,src/main/resources/data/images/technology/Gaming Laptops21.png
+Arrtis PS-600VA 600VA Line Interactive UPS for Personal Computers  - Desktop PCs - Laptops - Routers - Networki...,11700,src/main/resources/data/images/technology/Computer Accessories0.png
+BEMALL Laptop Stand | Holder Riser | Computer Tablet Stand 6 Angles Adjustable Aluminium Ergonomic Foldable...,499,src/main/resources/data/images/technology/Computer Accessories1.png
+STRIFF Adjustable Laptop Stand Patented Riser Ventilated Portable Foldable Compatible with MacBook Notebook Tablet Tray De...,399,src/main/resources/data/images/technology/Computer Accessories2.png
+TP-Link USB Bluetooth Adapter for PC 4.0 Bluetooth Dongle Receiver Support Windows 11/10/8.1/8/7 for Desktop - Laptop - Mous...,499,src/main/resources/data/images/technology/Computer Accessories3.png
+Gizga Essentials Cable Organiser - Cord Management System for PC - TV - Home Theater - Speaker & Cables - Reusable Cable Organi...,280,src/main/resources/data/images/technology/Computer Accessories4.png
+Redgear Cloak Wired RGB Wired Over Ear Gaming Headphones with Mic for PC,599,src/main/resources/data/images/technology/Computer Accessories5.png
+ZEBRONICS Zeb-100HB 4 Ports USB Hub for Laptop - PC Computers - Plug & Play - Backward Compatible - Black,339,src/main/resources/data/images/technology/Computer Accessories6.png
+Zebronics ZEB-90HB USB Hub - 4 Ports - Pocket Sized - Plug & Play - for Laptop & Computers,251,src/main/resources/data/images/technology/Computer Accessories7.png
+AB SALES Adjustable Computer Arm Rest Ergonomic Attachable Computer Table Arm Support Stand Desk Rests Chair Extender for ...,499,src/main/resources/data/images/technology/Computer Accessories8.png
+Logitech B170 Wireless Mouse - 2.4 GHz with USB Nano Receiver - Optical Tracking - 12-Months Battery Life - Ambidextrous - PC/M...,599,src/main/resources/data/images/technology/Computer Accessories9.png
+AmazonBasics Wireless Mouse - 2.4 GHz with USB Nano Receiver - Optical Tracking - for PC/ Mac/ Laptop/ Tablet...,349,src/main/resources/data/images/technology/Computer Accessories10.png
+RiaTech Vintage World Map Print Antique Decorate Gaming Extended Mouse Pad with Stitched Embroidery Edges - ...,549,src/main/resources/data/images/technology/Computer Accessories11.png
+Zebronics Jet PRO Premium Gaming Headphone with LED for Headband + earcups - 40mm Neodymium Drivers - 2 Meter Braided Cable -...,949,src/main/resources/data/images/technology/Computer Accessories12.png
+Redgear A-15 Wired Gaming Mouse with Upto 6400 DPI - RGB & Driver Customization for PC(Black),599,src/main/resources/data/images/technology/Computer Accessories13.png
+rts All in One Combo Card Reader for Pen Drive/Cameras/mobiles/PC/Laptop/Notebook/Tablet/or Docking Station/MP3s/PDAs -Colo...,358,src/main/resources/data/images/technology/Computer Accessories14.png
+Zinq Five Fan Cooling Pad and Laptop Stand with Dual Height Adjustment and Dual USB Port Extension (Black),1349,src/main/resources/data/images/technology/Computer Accessories15.png
+Dyazo 6 Angles Adjustable Aluminum Ergonomic Foldable Portable Tabletop Laptop/Desktop Riser Stand Holder Compatible for M...,651,src/main/resources/data/images/technology/Computer Accessories16.png
+STRIFF Laptop Stand - Fold-Up - Adjustable - Ventilated - Portable Laptop Holder for Desk - Aluminum Foldable Laptop Ergonomic ...,523,src/main/resources/data/images/technology/Computer Accessories17.png
+Multipurpose (Pack of 1) Keyboard PC Dust Cleaning Cleaner Slime Gel Jelly Putty Kit Magical Universal Super Clean Gel for...,95,src/main/resources/data/images/technology/Computer Accessories18.png
+Zebronics Zeb-Transformer Gaming Keyboard and Mouse Combo (USB - Braided Cable),1995,src/main/resources/data/images/technology/Computer Accessories19.png
+KCEVE 4 Ports KVM VGA Switch - USB 2.0 KVM Switcher Box with Audio Function Support 1920 x 1080@60Hz for 4 P...,2238,src/main/resources/data/images/technology/Computer Accessories20.png
+Zebronics - ZEB-NC3300 USB Powered Laptop Cooling Pad with Dual Fan - Dual USB Port and Blue LED Lights,549,src/main/resources/data/images/technology/Computer Accessories21.png
+ASUS pci_e_x8 GeForce GT 730 2GB GDDR5 Low Profile Graphics Card for Silent HTPC Build (with I/O Port Brackets),3999,src/main/resources/data/images/technology/GPUs0.png
+Colorful GeForce GT 730 4GB GDDR3 RAM VRAM Pci_e_x16 Graphics Card with 3 Years Warranty 384 CUDA Core 64bit 667 Clock Spe...,6231,src/main/resources/data/images/technology/GPUs1.png
+ASUS Dual AMD Radeon RX 6400 4GB GDDR6 Gaming Graphics Card (AMD RDNA 2 - PCIe 4.0 - 4GB - pci_e_x16 GDDR6 Memory - HDMI 2.1 - ...,14990,src/main/resources/data/images/technology/GPUs2.png
+ZEBRONICS XPON ONU (Optical Network Unit) | Fibre Device | Match LB-Link - 2GB -ddr3_sdram -pci_e,2725,src/main/resources/data/images/technology/GPUs3.png
+ASUS pci_e_x16 GeForce GT 730 2GB GDDR5 Low Profile Graphics Card for Silent HTPC Builds (with I/O Port Brackets),3999,src/main/resources/data/images/technology/GPUs4.png
+ASUS pci_e_x4 Dual GeForce RTX 3050 OC Edition 8GB GDDR6 RAM Graphics Card 128 bit 2560 CUDA Cores PCIE 4.0 3 Years_Warran...,30500,src/main/resources/data/images/technology/GPUs5.png
+ASUS Dual Radeon RX 6500 XT OC Edition 4GB - two powerful Axial-tech fans pci_e_x4 Dual Fans 1080p Support most AAA Game Ti...,17299,src/main/resources/data/images/technology/GPUs6.png
+ZOTAC Gaming GeForce GTX 1660 Super Twin Fan 6GB GDDR6 - 192-bit - 4K / HDR / VR Ready - Firestorm Utility - HDMI 2.0b - 5 Year...,23899,src/main/resources/data/images/technology/GPUs7.png
+SuperCart 7.8 cm PC Computer Case Front Panel USB Audio Port Mic Earphone Cable Line (7.8 cm),298,src/main/resources/data/images/technology/GPUs8.png
+PowerColor AMD Radeon RX 6400 ITX Graphics Card with 4GB GDDR6 Memory,13938,src/main/resources/data/images/technology/GPUs9.png
+INNO3D NVIDIA GEFORCE GTX 1650 Twin X2 OC 4 GB GDDR6 128-bit PCI-E 3.0 X16 Gaming Graphics Card - N16502-04D6X-1177VA25 - p...,17527,src/main/resources/data/images/technology/GPUs10.png
+ASUS ROG Strix NVIDIA GeForce RTX 3060 V2 OC Edition Gaming Graphics Card pci_e_x16  - 12GB GDDR6 - HDMI 2.1 - DisplayPort 1....,43999,src/main/resources/data/images/technology/GPUs11.png
+ASUS pci_e_x4 ROG Strix NVIDIA GeForce RTX 3090 OC Edition Gaming Graphics Card (PCIe 4.0 - 24GB GDDR6X - HDMI 2.1 - DisplayP...,135000,src/main/resources/data/images/technology/GPUs12.png
+Zotac Gaming GEFORCE RTX 3060 Twin Edge OC 12 GB GDDR6 - 192 bit - 1882/15000 - HDCP - Three DP - HDMI - Medium Pack - pci_e_x16,40661,src/main/resources/data/images/technology/GPUs13.png
+MSI GeForce RTX 3060 Ti Ventus 2X 8G OCV1 LHR 8 GB GDDR6 256-bIt Gaming Graphic Card - pci_e_x16,39400,src/main/resources/data/images/technology/GPUs14.png
+Zotac Gaming Geforce GTX 1650 OC 4GB GDDR6 Memory Graphics Card (pci_e),16599,src/main/resources/data/images/technology/GPUs15.png
+Pi+®(PiPlus®) 009S 4-Capacitor GPU Riser Adapter PCIE X1 to X16 Extender PCI-E Express Riser Cable for Bitcoin Litecoin ET...,500,src/main/resources/data/images/technology/GPUs16.png
+INNO3D pci_e_x16 NVIDIA GEFORCE GTX 1650 Twin X2 4GB GDDR6 128-bit PCI-E 3.0 Gaming Graphics Card - N16502K-04D6,16399,src/main/resources/data/images/technology/GPUs17.png
+EYESOUL TABLET,810,src/main/resources/data/images/technology/Tablets0.png
+DOMO Slate X17 OS10 7 Inch WiFi Android Tablet PC Glass Touch Screen with QuadCore Processor - 2GB RAM - 32GB...,5800,src/main/resources/data/images/technology/Tablets1.png
+Mi Pad 5 Snapdragon 860 2.5K Resolution - 120Hz Refresh Rate - Dci-P3 - 27.81Cm Dolby Vision Display 6Gb Ram 128Gb Storage Qu...,26999,src/main/resources/data/images/technology/Tablets2.png
+Lenovo Tab P11 Plus Tablet (11 inch (27.94 cm) - 6 GB - 128 GB - Wi-Fi+LTE - Voice Calling) - Slate Grey with 2K Display - Quad ...,25999,src/main/resources/data/images/technology/Tablets3.png
+Lenovo Tab Yoga Smart Tablet with The Google Assistant (10.1 inch/25.65 cm - 4GB - 64GB - Wi-Fi + 4G LTE - Calling) - Iron Grey,19790,src/main/resources/data/images/technology/Tablets4.png
+Samsung Galaxy Tab S6 Lite 26.31 cm (10.4 inch) - S-Pen in Box - Slim and Light - Dolby Atmos Sound - 4 GB RAM - 64 GB ROM - Wi-...,31999,src/main/resources/data/images/technology/Tablets5.png
+Lenovo Tab M10 HD 2nd Gen (10.1 inch(25cm) - 4 GB - 64 GB - Wi-Fi+LTE) - Platinum Grey with Metallic Body and Octa-core Processor,16999,src/main/resources/data/images/technology/Tablets6.png
+Samsung Galaxy Tab S6 Lite 26.31 cm (10.4 inch) - S-Pen in Box - Slim and Light - Dolby Atmos Sound - 4 GB RAM - 64 GB ROM - Wi-...,26999,src/main/resources/data/images/technology/Tablets7.png
+Lenovo Tab M10 HD 2nd Gen (10.1 inch/25.6 cm - 4 GB - 64 GB - Wi-Fi Only) - Platinum Grey with Metallic Body and Octa core Pro...,14499,src/main/resources/data/images/technology/Tablets8.png
+Lenovo Tab M7 3rd Gen (7 inch(17.7cm) - 2 GB - 32 GB - Wi-fi Only) - Iron Grey,7490,src/main/resources/data/images/technology/Tablets9.png
+Refresh Ayurvedic Jethimadh Ghan Tablet (120 Tab) - Licorice Tablets - Yashtimadhu/Mulethi Ghanvati Tablets,300,src/main/resources/data/images/technology/Tablets11.png
+Lenovo M10 Fhd Plus 2Nd Gen 10.3 Inches (4Gb - 128 Gb - Wi-Fi + Lte - Volte Calling) Tab With Active Pen - Kids Mode With Pare...,21999,src/main/resources/data/images/technology/Tablets12.png
+Mi Pad 5 Snapdragon 860 2.5K Resolution - 120Hz Refresh Rate - Dci-P3 - 10.95 Inches Dolby Vision Display 6Gb Ram 256Gb Stora...,28999,src/main/resources/data/images/technology/Tablets13.png
+2021 Apple 10.2-inch (25.91 cm) iPad with A13 Bionic chip (Wi-Fi - 64GB) - Space Grey (9th Generation),29900,src/main/resources/data/images/technology/Tablets14.png
+Nokia T20 Tab with 10.36 Inch(26cm) 2K Screen - Low Blue Light - Wi-Fi - 8200mAh Battery - Android 11 with 2 Years of OS Upgra...,16290,src/main/resources/data/images/technology/Tablets15.png
+Samsung Galaxy Tab A8 26.69cm (10.5 inch) Display - RAM 4 GB - ROM 64 GB Expandable - Wi-Fi Tablet - Gray - (SM-X200NZAEINU),17999,src/main/resources/data/images/technology/Tablets16.png
+Lenovo Tab M10 HD 2nd Gen (25.65 cm (10.1 inch) - 2 GB - 32 GB - Wi-Fi) with Metallic Body and Octa core Processor,10883,src/main/resources/data/images/technology/Tablets17.png
+I KALL N7 Tablet with Android 8.1 (WiFi Only - 2GB - 16GB) (Black),3599,src/main/resources/data/images/technology/Tablets18.png
+realme Pad 4 GB RAM 64 GB ROM 10.4 inch with Wi-Fi+4G Tablet (Gray),16900,src/main/resources/data/images/technology/Tablets19.png
+PECULIAR Magic Tablet Coin For Outdoor Travel Portable Compressed Tissue Tablet Disposable Magic Towel Wipe...,199,src/main/resources/data/images/technology/Tablets20.png
+Refresh Ayurvedic Triphala Ghan Tablet 120 Tab,300,src/main/resources/data/images/technology/Tablets21.png
+PlayStation Wallet Top Up INR 670 (PS4),670,src/main/resources/data/images/technology/Playstation0.png
+God Of War Ragnarok | Launch Edition | PS4 Game (PlayStation 4),3999,src/main/resources/data/images/technology/Playstation1.png
+PlayStationVR Mega3 with game Voucher inside the box,30999,src/main/resources/data/images/technology/Playstation2.png
+Sony Dualshock 4 Wireless Controller for PlayStation 4 (Midnight Blue),4499,src/main/resources/data/images/technology/Playstation3.png
+PlayStation -PS4 WALLET TOP- UP 2000 IND (PS4),2000,src/main/resources/data/images/technology/Playstation4.png
+Sony PlayStation Pulse 3d Gaming Wireless Over Ear Headset/Headphone White with Mic - Dual noise-cancellation Mic - 3.5mm Ja...,7499,src/main/resources/data/images/technology/Playstation5.png
+My PlayStation Vita (My...),516,src/main/resources/data/images/technology/Playstation6.png
+God of War | PS4 Game (PlayStation 4),799,src/main/resources/data/images/technology/Playstation7.png
+Xbox Series S,31600,src/main/resources/data/images/technology/Playstation8.png
+GHS PSP Console Battery Series 3.6 V 1200 M Ah Loose Packing (New) PSP-S110 Compatible PSP Slim Portable Pl...,1299,src/main/resources/data/images/technology/Playstation9.png
+FIFA 23 | Standard Edition | PS5 (PlayStation 5),4529,src/main/resources/data/images/technology/Playstation10.png
+Rs.1000 Sony PlayStation Network Wallet Top-Up (Email Delivery in 1 hour- Digital Voucher Code),1000,src/main/resources/data/images/technology/Playstation11.png
+Paladone Playstation Icons XL | 3 Modes-Music Reactive Game Room Lighting | Eco-Friendly BDP Breakdown Plastic | Perfect f...,2599,src/main/resources/data/images/technology/Playstation12.png
+Unchartered: Legacy of Thieves Collection | PS5 Game (PlayStation 5),1599,src/main/resources/data/images/technology/Playstation13.png
+Rs.1200 Sony PlayStation Store Gift Card (Email Delivery in 1 hour- Digital Voucher Code),1200,src/main/resources/data/images/technology/Playstation14.png
+Rs.500 Sony PlayStation Network Wallet Top-Up (Email Delivery in 1 hour- Digital Voucher Code),500,src/main/resources/data/images/technology/Playstation15.png
+Destiny 2 - PlayStation 4 Standard Edition,690,src/main/resources/data/images/technology/Playstation16.png
+PSS Play-Station Icons Light with 3 Light Modes - Music Reactive Game Room Lighting,1890,src/main/resources/data/images/technology/Playstation17.png
+GSH Sup Classic 400-in-1 Digital Video Port Game Console with Battery Handheld Console Classic Retro Video ...,899,src/main/resources/data/images/technology/Playstation18.png
+SME PSP Console Battery Series 3.6 V 1200 M Ah Loose Packing (New) PSP-S110 Compatible PSP Slim Portable Pl...,1299,src/main/resources/data/images/technology/Playstation19.png
+GSH Wireless Controller for PlayStation 3 | Professional PS3 Wireless Gamepad for PlayStation 3/ PS3 Slim /...,999,src/main/resources/data/images/technology/Playstation20.png
+Porro Fino PS5 Controller Grip Cover - Porro Fino Anti-Slip Silicone Skin Protective Cover Case for Playstat...,299,src/main/resources/data/images/technology/Playstation21.png
+Xbox Series S,31600,src/main/resources/data/images/technology/Xbox0.png
+Xbox Series S,31600,src/main/resources/data/images/technology/Xbox1.png
+Xbox Game Pass Ultimate: 1 Month Membership (Gift Card Code Only),1089,src/main/resources/data/images/technology/Xbox2.png
+Xbox series S With Extra Controller 512 GB (White),38990,src/main/resources/data/images/technology/Xbox3.png
+Grand Theft V - Premium Edition (Xbox One),1522,src/main/resources/data/images/technology/Xbox4.png
+Seagate Game Drive for Xbox 2TB External Hard Drive Portable HDD - USB 3.2 Gen 1 - Black with Built-in Green LED bar - Xbox ...,6949,src/main/resources/data/images/technology/Xbox5.png
+Xbox Game Pass Ultimate: 1 Month Membership (Xbox One/Series X/S / Windows 10/11) [Gift Card Code Only],1099,src/main/resources/data/images/technology/Xbox6.png
+Hogwarts Legacy | Standard Edition| Xbox Series X,4299,src/main/resources/data/images/technology/Xbox7.png
+Xbox Game Pass Ultimate: 1 Month Membership (Xbox/ Windows 10/11),1099,src/main/resources/data/images/technology/Xbox8.png
+Xbox Stereo Headset,4949,src/main/resources/data/images/technology/Xbox9.png
+Call of Duty: Modern Warfare Remastered - Xbox One,2499,src/main/resources/data/images/technology/Xbox10.png
+FIFA 23 | Standard Edition | Xbox One,4040,src/main/resources/data/images/technology/Xbox11.png
+Cyberpunk 2077 (Xbox One),1300,src/main/resources/data/images/technology/Xbox12.png
+Xbox Live Gold 6 Month Membership Card (Xbox One & Xbox Series),1499,src/main/resources/data/images/technology/Xbox13.png
+Seagate Storage Expansion Card for Xbox Series X|S 512GB Solid State Drive - NVMe Expansion SSD for Xbox Series X|S (STJR5...,12499,src/main/resources/data/images/technology/Xbox14.png
+Rider's Republic Freeride Edition (Xbox One),3508,src/main/resources/data/images/technology/Xbox15.png
+Microware Protective Silicone Cover Case with 2 x Joystick Caps for Xbox One Joypad (Black) [video game],499,src/main/resources/data/images/technology/Xbox16.png
+XBOX PLAY AND CHARGE KIT V2 (TYPE-C),2290,src/main/resources/data/images/technology/Xbox17.png

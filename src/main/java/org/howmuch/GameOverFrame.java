@@ -88,7 +88,7 @@ public class GameOverFrame extends JFrame {
     }
     private void createLabels() {
         score_lbl = new JLabel();
-        score_lbl.setText("775");
+        score_lbl.setText(String.valueOf(DataBaseManager.currentScore));
         score_lbl.setAlignmentY(Box.CENTER_ALIGNMENT);
         score_lbl.setAlignmentX(Box.CENTER_ALIGNMENT);
         score_lbl.setOpaque(true);
@@ -116,6 +116,7 @@ public class GameOverFrame extends JFrame {
         backtoTopic_btn.addActionListener(e -> {
             this.setVisible(false);
             this.dispose();
+            grantAccess = true;
             Main.changeFrame(2);
         });
 

@@ -1,2 +1,4 @@
 /src/main/resources/data/*
 target/classes/data/images/*
+/src/main/resources/data_backup/*
+target/classes/data_backup/images/*

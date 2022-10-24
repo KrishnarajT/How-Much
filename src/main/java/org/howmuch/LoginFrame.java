@@ -78,7 +78,6 @@ public class LoginFrame extends JFrame implements Runnable {
                 if (DataBaseManager.doesPasswordMatch(username_txt_fld.getText(), String.valueOf(password_txt_fld.getPassword()))) {
                     DataBaseManager.currentUsername = username_txt_fld.getText();
                     DataBaseManager.currentPassword = String.valueOf(password_txt_fld.getPassword());
-                    DataBaseManager.currentScore = DataBaseManager.getStoredUserScore(DataBaseManager.currentUsername);
                     this.setVisible(false);
                     this.dispose();
                     running = false;
@@ -120,7 +119,6 @@ public class LoginFrame extends JFrame implements Runnable {
             Main.isGuest = true;
             DataBaseManager.currentPassword = "guest";
             DataBaseManager.currentUsername = "guest";
-            DataBaseManager.USER_INDEX = -2;
             this.setVisible(false);
             this.dispose();
             running = false;
@@ -155,7 +153,6 @@ public class LoginFrame extends JFrame implements Runnable {
                 DataBaseManager.currentUsername = username_txt_fld.getText();
                 DataBaseManager.currentPassword = String.valueOf(password_txt_fld.getPassword());
                 DataBaseManager.currentScore = 0;
-
                 DataBaseManager.addNewUser();
                 running = false;
                 this.setVisible(false);
@@ -263,7 +260,6 @@ public class LoginFrame extends JFrame implements Runnable {
         username_lbl.setAlignmentX(Box.CENTER_ALIGNMENT);
         username_lbl.setBounds(822, 244, 800, 80);
         username_lbl.setForeground(Colors.primaryColor);
-
 
         password_lbl = new JLabel();
         password_lbl.setText("Password");

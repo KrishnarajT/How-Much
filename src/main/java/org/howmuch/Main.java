@@ -20,6 +20,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import static java.lang.Math.round;
+
 public class Main extends Thread {
 
     public static String[] Topics = new String[] {"Technology", "Fashion", "Household", "Miscellaneous"};
@@ -147,6 +149,13 @@ public class Main extends Thread {
      **/
     public static void changeFrame(int status) {
         if(status == 0){
+            DataBaseManager.createLocalDatabaseBackupOfUsers();
+            if(DataBaseManager.USER_INDEX < 0){
+                System.out.println("Guest, not updating");
+            } else {
+                DataBaseManager.updateUserScore();
+            }
+
             String lastUpdateDate = "";
             File dateFile = new File(DataBaseManager.LOCAL_BACKUP_DATEFILE);
             if(dateFile.exists()){
@@ -199,9 +208,6 @@ public class Main extends Thread {
                 case 5 -> {
                     System.out.println("Updating Database");
 
-                    // esltablishes connections with mongodb
-                    // clears local database.
-//                    dataBaseManager = new DataBaseManager();
                     DataBaseManager.clearLocalDatabase();
                     AmazonScrapper obj = new AmazonScrapper();
                     try {
@@ -213,6 +219,7 @@ public class Main extends Thread {
                     } catch (SAXException e) {
                         throw new RuntimeException(e);
                     }
+                    DataBaseManager.createLocalDatabaseBackup();
 
                     // delete local database by a class function from the assigndatabase class or sth
                     // Scrap Data so that would be a function in the webscrapper class
@@ -297,6 +304,13 @@ public class Main extends Thread {
             // update mongodb
 //            isMongoUpToDate = true;
 //            usingMongo = true;
+
+            // writing to the date file
+            try(FileWriter f = new FileWriter(dateFile, false)){
+                f.write(String.valueOf(LocalDate.now()));
+            } catch (IOException e){
+                throw new RuntimeException(e);
+            }
         }
     }
     public static void main(String[] args) {
@@ -305,7 +319,7 @@ public class Main extends Thread {
         Main t1 = new Main();
         t1.start();
         loginFrame = new LoginFrame();
-
+//        System.out.println(String.format("%,.0f", (double) round((double) 57114/100) * 100));
 //        DataBaseManager.createLocalDatabaseBackup();
 //        System.out.println(LocalDate.now());
 //        gameFrame = new GameFrame();

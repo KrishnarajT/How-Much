@@ -27,6 +27,7 @@ public class DataBaseManager {
     public static String LOCAL_BACKUP_CSV_FOLDER = "src/main/resources/data_backup/csvs";
     public static String LOCAL_BACKUP_IMG_FOLDER = "src/main/resources/data_backup/images";
     public static String USERDATA_FILEPATH = "src/main/resources/data/user_details.csv";
+    public static String BACKUP_USERDATA_FILEPATH = "src/main/resources/data_backup/user_details.csv";
     public static String LOCAL_DATEFILE = "src/main/resources/data/dateUpdated.txt";
     public static String LOCAL_BACKUP_DATEFILE = "src/main/resources/data_backup/dateUpdated.txt";
 
@@ -125,40 +126,16 @@ public class DataBaseManager {
         });
     }
 
-    public static void writeDataLineByLine(String filePath) {
-        // first create file object for file placed at location
-        // specified by filepath
-        File file = new File(filePath);
-        try {
-            // create FileWriter object with file as parameter
-            FileWriter outputfile = new FileWriter(file);
-
-            // create CSVWriter object filewriter object as parameter
-            CSVWriter writer = new CSVWriter(outputfile,
-                    CSVWriter.NO_QUOTE_CHARACTER,
-                    CSVWriter.DEFAULT_ESCAPE_CHARACTER,
-                    CSVWriter.DEFAULT_LINE_END);
-
-            // adding header to csv
-            String[] header = {"Name", "Class", "Marks"};
-            writer.writeNext(header);
-
-            // add data to csv
-            String[] data1 = {"Aman", "10", "620"};
-            writer.writeNext(data1);
-            String[] data2 = {"Suraj", "10", "630"};
-            writer.writeNext(data2);
-
-            // closing writer connection
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static void addNewUser() {
         System.out.println("gonna add new user");
         File userDatafile = new File(USERDATA_FILEPATH);
+
+        try (CSVReader reader = new CSVReader(new FileReader(userDatafile), ',')) {
+            List<String[]> csvBody = reader.readAll();
+            USER_INDEX = csvBody.size();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         // append the new user to the login file. 
         try (FileWriter userDataFileWriter = new FileWriter(userDatafile, true)) {
@@ -239,30 +216,20 @@ public class DataBaseManager {
         return false;
     }
 
-    public static int getStoredUserScore(String username) {
+    public static List<String[]> getStoredUserScores() {
         File inputFile = new File(USERDATA_FILEPATH);
+        List<String[]> csvBody = null;
         try (CSVReader reader = new CSVReader(new FileReader(inputFile), ',')) {
-            List<String[]> csvBody = reader.readAll();
-            if (USER_INDEX == -2) {
-                return currentScore;
-            }
-            if (USER_INDEX == -1) {
-                for (int i = 0; i < csvBody.size(); i++) {
-                    String[] s = csvBody.get(i);
-                    if (s[0].equals(username)) {
-                        USER_INDEX = i;
-                    }
-                }
-            } else {
-                return Integer.parseInt(csvBody.get(USER_INDEX)[2]);
-            }
+            csvBody = reader.readAll();
+            return csvBody;
         } catch (IOException e) {
             System.out.println("couldnt create csvreader in userscore method");
         }
-        return 0;
+        return csvBody;
     }
 
     public static void updateUserScore() {
+
         File inputFile = new File(USERDATA_FILEPATH);
 
         List<String[]> csvBody;
@@ -281,6 +248,16 @@ public class DataBaseManager {
         }
     }
 
+    public static void createLocalDatabaseBackupOfUsers(){
+        System.out.println("---------------CREATING LOCAL DATABASE BACKUP of the user file------------");
+        try {
+            File sourceDirectory = new File(USERDATA_FILEPATH);
+            File destinationDirectory = new File(BACKUP_USERDATA_FILEPATH);
+            FileUtils.copyFile(sourceDirectory, destinationDirectory);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public static void createLocalDatabaseBackup() {
         try {
             System.out.println("---------------CREATING LOCAL DATABASE BACKUP------------");

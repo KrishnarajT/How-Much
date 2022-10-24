@@ -213,6 +213,7 @@ public class TopicsFrame extends JFrame {
         backToMenu_btn.addActionListener(e -> {
             this.setVisible(false);
             this.dispose();
+            grantAccess = true;
             Main.changeFrame(1);
         });
 
@@ -241,6 +242,7 @@ public class TopicsFrame extends JFrame {
             currentTopic = Topics[0];
             this.setVisible(false);
             this.dispose();
+            grantAccess = true;
             Main.changeFrame(6);
         });
 
@@ -266,6 +268,7 @@ public class TopicsFrame extends JFrame {
             currentTopic = Topics[1];
             this.setVisible(false);
             this.dispose();
+            grantAccess = true;
             Main.changeFrame(6);
         });
 
@@ -291,6 +294,7 @@ public class TopicsFrame extends JFrame {
             currentTopic = Topics[2];
             this.setVisible(false);
             this.dispose();
+            grantAccess = true;
             Main.changeFrame(6);
         });
 
@@ -317,6 +321,7 @@ public class TopicsFrame extends JFrame {
             currentTopic = Topics[3];
             this.setVisible(false);
             this.dispose();
+            grantAccess = true;
             Main.changeFrame(6);
         });
     }
