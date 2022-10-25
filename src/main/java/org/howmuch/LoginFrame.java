@@ -364,8 +364,8 @@ public class LoginFrame extends JFrame implements Runnable {
                     newAccount_btn.setEnabled(false);
                     status_lbl.setText("Nope, Password is too Short");
 //                    status_emoji_lbl.setText("\uD83D\uDE0F");
-                    status_emoji_lbl.setText("\uD83E\uDD0F");
-//                    status_emoji_lbl.setText("\uD83D\uDE15");
+//                    status_emoji_lbl.setText("\uD83E\uDD0F");
+                    status_emoji_lbl.setText("\uD83D\uDE15");
                 } else if (Arrays.equals(password_txt_fld.getPassword(), "abcdefgh".toCharArray())) {
                     newAccount_btn.setEnabled(false);
                     status_lbl.setText("Anyone can guess that bruh");

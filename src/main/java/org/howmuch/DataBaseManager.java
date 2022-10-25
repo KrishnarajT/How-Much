@@ -1,7 +1,6 @@
 package org.howmuch;
 
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.MongoClient;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import org.apache.commons.io.FileUtils;
@@ -10,9 +9,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -29,16 +25,14 @@ public class DataBaseManager {
     public static String USERDATA_FILEPATH = "src/main/resources/data/user_details.csv";
     public static String BACKUP_USERDATA_FILEPATH = "src/main/resources/data_backup/user_details.csv";
     public static String LOCAL_DATEFILE = "src/main/resources/data/dateUpdated.txt";
+    public static String LOCAL_MONGODATEFILE = "src/main/resources/data/MongoDateUpdated.txt";
     public static String LOCAL_BACKUP_DATEFILE = "src/main/resources/data_backup/dateUpdated.txt";
 
-    public static String MONGO_DATABASE_NAME = "HowMuch";
-    public static int MONGO_PORT_NO = 27017;
-    public static String MONGO_HOST = "localhost";
+
     static String currentUsername = "guest";
     static int USER_INDEX = -1;
     static String currentPassword = "guest";
     static int currentScore = 0;
-    MongoDatabase database;
 
     DataBaseManager() {
         System.out.println("Database manager called");
@@ -49,36 +43,6 @@ public class DataBaseManager {
         // Establishing connection with mongo
 //        establishConnectionWithMongo();
 
-    }
-
-    void establishConnectionWithMongo() {
-//        Creating a MongoDB client
-        try {
-            MongoClient mongo = new MongoClient(MONGO_HOST, MONGO_PORT_NO);
-            //Connecting to the database
-            database = mongo.getDatabase(MONGO_DATABASE_NAME);
-        } catch (Exception e) {
-            System.out.println("Couldnt establish connection due to some reason");
-        }
-    }
-
-    public static String[] fetchDataFromMongo(String currentTopic, int randomIndex) {
-//        Creating a collection object
-//        MongoCollection<org.bson.Document> collection = database.getCollection("Test-with-Java");
-//        //Retrieving the documents
-//        FindIterable<org.bson.Document> iterDoc = collection.find();
-//        String[] list = new String[7];
-//        int i = 0;
-//        for (Document document : iterDoc) {
-//            System.out.println(document);
-//            list[i] = document.values().toString();
-//            i++;
-//        }
-//        for (int j = 0;j< list.length;j++)
-//        {
-//            System.out.println(list[j]);
-//        }
-        return new String[]{"a", "a", "a"};
     }
 
     /**

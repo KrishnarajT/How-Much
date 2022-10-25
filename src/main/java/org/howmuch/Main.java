@@ -8,17 +8,13 @@ package org.howmuch;
 */
 
 
-import org.apache.commons.lang3.ObjectUtils;
 import org.xml.sax.SAXException;
 
 import javax.swing.*;
-import javax.xml.crypto.Data;
 import javax.xml.parsers.ParserConfigurationException;
 import java.awt.*;
 import java.io.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import static java.lang.Math.round;
 
@@ -255,6 +251,8 @@ public class Main extends Thread {
     }
 
     public void run() {
+        usingMongo = MongoManager.establishConnectionWithMongo();
+
         String lastUpdateDate = "";
         File dateFile = new File(DataBaseManager.LOCAL_DATEFILE);
         if (dateFile.exists()) {
@@ -262,53 +260,68 @@ public class Main extends Thread {
                 lastUpdateDate = br.readLine();
                 System.out.println(lastUpdateDate);
                 if (lastUpdateDate.equals(String.valueOf(LocalDate.now()))) {
-                    System.out.println("DataBases are Up to Date!");
+                    System.out.println("Local DataBases are Up to Date!");
                     isLocalDatabaseUpToDate = true;
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (NullPointerException exception) {
+                System.out.println("Nothing in the Local Date File. ");
+            }
+        }
+
+        dateFile = new File(DataBaseManager.LOCAL_MONGODATEFILE);
+        if (dateFile.exists()) {
+            try (BufferedReader br = new BufferedReader(new FileReader(dateFile))) {
+                lastUpdateDate = br.readLine();
+                System.out.println(lastUpdateDate);
+                if (lastUpdateDate.equals(String.valueOf(LocalDate.now()))) {
+                    System.out.println("Mongo DataBases are Up to Date!");
                     isMongoUpToDate = true;
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             } catch (NullPointerException exception) {
-                System.out.println("Nothing in the Date File. ");
+                System.out.println("Nothing in the mongo Date File. ");
             }
         }
 
-        if (!isLocalDatabaseUpToDate) {
+        if (!isLocalDatabaseUpToDate || (usingMongo && !isMongoUpToDate)) {
             System.out.println("Already Started Downloading DataBase bro...");
-            DataBaseManager.clearLocalDatabase();
+            if(!isLocalDatabaseUpToDate){
+                DataBaseManager.clearLocalDatabase();
+            }
+            if(usingMongo && !isMongoUpToDate){
+                MongoManager.clearMongoDb();
+            }
             AmazonScrapper obj = new AmazonScrapper();
             try {
                 AmazonScrapper.scrapAndSave();
-            } catch (ParserConfigurationException e) {
-                throw new RuntimeException(e);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            } catch (SAXException e) {
-                throw new RuntimeException(e);
-            }
+                isLocalDatabaseUpToDate = true;
+                // writing to the date file
+                dateFile = new File(DataBaseManager.LOCAL_DATEFILE);
+                try (FileWriter f = new FileWriter(dateFile, false)) {
+                    f.write(String.valueOf(LocalDate.now()));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                System.out.println("Updated the local database, no need to depend on the backup anymore");
 
-            // writing to the date file
-            try (FileWriter f = new FileWriter(dateFile, false)) {
-                f.write(String.valueOf(LocalDate.now()));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+                if(usingMongo){
+                    isMongoUpToDate = true;
+                    // writing to the date file
+                    dateFile = new File(DataBaseManager.LOCAL_MONGODATEFILE);
+                    try (FileWriter f = new FileWriter(dateFile, false)) {
+                        f.write(String.valueOf(LocalDate.now()));
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    System.out.println("Updated the Mongo database, no need to depend on the local one anymore");
+                }
+            } catch (Exception e){
+                System.out.println(e.getMessage());
             }
-
-            System.out.println("Updated the local database, no need to depend on the backup anymore");
             isLocalDatabaseUpToDate = true;
-        }
-        if (!isMongoUpToDate) {
-            System.out.println("Updaing Mongodb");
-            // update mongodb
-//            isMongoUpToDate = true;
-//            usingMongo = true;
-
-            // writing to the date file
-            try (FileWriter f = new FileWriter(dateFile, false)) {
-                f.write(String.valueOf(LocalDate.now()));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
         }
     }
 
@@ -334,5 +347,7 @@ public class Main extends Thread {
 //        } catch (SAXException e) {
 //            throw new RuntimeException(e);
 //        }
+
+//        MongoManager.establishConnectionWithMongo();
     }
 }

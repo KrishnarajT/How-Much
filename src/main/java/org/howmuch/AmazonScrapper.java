@@ -136,7 +136,14 @@ public class AmazonScrapper {
         if (productName.equalsIgnoreCase("Sadly Not Found") || productPrice.equalsIgnoreCase("Sadly Not Found") || productImagePath.equalsIgnoreCase("Sadly Not Found")) {
             System.out.println("Not adding this data");
         } else {
-            DataBaseManager.addDataToCSV(DataBaseManager.LOCAL_CSV_FOLDER + '/' + Topic + ".csv", data);
+            if(!Main.isLocalDatabaseUpToDate){
+                DataBaseManager.addDataToCSV(DataBaseManager.LOCAL_CSV_FOLDER + '/' + Topic + ".csv", data);
+            }
+            if(Main.usingMongo){
+                if(!Main.isMongoUpToDate){
+                    MongoManager.addDataToMongo(Topic, data);
+                }
+            }
         }
     }
 

@@ -6,14 +6,6 @@ import java.awt.event.*;
 
 import static org.howmuch.Main.*;
 
-
-// The topics can be
-// Technology
-// Fashion
-// Health and Household
-// Miscellaneous
-
-
 public class TopicsFrame extends JFrame {
 
     BackgroundPanel backgroundPanel;

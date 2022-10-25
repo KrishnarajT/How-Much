@@ -113,10 +113,18 @@ public class GameFrame extends JFrame {
 
     private void assignCurrentData() {
         currentData = new String[]{"", "", ""};
-        if (!usingMongo) {
+        System.out.println("Accessing or atleast trying to access data here");
+        try{
+            if (!usingMongo) {
+                System.out.println("We are accessing data from the local database as mongo isnt working");
+                currentData = DataBaseManager.readFromLocalDatabase(currentTopic, randomIndex);
+            } else {
+                currentData = MongoManager.fetchDataFromMongo(currentTopic, randomIndex);
+                System.out.println("Reading data from mongo sucessful");
+            }
+        } catch(Exception e){
+            System.out.println("We got some Issues reading the file from Mongodb");
             currentData = DataBaseManager.readFromLocalDatabase(currentTopic, randomIndex);
-        } else {
-            currentData = DataBaseManager.fetchDataFromMongo(currentTopic, randomIndex);
         }
     }
 
