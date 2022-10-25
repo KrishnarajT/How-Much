@@ -144,7 +144,7 @@ public class GameFrame extends JFrame {
         productImagePanel.setBounds((int) (0.07 * this.getWidth()) + maxWidth / 2 - imageSize[0] / 2, (int) (0.07 * this.getHeight()) + maxHeight / 2 - imageSize[1] / 2, imageSize[0], imageSize[1]);
         productImagePanel.setBackground(currentData[2]);
 
-        productName_txtArea.setBounds((int) (0.065 * this.getWidth()), (int) (0.8 * this.getHeight()), (int) (0.5 * this.getWidth()), (int) (0.2 * this.getHeight()));
+        productName_txtArea.setBounds((int) (0.065 * this.getWidth()), (int) (0.83 * this.getHeight()), (int) (0.5 * this.getWidth()), (int) (0.2 * this.getHeight()));
         productName_txtArea.setText(currentData[0]);
 
         // setting price
