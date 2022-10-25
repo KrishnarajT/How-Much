@@ -24,7 +24,7 @@ import static java.lang.Math.round;
 
 public class Main extends Thread {
 
-    public static String[] Topics = new String[] {"Technology", "Fashion", "Household", "Miscellaneous"};
+    public static String[] Topics = new String[]{"Technology", "Fashion", "Household", "Miscellaneous"};
     public static String currentTopic = Topics[0];
     static LoginFrame loginFrame;
     static MenuFrame menuFrame;
@@ -139,18 +139,18 @@ public class Main extends Thread {
 
     /**
      * @param status = 1: Call Main Menu <br>
-     * status = 2: Call Topic Selection<br>
-     * status = 3: Call Help and Credits<br>
-     * status = 4: View Highscores<br>
-     * status = 5: Update Database<br>
-     * status = 6: Start Game<br>
-     * status = 7: Game over Screen<br>
-     * status = 0: Exit Game<br>
+     *               status = 2: Call Topic Selection<br>
+     *               status = 3: Call Help and Credits<br>
+     *               status = 4: View Highscores<br>
+     *               status = 5: Update Database<br>
+     *               status = 6: Start Game<br>
+     *               status = 7: Game over Screen<br>
+     *               status = 0: Exit Game<br>
      **/
     public static void changeFrame(int status) {
-        if(status == 0){
+        if (status == 0) {
             DataBaseManager.createLocalDatabaseBackupOfUsers();
-            if(DataBaseManager.USER_INDEX < 0){
+            if (DataBaseManager.USER_INDEX < 0) {
                 System.out.println("Guest, not updating");
             } else {
                 DataBaseManager.updateUserScore();
@@ -158,19 +158,18 @@ public class Main extends Thread {
 
             String lastUpdateDate = "";
             File dateFile = new File(DataBaseManager.LOCAL_BACKUP_DATEFILE);
-            if(dateFile.exists()){
-                try(BufferedReader br = new BufferedReader(new FileReader(dateFile))) {
+            if (dateFile.exists()) {
+                try (BufferedReader br = new BufferedReader(new FileReader(dateFile))) {
                     lastUpdateDate = br.readLine();
                     System.out.println(lastUpdateDate);
-                    if(lastUpdateDate.equals(String.valueOf(LocalDate.now()))){
+                    if (lastUpdateDate.equals(String.valueOf(LocalDate.now()))) {
                         System.out.println("Backup DataBases are Up to Date!");
-                    }
-                    else{
+                    } else {
                         DataBaseManager.createLocalDatabaseBackup();
                     }
                 } catch (IOException e) {
                     throw new RuntimeException(e);
-                } catch (NullPointerException exception){
+                } catch (NullPointerException exception) {
                     System.out.println("Nothing in the Date File. ");
                 }
             } else {
@@ -255,27 +254,26 @@ public class Main extends Thread {
         }
     }
 
-    public void run()
-    {
+    public void run() {
         String lastUpdateDate = "";
         File dateFile = new File(DataBaseManager.LOCAL_DATEFILE);
-        if(dateFile.exists()){
-            try(BufferedReader br = new BufferedReader(new FileReader(dateFile))) {
+        if (dateFile.exists()) {
+            try (BufferedReader br = new BufferedReader(new FileReader(dateFile))) {
                 lastUpdateDate = br.readLine();
                 System.out.println(lastUpdateDate);
-                if(lastUpdateDate.equals(String.valueOf(LocalDate.now()))){
+                if (lastUpdateDate.equals(String.valueOf(LocalDate.now()))) {
                     System.out.println("DataBases are Up to Date!");
                     isLocalDatabaseUpToDate = true;
                     isMongoUpToDate = true;
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
-            } catch (NullPointerException exception){
+            } catch (NullPointerException exception) {
                 System.out.println("Nothing in the Date File. ");
             }
         }
 
-        if(!isLocalDatabaseUpToDate){
+        if (!isLocalDatabaseUpToDate) {
             System.out.println("Already Started Downloading DataBase bro...");
             DataBaseManager.clearLocalDatabase();
             AmazonScrapper obj = new AmazonScrapper();
@@ -290,29 +288,30 @@ public class Main extends Thread {
             }
 
             // writing to the date file
-            try(FileWriter f = new FileWriter(dateFile, false)){
+            try (FileWriter f = new FileWriter(dateFile, false)) {
                 f.write(String.valueOf(LocalDate.now()));
-            } catch (IOException e){
+            } catch (IOException e) {
                 throw new RuntimeException(e);
             }
 
             System.out.println("Updated the local database, no need to depend on the backup anymore");
             isLocalDatabaseUpToDate = true;
         }
-        if(!isMongoUpToDate){
+        if (!isMongoUpToDate) {
             System.out.println("Updaing Mongodb");
             // update mongodb
 //            isMongoUpToDate = true;
 //            usingMongo = true;
 
             // writing to the date file
-            try(FileWriter f = new FileWriter(dateFile, false)){
+            try (FileWriter f = new FileWriter(dateFile, false)) {
                 f.write(String.valueOf(LocalDate.now()));
-            } catch (IOException e){
+            } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
     }
+
     public static void main(String[] args) {
         System.setProperty("awt.useSystemAAFontSettings", "on");
         System.setProperty("swing.aatext", "true");

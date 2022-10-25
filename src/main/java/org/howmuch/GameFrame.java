@@ -14,14 +14,6 @@ import java.util.Timer;
 import static java.lang.Math.round;
 import static org.howmuch.Main.*;
 
-
-// The topics are
-// Technology
-// Fashion
-// Health and Household
-// Miscellaneous
-
-
 public class GameFrame extends JFrame {
     static Timer timer;
     public static int time_left = 9;
@@ -30,7 +22,7 @@ public class GameFrame extends JFrame {
 
     ButtonChangeListener button_cl;
     BackgroundPanel backgroundPanel;
-    GamePanel productImagePanel;
+    BackgroundPanel productImagePanel;
     static JButton option_1_btn;
     static JButton option_2_btn;
     static JButton option_3_btn;
@@ -324,15 +316,13 @@ public class GameFrame extends JFrame {
         options_panel.add(option_4_btn);
         options_panel.setBackground(new Color(0, 0, 0, 0));
 
-        productImagePanel = new GamePanel();
+        productImagePanel = new BackgroundPanel();
     }
 
     private void createButtons() {
 
         // Removing Change and Action Listeners.
         removeAllChangeAndActionListenersFromBasicButtons();
-
-
         exit_btn.addChangeListener(evt -> {
             if (exit_btn.getModel().isPressed()) {
                 timer.cancel();
@@ -408,37 +398,29 @@ public class GameFrame extends JFrame {
     }
 
     static void removeChangeAndActionListenersFromOption_btns() {
-        for (ChangeListener changeListener :
-                option_1_btn.getChangeListeners()) {
+        for (ChangeListener changeListener : option_1_btn.getChangeListeners()) {
             option_1_btn.removeChangeListener(changeListener);
         }
-        for (ChangeListener changeListener :
-                option_2_btn.getChangeListeners()) {
+        for (ChangeListener changeListener : option_2_btn.getChangeListeners()) {
             option_2_btn.removeChangeListener(changeListener);
         }
-        for (ChangeListener changeListener :
-                option_3_btn.getChangeListeners()) {
+        for (ChangeListener changeListener : option_3_btn.getChangeListeners()) {
             option_3_btn.removeChangeListener(changeListener);
         }
-        for (ChangeListener changeListener :
-                option_4_btn.getChangeListeners()) {
+        for (ChangeListener changeListener : option_4_btn.getChangeListeners()) {
             option_4_btn.removeChangeListener(changeListener);
         }
 
-        for (ActionListener ActionListener :
-                option_1_btn.getActionListeners()) {
+        for (ActionListener ActionListener : option_1_btn.getActionListeners()) {
             option_1_btn.removeActionListener(ActionListener);
         }
-        for (ActionListener ActionListener :
-                option_2_btn.getActionListeners()) {
+        for (ActionListener ActionListener : option_2_btn.getActionListeners()) {
             option_2_btn.removeActionListener(ActionListener);
         }
-        for (ActionListener ActionListener :
-                option_3_btn.getActionListeners()) {
+        for (ActionListener ActionListener : option_3_btn.getActionListeners()) {
             option_3_btn.removeActionListener(ActionListener);
         }
-        for (ActionListener ActionListener :
-                option_4_btn.getActionListeners()) {
+        for (ActionListener ActionListener : option_4_btn.getActionListeners()) {
             option_4_btn.removeActionListener(ActionListener);
         }
     }
@@ -557,5 +539,4 @@ public class GameFrame extends JFrame {
             }
         }
     }
-
 }

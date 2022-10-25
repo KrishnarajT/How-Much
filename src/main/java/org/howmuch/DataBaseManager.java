@@ -91,8 +91,7 @@ public class DataBaseManager {
             listFilesForFolder(data_deleter);
             for (File subfile : Objects.requireNonNull(data_deleter.listFiles())) {
                 if (subfile.isDirectory()) {
-                    for (File f :
-                            Objects.requireNonNull(subfile.listFiles())) {
+                    for (File f : Objects.requireNonNull(subfile.listFiles())) {
                         f.delete();
                     }
                 }
@@ -141,11 +140,7 @@ public class DataBaseManager {
         try (FileWriter userDataFileWriter = new FileWriter(userDatafile, true)) {
 
             // create CSVWriter object filewriter object as parameter
-            try (CSVWriter writer = new CSVWriter(userDataFileWriter,
-                    CSVWriter.DEFAULT_SEPARATOR,
-                    CSVWriter.NO_QUOTE_CHARACTER,
-                    CSVWriter.DEFAULT_ESCAPE_CHARACTER,
-                    CSVWriter.DEFAULT_LINE_END)) {
+            try (CSVWriter writer = new CSVWriter(userDataFileWriter, CSVWriter.DEFAULT_SEPARATOR, CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER, CSVWriter.DEFAULT_LINE_END)) {
 
                 String[] data = {currentUsername, currentPassword, String.valueOf(currentScore)};
                 writer.writeNext(data);
@@ -164,11 +159,7 @@ public class DataBaseManager {
         try (FileWriter userDataFileWriter = new FileWriter(userDatafile, true)) {
 
             // create CSVWriter object filewriter object as parameter
-            try (CSVWriter writer = new CSVWriter(userDataFileWriter,
-                    CSVWriter.DEFAULT_SEPARATOR,
-                    CSVWriter.NO_QUOTE_CHARACTER,
-                    CSVWriter.DEFAULT_ESCAPE_CHARACTER,
-                    CSVWriter.DEFAULT_LINE_END)) {
+            try (CSVWriter writer = new CSVWriter(userDataFileWriter, CSVWriter.DEFAULT_SEPARATOR, CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER, CSVWriter.DEFAULT_LINE_END)) {
 //                System.out.println(Arrays.toString(data));
                 writer.writeNext(data);
             }
@@ -182,8 +173,7 @@ public class DataBaseManager {
         File inputFile = new File(USERDATA_FILEPATH);
         try (CSVReader reader = new CSVReader(new FileReader(inputFile), ',')) {
             List<String[]> csvBody = reader.readAll();
-            for (String[] s :
-                    csvBody) {
+            for (String[] s : csvBody) {
                 if (s[0].equals(username)) {
                     System.out.println("User Already Exists");
                     return true;
@@ -248,7 +238,7 @@ public class DataBaseManager {
         }
     }
 
-    public static void createLocalDatabaseBackupOfUsers(){
+    public static void createLocalDatabaseBackupOfUsers() {
         System.out.println("---------------CREATING LOCAL DATABASE BACKUP of the user file------------");
         try {
             File sourceDirectory = new File(USERDATA_FILEPATH);
@@ -258,6 +248,7 @@ public class DataBaseManager {
             throw new RuntimeException(e);
         }
     }
+
     public static void createLocalDatabaseBackup() {
         try {
             System.out.println("---------------CREATING LOCAL DATABASE BACKUP------------");
@@ -266,8 +257,7 @@ public class DataBaseManager {
 //            listFilesForFolder(data_deleter);
             for (File subfile : Objects.requireNonNull(data_deleter.listFiles())) {
                 if (subfile.isDirectory()) {
-                    for (File f :
-                            Objects.requireNonNull(subfile.listFiles())) {
+                    for (File f : Objects.requireNonNull(subfile.listFiles())) {
                         f.delete();
                     }
                 }
@@ -302,7 +292,8 @@ public class DataBaseManager {
         File inputFile;
         if (Main.isLocalDatabaseUpToDate) {
             System.out.println("running from the local database");
-            inputFile = new File(LOCAL_CSV_FOLDER + '/' + Topic.toLowerCase() + ".csv");try (CSVReader reader = new CSVReader(new FileReader(inputFile), ',')) {
+            inputFile = new File(LOCAL_CSV_FOLDER + '/' + Topic.toLowerCase() + ".csv");
+            try (CSVReader reader = new CSVReader(new FileReader(inputFile), ',')) {
                 List<String[]> csvBody = reader.readAll();
                 if (index > csvBody.size()) {
                     return csvBody.get(csvBody.size() - 1);
@@ -333,7 +324,8 @@ public class DataBaseManager {
         }
 
     }
-    public static int findLength(String Topic){
+
+    public static int findLength(String Topic) {
         File inputFile;
         if (Main.isLocalDatabaseUpToDate) {
             inputFile = new File(LOCAL_CSV_FOLDER + '/' + Topic.toLowerCase() + ".csv");

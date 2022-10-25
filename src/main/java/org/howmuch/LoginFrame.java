@@ -87,8 +87,7 @@ public class LoginFrame extends JFrame implements Runnable {
                     grantAccess = false;
                     incorrectPassword = true;
                 }
-            }
-            else{
+            } else {
                 newUser = true;
             }
 

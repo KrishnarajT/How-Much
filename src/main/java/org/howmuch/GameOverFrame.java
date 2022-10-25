@@ -68,13 +68,13 @@ public class GameOverFrame extends JFrame {
 
     private void reassignColors() {
         Colors.reassignColors();
-        if(GameFrame.gameWon){
+        if (GameFrame.gameWon) {
             if (Colors.DarkMode) {
                 backgroundPanel.setBackground("src/main/resources/images/game won over dark.png");
             } else {
                 backgroundPanel.setBackground("src/main/resources/images/game won over.png");
             }
-        } else{
+        } else {
             if (Colors.DarkMode) {
                 backgroundPanel.setBackground("src/main/resources/images/game over dark.png");
             } else {
@@ -92,6 +92,7 @@ public class GameOverFrame extends JFrame {
         resize_btn.setBackground(Colors.bgColor);
         minimize_btn.setBackground(Colors.bgColor);
     }
+
     private void createLabels() {
         score_lbl = new JLabel();
         score_lbl.setText(String.valueOf(DataBaseManager.currentScore));

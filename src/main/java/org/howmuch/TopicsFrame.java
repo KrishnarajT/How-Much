@@ -129,6 +129,7 @@ public class TopicsFrame extends JFrame {
         options_panel.setBackground(new Color(0, 0, 0, 0));
 
     }
+
     private void createButtons() {
 
         // Removing Change and Action Listeners.
@@ -199,7 +200,7 @@ public class TopicsFrame extends JFrame {
 
 
         option1_btn = new JButton();
-        option1_btn.setText(Topics[0] +  " ");
+        option1_btn.setText(Topics[0] + " ");
         option1_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         option1_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
         option1_btn.setFocusPainted(false);
@@ -227,7 +228,7 @@ public class TopicsFrame extends JFrame {
         });
 
         option2_btn = new JButton();
-        option2_btn.setText(Topics[1] +  " ");
+        option2_btn.setText(Topics[1] + " ");
         option2_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         option2_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
         option2_btn.setFocusPainted(false);
@@ -253,7 +254,7 @@ public class TopicsFrame extends JFrame {
         });
 
         option3_btn = new JButton();
-        option3_btn.setText(Topics[2] +  " ");
+        option3_btn.setText(Topics[2] + " ");
         option3_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         option3_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
         option3_btn.setFocusPainted(false);
@@ -279,7 +280,7 @@ public class TopicsFrame extends JFrame {
         });
 
         option4_btn = new JButton();
-        option4_btn.setText(Topics[3] +  " ");
+        option4_btn.setText(Topics[3] + " ");
         option4_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         option4_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
         option4_btn.setFont(buttonFont.deriveFont(44f));
