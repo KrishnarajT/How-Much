@@ -1,9 +1,7 @@
 package org.howmuch;
 
 import javax.swing.*;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
@@ -64,16 +62,24 @@ public class GameOverFrame extends JFrame {
         basicButtons_pnl.setBounds(this.getWidth() - (exit_btn.getWidth() * 3) - 40, 10, exit_btn.getWidth() * 3 + 35, exit_btn.getHeight());
 
         // Score Label
-        score_lbl.setBounds((int) (0.76 * screenSize.getWidth()), (int) (0.80 * screenSize.getHeight()), 400, 100);
+        score_lbl.setBounds((int) (0.76 * screenSize.getWidth()), (int) (0.80 * screenSize.getHeight()), (int) (0.31 * screenSize.getWidth()), (int) (0.13 * screenSize.getHeight()));
         score_lbl.setFont(buttonFont.deriveFont((float) (0.14 * getHeight())));
     }
 
     private void reassignColors() {
         Colors.reassignColors();
-        if (Colors.DarkMode) {
-            backgroundPanel.setBackground("src/main/resources/images/game over dark.png");
-        } else {
-            backgroundPanel.setBackground("src/main/resources/images/game over.png");
+        if(GameFrame.gameWon){
+            if (Colors.DarkMode) {
+                backgroundPanel.setBackground("src/main/resources/images/game won over dark.png");
+            } else {
+                backgroundPanel.setBackground("src/main/resources/images/game won over.png");
+            }
+        } else{
+            if (Colors.DarkMode) {
+                backgroundPanel.setBackground("src/main/resources/images/game over dark.png");
+            } else {
+                backgroundPanel.setBackground("src/main/resources/images/game over.png");
+            }
         }
         backtoTopic_btn.setBackground(Colors.primaryColor);
         backtoTopic_btn.setForeground(Colors.bgColor);
@@ -121,26 +127,7 @@ public class GameOverFrame extends JFrame {
         });
 
         // Removing Change and Action Listeners.
-        for (ActionListener listener : exit_btn.getActionListeners()) {
-            exit_btn.removeActionListener(listener);
-        }
-        for (ChangeListener listener : exit_btn.getChangeListeners()) {
-            exit_btn.removeChangeListener(listener);
-        }
-
-        for (ActionListener listener : resize_btn.getActionListeners()) {
-            resize_btn.removeActionListener(listener);
-        }
-        for (ChangeListener listener : resize_btn.getChangeListeners()) {
-            resize_btn.removeChangeListener(listener);
-        }
-
-        for (ActionListener listener : minimize_btn.getActionListeners()) {
-            minimize_btn.removeActionListener(listener);
-        }
-        for (ChangeListener listener : minimize_btn.getChangeListeners()) {
-            minimize_btn.removeChangeListener(listener);
-        }
+        GameFrame.removeAllChangeAndActionListenersFromBasicButtons();
 
 
         exit_btn.addChangeListener(evt -> {

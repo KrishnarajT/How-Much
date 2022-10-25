@@ -54,15 +54,15 @@ public class AmazonScrapper {
 
     public static void fillSearchQueries() {
         System.out.println(Arrays.toString(Main.Topics));
-        searchQueries_map.put(0, new String[]{"Televisions", "Mobile Phones", "Laptops", "Iphone", "Macbook", "Refrigerators", "Washing Machines", "Smart Watches", "Gaming Laptops", "Computer Accessories", "GPUs", "Tablets", "Playstation", "Xbox"});
-        searchQueries_map.put(1, new String[]{"Mens TShirts", "Formal Suits", "Mens Casual Wear", "Womens Casual Wear", "Womens Formal Wear", "Kids Clothes", "Makeup", "Beauty Products", "Analog Watches", "Earrings", "Necklaces", "Jewellery", "Branded Clothes", "Gold Jewellery", "Shoes"});
-        searchQueries_map.put(2, new String[]{"Furniture", "Tape", "Stationary", "Cutlery", "Kitchen Products", "Toothpaste", "Chocolates", "Soaps", "Water Bottles", "Carpets", "Sofa Sets", "Tables and Desks", "Cleaning Products"});
-        searchQueries_map.put(3, new String[]{"Gifts", "Car Appliances", "Diwali Lights", "Decoration", "Birthday Decor", "Lenses"});
+//        searchQueries_map.put(0, new String[]{"Televisions", "Mobile Phones", "Laptops", "Iphone", "Macbook", "Refrigerators", "Washing Machines", "Smart Watches", "Gaming Laptops", "Computer Accessories", "GPUs", "Tablets", "Playstation", "Xbox"});
+//        searchQueries_map.put(1, new String[]{"Mens TShirts", "Formal Suits", "Mens Casual Wear", "Womens Casual Wear", "Womens Formal Wear", "Kids Clothes", "Makeup", "Beauty Products", "Analog Watches", "Earrings", "Necklaces", "Jewellery", "Branded Clothes", "Gold Jewellery", "Shoes"});
+//        searchQueries_map.put(2, new String[]{"Furniture", "Tape", "Stationary", "Cutlery", "Kitchen Products", "Toothpaste", "Chocolates", "Soaps", "Water Bottles", "Carpets", "Sofa Sets", "Tables and Desks", "Cleaning Products"});
+//        searchQueries_map.put(3, new String[]{"Gifts", "Car Appliances", "Diwali Lights", "Decoration", "Birthday Decor", "Lenses"});
 
-//        searchQueries_map.put(0, new String[]{"8k OLED Televisions"});
-//        searchQueries_map.put(1, new String[]{"Mens TShirts"});
-//        searchQueries_map.put(2, new String[]{"Furniture"});
-//        searchQueries_map.put(3, new String[]{"Gifts"});
+        searchQueries_map.put(0, new String[]{"8k OLED Televisions"});
+        searchQueries_map.put(1, new String[]{"Mens TShirts"});
+        searchQueries_map.put(2, new String[]{"Furniture"});
+        searchQueries_map.put(3, new String[]{"Gifts"});
 
         for (Map.Entry<Integer, String[]> m : searchQueries_map.entrySet()) {
             System.out.println(m.getKey() + " " + Arrays.toString(m.getValue()));

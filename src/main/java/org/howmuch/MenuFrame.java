@@ -1,7 +1,6 @@
 package org.howmuch;
 
 import javax.swing.*;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -184,26 +183,7 @@ public class MenuFrame extends JFrame {
     private void createButtons() {
 
         // Removing Change and Action Listeners.
-        for (ActionListener listener : exit_btn.getActionListeners()) {
-            exit_btn.removeActionListener(listener);
-        }
-        for (ChangeListener listener : exit_btn.getChangeListeners()) {
-            exit_btn.removeChangeListener(listener);
-        }
-
-        for (ActionListener listener : resize_btn.getActionListeners()) {
-            resize_btn.removeActionListener(listener);
-        }
-        for (ChangeListener listener : resize_btn.getChangeListeners()) {
-            resize_btn.removeChangeListener(listener);
-        }
-
-        for (ActionListener listener : minimize_btn.getActionListeners()) {
-            minimize_btn.removeActionListener(listener);
-        }
-        for (ChangeListener listener : minimize_btn.getChangeListeners()) {
-            minimize_btn.removeChangeListener(listener);
-        }
+        GameFrame.removeAllChangeAndActionListenersFromBasicButtons();
 
 
         exit_btn.addChangeListener(evt -> {

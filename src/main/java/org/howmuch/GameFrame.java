@@ -1,6 +1,7 @@
 package org.howmuch;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.*;
@@ -25,7 +26,9 @@ public class GameFrame extends JFrame {
     static Timer timer;
     public static int time_left = 9;
     public static boolean gameWon = false;
+    static boolean[] whichOptionCorrect;
 
+    ButtonChangeListener button_cl;
     BackgroundPanel backgroundPanel;
     GamePanel productImagePanel;
     static JButton option_1_btn;
@@ -111,9 +114,11 @@ public class GameFrame extends JFrame {
             }
         }, 1000, 1000);
     }
-    public static void changeTimeOnTimer(){
+
+    public static void changeTimeOnTimer() {
         time_lbl.setText(String.valueOf(time_left));
     }
+
     private void assignCurrentData() {
         currentData = new String[]{"", "", ""};
         if (!usingMongo) {
@@ -186,11 +191,24 @@ public class GameFrame extends JFrame {
 //        option_4_btn.setText("₹" + String.format("%,.0f", (double)
 //                round((double) list.remove(random.nextInt(list.size())) / 100) * 100
 //        ));
+        whichOptionCorrect = new boolean[]{false, false, false, false};
+        int optionValue = 0;
 
-        option_1_btn.setText("₹" + String.format("%,.0f", (double)list.remove(random.nextInt(list.size()))));
-        option_2_btn.setText("₹" + String.format("%,.0f", (double)list.remove(random.nextInt(list.size()))));
-        option_3_btn.setText("₹" + String.format("%,.0f", (double)list.remove(random.nextInt(list.size()))));
-        option_4_btn.setText("₹" + String.format("%,.0f", (double)list.remove(random.nextInt(list.size()))));
+        optionValue = list.remove(random.nextInt(list.size()));
+        whichOptionCorrect[0] = optionValue == correctPrice;
+        option_1_btn.setText("₹" + String.format("%,.0f", (double) optionValue));
+
+        optionValue = list.remove(random.nextInt(list.size()));
+        whichOptionCorrect[1] = optionValue == correctPrice;
+        option_2_btn.setText("₹" + String.format("%,.0f", (double) optionValue));
+
+        optionValue = list.remove(random.nextInt(list.size()));
+        whichOptionCorrect[2] = optionValue == correctPrice;
+        option_3_btn.setText("₹" + String.format("%,.0f", (double) optionValue));
+
+        optionValue = list.remove(random.nextInt(list.size()));
+        whichOptionCorrect[3] = optionValue == correctPrice;
+        option_4_btn.setText("₹" + String.format("%,.0f", (double) optionValue));
 
     }
 
@@ -226,7 +244,7 @@ public class GameFrame extends JFrame {
         productName_txtArea.setBorder(null);
         productName_txtArea.setLineWrap(true);
 
-        ImageIcon imageIcon = new ImageIcon("src/main/resources/images/giphy (1).gif");
+        ImageIcon imageIcon = new ImageIcon("src/main/resources/images/confetti.gif");
         confetti = new JLabel(imageIcon);
         confetti.setVisible(false);
     }
@@ -259,7 +277,7 @@ public class GameFrame extends JFrame {
         time_lbl.setBounds((int) (0.890 * screenSize.getWidth()), (int) (0.14 * screenSize.getHeight()), (int) (0.05 * screenSize.getWidth()), (int) (0.11 * screenSize.getHeight()));
         time_lbl.setFont(buttonFont.deriveFont((float) (0.09 * getHeight())));
 
-        confetti.setBounds(0, 0, this.getWidth(), this.getHeight());
+        confetti.setBounds((int) (-0.3 * screenSize.getWidth()), (int) (-0.27 * screenSize.getHeight()), this.getWidth(), this.getHeight());
         loadGameDataOnScreen();
     }
 
@@ -312,26 +330,7 @@ public class GameFrame extends JFrame {
     private void createButtons() {
 
         // Removing Change and Action Listeners.
-        for (ActionListener listener : exit_btn.getActionListeners()) {
-            exit_btn.removeActionListener(listener);
-        }
-        for (ChangeListener listener : exit_btn.getChangeListeners()) {
-            exit_btn.removeChangeListener(listener);
-        }
-
-        for (ActionListener listener : resize_btn.getActionListeners()) {
-            resize_btn.removeActionListener(listener);
-        }
-        for (ChangeListener listener : resize_btn.getChangeListeners()) {
-            resize_btn.removeChangeListener(listener);
-        }
-
-        for (ActionListener listener : minimize_btn.getActionListeners()) {
-            minimize_btn.removeActionListener(listener);
-        }
-        for (ChangeListener listener : minimize_btn.getChangeListeners()) {
-            minimize_btn.removeChangeListener(listener);
-        }
+        removeAllChangeAndActionListenersFromBasicButtons();
 
 
         exit_btn.addChangeListener(evt -> {
@@ -375,151 +374,188 @@ public class GameFrame extends JFrame {
             }
         });
 
-
         option_1_btn = new JButton();
-        option_1_btn.setText("");
-        option_1_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
-        option_1_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
-        option_1_btn.setFocusPainted(false);
-        option_1_btn.setBounds(0, 0, 500, 500);
-        option_1_btn.setContentAreaFilled(false);
-        option_1_btn.setOpaque(true);
-        option_1_btn.setBorder(null);
-        option_1_btn.addChangeListener(evt -> {
-            if (option_1_btn.getModel().isPressed()) {
-                option_1_btn.setForeground(Colors.accentColor);
-            } else if (option_1_btn.getModel().isRollover()) {
-                option_1_btn.setForeground(Colors.accentColor);
-            } else {
-                option_1_btn.setForeground(Colors.bgColor);
-            }
-        });
-
-        option_1_btn.addActionListener(e -> {
-            int this_btn_price = Integer.parseInt(option_1_btn.getText().replace("₹", "").replace(",", ""));
-            if(correctPrice == this_btn_price){
-                System.out.println("You guessed correctly");
-                confetti.setVisible(true);
-                DataBaseManager.currentScore += time_left;
-                time_left = 2;
-                grantAccess = true;
-                gameWon = true;
-            } else {
-                runClosingErrands(this_btn_price);
-                Main.changeFrame(7);
-            }
-        });
-
+        assignButtonProperties(option_1_btn);
         option_2_btn = new JButton();
-        option_2_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
-        option_2_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
-        option_2_btn.setFocusPainted(false);
-        option_2_btn.setContentAreaFilled(false);
-        option_2_btn.setOpaque(true);
-        option_2_btn.setBorder(null);
-        option_2_btn.addChangeListener(evt -> {
-            if (option_2_btn.getModel().isPressed()) {
-                option_2_btn.setForeground(Colors.accentColor);
-            } else if (option_2_btn.getModel().isRollover()) {
-                option_2_btn.setForeground(Colors.accentColor);
-            } else {
-                option_2_btn.setForeground(Colors.bgColor);
-            }
-        });
-        option_2_btn.addActionListener(e -> {
-            int this_btn_price = Integer.parseInt(option_2_btn.getText().replace("₹", "").replace(",", ""));
-            if(correctPrice == this_btn_price){
-                System.out.println("You guessed correctly");
-                DataBaseManager.currentScore += time_left;
-                confetti.setVisible(true);
-                time_left = 2;
-                grantAccess = true;
-                gameWon = true;
-            } else {
-                runClosingErrands(this_btn_price);
-                Main.changeFrame(7);
-            }
-        });
-
+        assignButtonProperties(option_2_btn);
         option_3_btn = new JButton();
-        option_3_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
-        option_3_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
-        option_3_btn.setFocusPainted(false);
-        option_3_btn.setContentAreaFilled(false);
-        option_3_btn.setOpaque(true);
-        option_3_btn.setBorder(null);
-        option_3_btn.addChangeListener(evt -> {
-            if (option_3_btn.getModel().isPressed()) {
-                option_3_btn.setForeground(Colors.accentColor);
-            } else if (option_3_btn.getModel().isRollover()) {
-                option_3_btn.setForeground(Colors.accentColor);
-            } else {
-                option_3_btn.setForeground(Colors.bgColor);
-            }
-        });
-        option_3_btn.addActionListener(e -> {
-            int this_btn_price = Integer.parseInt(option_3_btn.getText().replace("₹", "").replace(",", ""));
-            if(correctPrice == this_btn_price){
-                System.out.println("You guessed correctly");
-                DataBaseManager.currentScore += time_left;
-                confetti.setVisible(true);
-                time_left = 2;
-                grantAccess = true;
-                gameWon = true;
-            } else {
-                runClosingErrands(this_btn_price);
-                Main.changeFrame(7);
-            }
-        });
-
+        assignButtonProperties(option_3_btn);
         option_4_btn = new JButton();
-        option_4_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
-        option_4_btn.setAlignmentX(Box.LEFT_ALIGNMENT);
-        option_4_btn.setFont(buttonFont.deriveFont(44f));
-        option_4_btn.setFocusPainted(false);
-        option_4_btn.setContentAreaFilled(false);
-        option_4_btn.setOpaque(true);
-        option_4_btn.setBorder(null);
-        option_4_btn.addChangeListener(evt -> {
-            if (option_4_btn.getModel().isPressed()) {
-                option_4_btn.setForeground(Colors.accentColor);
-            } else if (option_4_btn.getModel().isRollover()) {
-                option_4_btn.setForeground(Colors.accentColor);
+        assignButtonProperties(option_4_btn);
+    }
+
+    static void removeAllChangeAndActionListenersFromBasicButtons() {
+        for (ActionListener listener : exit_btn.getActionListeners()) {
+            exit_btn.removeActionListener(listener);
+        }
+        for (ChangeListener listener : exit_btn.getChangeListeners()) {
+            exit_btn.removeChangeListener(listener);
+        }
+
+        for (ActionListener listener : resize_btn.getActionListeners()) {
+            resize_btn.removeActionListener(listener);
+        }
+        for (ChangeListener listener : resize_btn.getChangeListeners()) {
+            resize_btn.removeChangeListener(listener);
+        }
+
+        for (ActionListener listener : minimize_btn.getActionListeners()) {
+            minimize_btn.removeActionListener(listener);
+        }
+        for (ChangeListener listener : minimize_btn.getChangeListeners()) {
+            minimize_btn.removeChangeListener(listener);
+        }
+    }
+
+    static void removeChangeAndActionListenersFromOption_btns() {
+        for (ChangeListener changeListener :
+                option_1_btn.getChangeListeners()) {
+            option_1_btn.removeChangeListener(changeListener);
+        }
+        for (ChangeListener changeListener :
+                option_2_btn.getChangeListeners()) {
+            option_2_btn.removeChangeListener(changeListener);
+        }
+        for (ChangeListener changeListener :
+                option_3_btn.getChangeListeners()) {
+            option_3_btn.removeChangeListener(changeListener);
+        }
+        for (ChangeListener changeListener :
+                option_4_btn.getChangeListeners()) {
+            option_4_btn.removeChangeListener(changeListener);
+        }
+
+        for (ActionListener ActionListener :
+                option_1_btn.getActionListeners()) {
+            option_1_btn.removeActionListener(ActionListener);
+        }
+        for (ActionListener ActionListener :
+                option_2_btn.getActionListeners()) {
+            option_2_btn.removeActionListener(ActionListener);
+        }
+        for (ActionListener ActionListener :
+                option_3_btn.getActionListeners()) {
+            option_3_btn.removeActionListener(ActionListener);
+        }
+        for (ActionListener ActionListener :
+                option_4_btn.getActionListeners()) {
+            option_4_btn.removeActionListener(ActionListener);
+        }
+    }
+
+
+    private void assignButtonProperties(JButton optionButton) {
+        optionButton.setText("");
+        optionButton.setAlignmentY(Box.CENTER_ALIGNMENT);
+        optionButton.setAlignmentX(Box.LEFT_ALIGNMENT);
+        optionButton.setFocusPainted(false);
+        optionButton.setBounds(0, 0, 500, 500);
+        optionButton.setContentAreaFilled(false);
+        optionButton.setOpaque(true);
+        optionButton.setBorder(null);
+        optionButton.addChangeListener(evt -> {
+            if (optionButton.getModel().isPressed()) {
+                optionButton.setForeground(Colors.accentColor);
+            } else if (optionButton.getModel().isRollover()) {
+                optionButton.setForeground(Colors.accentColor);
             } else {
-                option_4_btn.setForeground(Colors.bgColor);
+                optionButton.setForeground(Colors.bgColor);
             }
         });
-        option_4_btn.addActionListener(e -> {
-            int this_btn_price = Integer.parseInt(option_4_btn.getText().replace("₹", "").replace(",", ""));
-            if(correctPrice == this_btn_price){
-                System.out.println("You guessed correctly");
-                DataBaseManager.currentScore += time_left;
-                confetti.setVisible(true);
-                time_left = 2;
-                grantAccess = true;
-                gameWon = true;
+        optionButton.addActionListener(e -> {
+            int this_btn_price = Integer.parseInt(optionButton.getText().replace("₹", "").replace(",", ""));
+            if (correctPrice == this_btn_price) {
+                runWinningClosingErrands();
             } else {
-                runClosingErrands(this_btn_price);
-                Main.changeFrame(7);
+                runLosingClosingErrands(this_btn_price);
             }
         });
     }
 
-    private void runClosingErrands(int this_btn_price) {
-        timer.cancel();
-        timer.purge();
-        option_1_btn.setForeground(Colors.accentColor);
+    private void runLosingClosingErrands(int this_btn_price) {
+        removeChangeAndActionListenersFromOption_btns();
+        if (whichOptionCorrect[0]) {
+            option_1_btn.setForeground(new Color(56, 159, 82));
+//            option_1_btn.setFont(options_font.deriveFont((float) (0.05 * getHeight())).deriveFont(Font.BOLD));
+            option_2_btn.setForeground(new Color(227, 83, 83));
+            option_3_btn.setForeground(new Color(227, 83, 83));
+            option_4_btn.setForeground(new Color(227, 83, 83));
+        } else if (whichOptionCorrect[1]) {
+            option_2_btn.setForeground(new Color(56, 159, 82));
+//            option_2_btn.setFont(options_font.deriveFont((float) (0.05 * getHeight())).deriveFont(Font.BOLD));
+            option_1_btn.setForeground(new Color(227, 83, 83));
+            option_3_btn.setForeground(new Color(227, 83, 83));
+            option_4_btn.setForeground(new Color(227, 83, 83));
+        } else if (whichOptionCorrect[2]) {
+            option_3_btn.setForeground(new Color(56, 159, 82));
+//            option_3_btn.setFont(options_font.deriveFont((float) (0.05 * getHeight())).deriveFont(Font.BOLD));
+            option_2_btn.setForeground(new Color(227, 83, 83));
+            option_1_btn.setForeground(new Color(227, 83, 83));
+            option_4_btn.setForeground(new Color(227, 83, 83));
+        } else if (whichOptionCorrect[3]) {
+            option_4_btn.setForeground(new Color(56, 159, 82));
+//            option_4_btn.setFont(options_font.deriveFont((float) (0.05 * getHeight())).deriveFont(Font.BOLD));
+            option_2_btn.setForeground(new Color(227, 83, 83));
+            option_3_btn.setForeground(new Color(227, 83, 83));
+            option_1_btn.setForeground(new Color(227, 83, 83));
+        }
         System.out.println("That was an incorrect Guess");
         System.out.println(this_btn_price);
-        try {
-            sleep(500);
-        } catch (InterruptedException ex) {
-            throw new RuntimeException(ex);
-        }
-        this.setVisible(false);
-        this.dispose();
+        time_left = 3;
         gameWon = false;
         grantAccess = true;
+    }
+
+    private void runWinningClosingErrands() {
+        removeChangeAndActionListenersFromOption_btns();
+        System.out.println("You guessed correctly");
+        DataBaseManager.currentScore += time_left;
+        confetti.setVisible(true);
+        time_left = 2;
+        grantAccess = true;
+        gameWon = true;
+    }
+
+    public static class ButtonChangeListener implements ChangeListener {
+        @Override
+        public void stateChanged(ChangeEvent e) {
+            if (e.getSource() == option_1_btn) {
+                if (option_1_btn.getModel().isPressed()) {
+                    option_1_btn.setForeground(Colors.accentColor);
+                } else if (option_1_btn.getModel().isRollover()) {
+                    option_1_btn.setForeground(Colors.accentColor);
+                } else {
+                    option_1_btn.setForeground(Colors.bgColor);
+                }
+            }
+            if (e.getSource() == option_2_btn) {
+                if (option_2_btn.getModel().isPressed()) {
+                    option_2_btn.setForeground(Colors.accentColor);
+                } else if (option_2_btn.getModel().isRollover()) {
+                    option_2_btn.setForeground(Colors.accentColor);
+                } else {
+                    option_2_btn.setForeground(Colors.bgColor);
+                }
+            }
+            if (e.getSource() == option_3_btn) {
+                if (option_3_btn.getModel().isPressed()) {
+                    option_3_btn.setForeground(Colors.accentColor);
+                } else if (option_3_btn.getModel().isRollover()) {
+                    option_3_btn.setForeground(Colors.accentColor);
+                } else {
+                    option_3_btn.setForeground(Colors.bgColor);
+                }
+            }
+            if (e.getSource() == option_4_btn) {
+                if (option_4_btn.getModel().isPressed()) {
+                    option_4_btn.setForeground(Colors.accentColor);
+                } else if (option_4_btn.getModel().isRollover()) {
+                    option_4_btn.setForeground(Colors.accentColor);
+                } else {
+                    option_4_btn.setForeground(Colors.bgColor);
+                }
+            }
+        }
     }
 
 }
