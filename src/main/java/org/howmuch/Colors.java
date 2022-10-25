@@ -12,7 +12,6 @@ public class Colors {
     static Color light_secondaryColor = new Color(255, 160, 160);
     static Color light_accentColor = new Color(27, 153, 139);
 
-
     // Dark Mode Colors
     static Color dark_bg_color = new Color(31, 29, 54);
     static Color dark_primaryColor = new Color(233, 166, 166);
@@ -31,4 +30,3 @@ public class Colors {
         accentColor = DarkMode ? dark_accentColor : light_accentColor;
     }
 }
-

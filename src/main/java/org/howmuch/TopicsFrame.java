@@ -9,10 +9,7 @@ import static org.howmuch.Main.*;
 public class TopicsFrame extends JFrame {
 
     BackgroundPanel backgroundPanel;
-    JButton option1_btn;
-    JButton option2_btn;
-    JButton option3_btn;
-    JButton option4_btn;
+    JButton option1_btn, option2_btn, option3_btn, option4_btn;
     JButton backToMenu_btn;
     JPanel options_panel;
 
@@ -54,19 +51,21 @@ public class TopicsFrame extends JFrame {
         this.setVisible(true);
     }
 
-
     private void reassignBounds() {
         Dimension screenSize = this.getSize();
 
         // The back to menu mode label
-        backToMenu_btn.setBounds((int) (0.015 * screenSize.getWidth()), (int) (0.80 * screenSize.getHeight()), (int) (0.20 * screenSize.getWidth()), (int) (0.07 * screenSize.getHeight()));
+        backToMenu_btn.setBounds((int) (0.015 * screenSize.getWidth()), (int) (0.80 * screenSize.getHeight()),
+                (int) (0.20 * screenSize.getWidth()), (int) (0.07 * screenSize.getHeight()));
         backToMenu_btn.setFont(buttonFont.deriveFont((float) (0.05 * getHeight())));
 
         // The Entire basic button panel for closing minimizing and stuff
-        basicButtons_pnl.setBounds(this.getWidth() - (exit_btn.getWidth() * 3) - 40, 10, exit_btn.getWidth() * 3 + 35, exit_btn.getHeight());
+        basicButtons_pnl.setBounds(this.getWidth() - (exit_btn.getWidth() * 3) - 40, 10, exit_btn.getWidth() * 3 + 35,
+                exit_btn.getHeight());
 
         // Options panel
-        options_panel.setBounds((int) (0.60 * screenSize.getWidth()), (int) (0.34 * screenSize.getHeight()), (int) (0.45 * screenSize.getWidth()), 700);
+        options_panel.setBounds((int) (0.60 * screenSize.getWidth()), (int) (0.34 * screenSize.getHeight()),
+                (int) (0.45 * screenSize.getWidth()), 700);
 
         // Buttons in the Options Panel
         option1_btn.setBounds(new Rectangle((int) (0.45 * screenSize.getWidth()), 80));
@@ -106,7 +105,6 @@ public class TopicsFrame extends JFrame {
         option3_btn.setForeground(Colors.primaryColor);
     }
 
-
     private void createPanels() {
         options_panel = new JPanel();
         BoxLayout bl = new BoxLayout(options_panel, BoxLayout.Y_AXIS);
@@ -126,7 +124,6 @@ public class TopicsFrame extends JFrame {
 
         // Removing Change and Action Listeners.
         GameFrame.removeAllChangeAndActionListenersFromBasicButtons();
-
 
         exit_btn.addChangeListener(evt -> {
             if (exit_btn.getModel().isPressed()) {
@@ -165,7 +162,6 @@ public class TopicsFrame extends JFrame {
             }
         });
 
-
         backToMenu_btn = new JButton();
         backToMenu_btn.setText("Back to Menu ");
         backToMenu_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
@@ -189,7 +185,6 @@ public class TopicsFrame extends JFrame {
             grantAccess = true;
             Main.changeFrame(1);
         });
-
 
         option1_btn = new JButton();
         option1_btn.setText(Topics[0] + " ");

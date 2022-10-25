@@ -1,3 +1,7 @@
+/*
+ * An Important class, As it controls a lot of the important variables, and all interactions with the Local CSV File databases. 
+ */
+
 package org.howmuch;
 
 import com.mongodb.client.MongoDatabase;
@@ -13,7 +17,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-
 public class DataBaseManager {
 
     public static String LOCAL_DATAFOLDER = "src/main/resources/data";
@@ -28,25 +31,14 @@ public class DataBaseManager {
     public static String LOCAL_MONGODATEFILE = "src/main/resources/data/MongoDateUpdated.txt";
     public static String LOCAL_BACKUP_DATEFILE = "src/main/resources/data_backup/dateUpdated.txt";
 
-
     static String currentUsername = "guest";
     static int USER_INDEX = -1;
     static String currentPassword = "guest";
     static int currentScore = 0;
 
-    DataBaseManager() {
-        System.out.println("Database manager called");
-
-        // Delete the files in the data directory // display them for now
-//        clearLocalDatabase();
-
-        // Establishing connection with mongo
-//        establishConnectionWithMongo();
-
-    }
-
     /**
-     * Brutally Clear the images and csv in the local Database and start fresh with only files.
+     * Brutally Clear the images and csv in the local Database and start fresh with
+     * only files.
      **/
     public static void clearLocalDatabase() {
         try {
@@ -60,11 +52,15 @@ public class DataBaseManager {
                     }
                 }
             }
+
+            // Also clear the csv files.
             data_deleter = new File(LOCAL_CSV_FOLDER);
             listFilesForFolder(data_deleter);
             for (File subfile : Objects.requireNonNull(data_deleter.listFiles())) {
                 subfile.delete();
             }
+
+            // Recreate them.
             File createfiles = new File(LOCAL_BACKUP_CSV_FOLDER + "/" + Main.Topics[0].toLowerCase() + ".csv");
             createfiles.createNewFile();
             createfiles = new File(LOCAL_BACKUP_CSV_FOLDER + "/" + Main.Topics[1].toLowerCase() + ".csv");
@@ -78,6 +74,9 @@ public class DataBaseManager {
         }
     }
 
+    /*
+     * Simply displays every file in a directory
+     */
     public static void listFilesForFolder(final File folder) {
         Arrays.stream(folder.listFiles()).forEach(fileEntry -> {
             if (fileEntry.isDirectory()) {
@@ -89,6 +88,10 @@ public class DataBaseManager {
         });
     }
 
+    /*
+     * Adds a new user to the local CSV Database. Creates that file if it doesnt
+     * exist.
+     */
     public static void addNewUser() {
         System.out.println("gonna add new user");
         File userDatafile = new File(USERDATA_FILEPATH);
@@ -100,13 +103,14 @@ public class DataBaseManager {
             throw new RuntimeException(e);
         }
 
-        // append the new user to the login file. 
+        // append the new user to the login file.
         try (FileWriter userDataFileWriter = new FileWriter(userDatafile, true)) {
 
             // create CSVWriter object filewriter object as parameter
-            try (CSVWriter writer = new CSVWriter(userDataFileWriter, CSVWriter.DEFAULT_SEPARATOR, CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER, CSVWriter.DEFAULT_LINE_END)) {
+            try (CSVWriter writer = new CSVWriter(userDataFileWriter, CSVWriter.DEFAULT_SEPARATOR,
+                    CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER, CSVWriter.DEFAULT_LINE_END)) {
 
-                String[] data = {currentUsername, currentPassword, String.valueOf(currentScore)};
+                String[] data = { currentUsername, currentPassword, String.valueOf(currentScore) };
                 writer.writeNext(data);
                 System.out.println("added new user");
             }
@@ -123,8 +127,9 @@ public class DataBaseManager {
         try (FileWriter userDataFileWriter = new FileWriter(userDatafile, true)) {
 
             // create CSVWriter object filewriter object as parameter
-            try (CSVWriter writer = new CSVWriter(userDataFileWriter, CSVWriter.DEFAULT_SEPARATOR, CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER, CSVWriter.DEFAULT_LINE_END)) {
-//                System.out.println(Arrays.toString(data));
+            try (CSVWriter writer = new CSVWriter(userDataFileWriter, CSVWriter.DEFAULT_SEPARATOR,
+                    CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER, CSVWriter.DEFAULT_LINE_END)) {
+                // System.out.println(Arrays.toString(data));
                 writer.writeNext(data);
             }
 
@@ -161,7 +166,8 @@ public class DataBaseManager {
                         System.out.println("Password Matches");
                         USER_INDEX = i;
                         return true;
-                    } else return false;
+                    } else
+                        return false;
                 }
             }
         } catch (IOException e) {
@@ -218,7 +224,7 @@ public class DataBaseManager {
             System.out.println("---------------CREATING LOCAL DATABASE BACKUP------------");
             // Delete all pre existing images
             File data_deleter = new File(LOCAL_BACKUP_IMG_FOLDER);
-//            listFilesForFolder(data_deleter);
+            // listFilesForFolder(data_deleter);
             for (File subfile : Objects.requireNonNull(data_deleter.listFiles())) {
                 if (subfile.isDirectory()) {
                     for (File f : Objects.requireNonNull(subfile.listFiles())) {
@@ -304,4 +310,3 @@ public class DataBaseManager {
         }
     }
 }
-

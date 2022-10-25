@@ -8,11 +8,9 @@ import static org.howmuch.Main.*;
 
 public class MenuFrame extends JFrame {
 
+    // Basic things that we will need.
     BackgroundPanel backgroundPanel;
-    JButton chooseTopic_btn;
-    JButton viewHighscore_btn;
-    JButton helpAndCredits_btn;
-    JButton updateDatabase_btn;
+    JButton chooseTopic_btn, helpAndCredits_btn, updateDatabase_btn, viewHighscore_btn;
     JToggleButton darkMode_tglbtn;
     JPanel options_panel;
     JLabel darkMode_lbl;
@@ -58,12 +56,17 @@ public class MenuFrame extends JFrame {
         this.setVisible(true);
     }
 
-
+    /*
+     * Function that is called every time the user resizes the screen. This is why
+     * all places we need to provide a pixel, we are providing the ratio with
+     * respect to the current screen size.
+     */
     private void reassignBounds() {
         Dimension screenSize = this.getSize();
 
         // The Entire basic button panel for closing minimizing and stuff
-        basicButtons_pnl.setBounds(this.getWidth() - (exit_btn.getWidth() * 3) - 40, 10, exit_btn.getWidth() * 3 + 35, exit_btn.getHeight());
+        basicButtons_pnl.setBounds(this.getWidth() - (exit_btn.getWidth() * 3) - 40, 10, exit_btn.getWidth() * 3 + 35,
+                exit_btn.getHeight());
 
         // The Dark mode label
         darkMode_lbl.setBounds((int) (0.017 * screenSize.getWidth()), (int) (0.80 * screenSize.getHeight()), 400, 50);
@@ -73,7 +76,8 @@ public class MenuFrame extends JFrame {
         darkMode_tglbtn.setBounds((int) (0.17 * screenSize.getWidth()), (int) (0.805 * screenSize.getHeight()), 60, 40);
 
         // Options panel
-        options_panel.setBounds((int) (0.60 * screenSize.getWidth()), (int) (0.34 * screenSize.getHeight()), (int) (0.45 * screenSize.getWidth()), 700);
+        options_panel.setBounds((int) (0.60 * screenSize.getWidth()), (int) (0.34 * screenSize.getHeight()),
+                (int) (0.45 * screenSize.getWidth()), 700);
 
         // Buttons in the Options Panel
         chooseTopic_btn.setBounds(new Rectangle(300, 70));
@@ -86,6 +90,11 @@ public class MenuFrame extends JFrame {
         updateDatabase_btn.setFont(buttonFont.deriveFont((float) (0.07 * getHeight())));
     }
 
+    /*
+     * Yet another standard function used everywhere, and is called every time you
+     * turn the dark mode on or off
+     * coz that is when you are supposed to change the colors of everything.
+     */
     private void reassignColors() {
 
         if (Colors.DarkMode) {
@@ -111,7 +120,10 @@ public class MenuFrame extends JFrame {
         helpAndCredits_btn.setForeground(Colors.primaryColor);
     }
 
-
+    /*
+     * Standard function to create panels. In this case the panel that hold the menu
+     * options.
+     */
     private void createPanels() {
         options_panel = new JPanel();
         BoxLayout bl = new BoxLayout(options_panel, BoxLayout.Y_AXIS);
@@ -127,7 +139,12 @@ public class MenuFrame extends JFrame {
 
     }
 
-
+    /*
+     * Standard function to create toggles, in this case only one toggle is used.
+     * The one to toggle the dark mode label.
+     * This then calls the reassignColors method to chang the colors once it is
+     * Clicked on.
+     */
     private void createToggles() {
         ImageIcon toggle_on = new ImageIcon("src/main/resources/icons/toggle_on.png");
         ImageIcon toggle_off = new ImageIcon("src/main/resources/icons/toggle_off.png");
@@ -182,9 +199,13 @@ public class MenuFrame extends JFrame {
 
     private void createButtons() {
 
-        // Removing Change and Action Listeners.
+        // Removing Change and Action Listeners. This is important coz if you dont do it
+        // then the
+        // resize panel buttons still have an action listener that is asking them to do
+        // things in the login or menu screen or whatever
+        // and that is not good as those screens no longer exist. So we clear all the
+        // action and change listeners and start from a clean slate.
         GameFrame.removeAllChangeAndActionListenersFromBasicButtons();
-
 
         exit_btn.addChangeListener(evt -> {
             if (exit_btn.getModel().isPressed()) {

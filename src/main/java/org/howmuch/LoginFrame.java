@@ -1,3 +1,11 @@
+
+/*
+ * This is the loginFrame file, which is one of the first classes that comes into picture, pun intended. 
+ * It does everything it can to make it look like the login screen of a modern website like google. Even goes as far as to use the same fonts. 
+ * It checks the username and the password entered by the user, and matches it with the csv file it has. And reports the situation on screen. 
+ * Once the user is justified and logged in, or has created a new account, it adds them, assigns some basic variables, and then Calls the Main Menu class by calling the changeFrame function in the Main class. 
+ */
+
 package org.howmuch;
 
 import javax.swing.*;
@@ -6,16 +14,28 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 
+// Basically importing every static thing from Main coz its used so often
+// not a very good practice. 
 import static org.howmuch.Main.*;
 
 public class LoginFrame extends JFrame implements Runnable {
+
+    public static boolean running = true, userExists = false, incorrectPassword = false, newUser = false;
     JLabel username_lbl, password_lbl, background_lbl, status_lbl, status_emoji_lbl;
     JButton login_btn, guest_btn, newAccount_btn, exit_btn, resize_btn, minimize_btn;
     JTextField username_txt_fld;
     JPasswordField password_txt_fld;
-    public static boolean running = true, userExists = false, incorrectPassword = false, newUser = false;
     Thread loginThread;
 
+    /*
+     * This is the standard implmentation of a constructor in this game. There are
+     * some basic attributes of the Frame calsses that it extends from
+     * And then sets them. It then creates the things you are supposed to create in
+     * the GUI, and then adds them to the frame. This could be done in a panel, yes,
+     * but then you couldnt use some things like the CompoenentListener class that
+     * only listens to the Frame mainly, and that helps in calling certain functions
+     * when you resize the screen.
+     */
     LoginFrame() {
         this.setTitle("How Much? ");
         this.setResizable(false);
@@ -39,16 +59,21 @@ public class LoginFrame extends JFrame implements Runnable {
         this.add(username_txt_fld);
         this.add(password_txt_fld);
         this.add(background_lbl);
+
+        // Thread to check the password entered by the user every 2 seconds is invoked
+        // by this thread's start method.
         startThread();
 
         this.pack();
         this.setVisible(true);
-        this.setLocationRelativeTo(null);
-
-        // scrap and update database
-//        DataBaseManager.up
+        this.setLocationRelativeTo(null); // put in the center.
     }
 
+    /*
+     * Standard function to create buttons and assign their attributes. As some
+     * lines are dupiliated, they certainly can be extracted as separete methods
+     * themselves.
+     */
     public void createButtons() {
         login_btn = new JButton();
         login_btn.setText("Login");
@@ -62,6 +87,8 @@ public class LoginFrame extends JFrame implements Runnable {
         login_btn.setBorder(null);
 
         login_btn.setBackground(Colors.bgColor);
+
+        // To control what happens when the mouse interacts with this button.
         login_btn.addChangeListener(evt -> {
             if (login_btn.getModel().isPressed()) {
                 login_btn.setForeground(Colors.primaryColor);
@@ -72,10 +99,15 @@ public class LoginFrame extends JFrame implements Runnable {
             }
         });
 
+        // Stuff to do when it is pressed. Applicable to all buttons here.
         login_btn.addActionListener(e -> {
-
             if (DataBaseManager.doesUsernameExist(username_txt_fld.getText())) {
-                if (DataBaseManager.doesPasswordMatch(username_txt_fld.getText(), String.valueOf(password_txt_fld.getPassword()))) {
+
+                // Now the user is trying to login, so we check if the password matches
+                // if it does, then we assign some basic variables, and close this screen, open
+                // the menu screen.
+                if (DataBaseManager.doesPasswordMatch(username_txt_fld.getText(),
+                        String.valueOf(password_txt_fld.getPassword()))) {
                     DataBaseManager.currentUsername = username_txt_fld.getText();
                     DataBaseManager.currentPassword = String.valueOf(password_txt_fld.getPassword());
                     this.setVisible(false);
@@ -88,6 +120,8 @@ public class LoginFrame extends JFrame implements Runnable {
                     incorrectPassword = true;
                 }
             } else {
+                // If the user has entered a username and a password, and he doesnt exist, then
+                // clearly is a new user.
                 newUser = true;
             }
 
@@ -173,7 +207,7 @@ public class LoginFrame extends JFrame implements Runnable {
         Image resize_image = resize.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
 
         exit_btn = new JButton();
-//        exit_btn.setText("-");
+        // exit_btn.setText("-");
         exit_btn.setIcon(new ImageIcon(exit_image));
         exit_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         exit_btn.setAlignmentX(Box.CENTER_ALIGNMENT);
@@ -221,7 +255,7 @@ public class LoginFrame extends JFrame implements Runnable {
         });
 
         minimize_btn = new JButton();
-//        minimize_btn.setText("-");
+        // minimize_btn.setText("-");
         minimize_btn.setIcon(new ImageIcon(minimize_image));
         minimize_btn.setAlignmentY(Box.CENTER_ALIGNMENT);
         minimize_btn.setAlignmentX(Box.CENTER_ALIGNMENT);
@@ -243,9 +277,11 @@ public class LoginFrame extends JFrame implements Runnable {
             }
         });
 
-
     }
 
+    /*
+     * Standard function to create labels used in this frame.
+     */
     public void createLabels() {
         ImageIcon icon = new ImageIcon("src/main/resources/images/Login_bg.png");
         Image bg_image = icon.getImage().getScaledInstance(1280, 720, Image.SCALE_SMOOTH);
@@ -282,6 +318,9 @@ public class LoginFrame extends JFrame implements Runnable {
         status_emoji_lbl.setForeground(Colors.bgColor);
     }
 
+    /*
+     * Standard function to create Text Fields.
+     */
     public void createTextFields() {
         username_txt_fld = new JTextField("");
         username_txt_fld.setFont(password_font);
@@ -308,6 +347,11 @@ public class LoginFrame extends JFrame implements Runnable {
         password_txt_fld.setAlignmentY(Box.CENTER_ALIGNMENT);
     }
 
+    /*
+     * This function is what checks the password, and so naturally has a lot of if
+     * statements.
+     * Most of them are self explanatory.
+     */
     @Override
     public void run() {
         long lastTime = System.nanoTime();
@@ -316,7 +360,8 @@ public class LoginFrame extends JFrame implements Runnable {
         double delta = 0;
 
         while (running) {
-            // basic game loop logic to ensure 60 fps, dont think too much about it, it makes sense.
+            // basic game loop logic to ensure 60 fps, dont think too much about it, it
+            // makes sense.
             // you can reuse it for consistancy, or make a new one.
 
             long now = System.nanoTime();
@@ -324,17 +369,17 @@ public class LoginFrame extends JFrame implements Runnable {
             lastTime = now;
 
             if (delta >= 1) {
-//                System.out.println(username_txt_fld.getText());
-//                System.out.println(password_txt_fld.getPassword());
+                // System.out.println(username_txt_fld.getText());
+                // System.out.println(password_txt_fld.getPassword());
                 if (username_txt_fld.getText().length() == 0) {
                     newAccount_btn.setEnabled(false);
                     status_lbl.setText("Enter Username & Password");
                     status_emoji_lbl.setText("\uD83E\uDEE3");
-//                    status_emoji_lbl.setText("🙈");
+                    // status_emoji_lbl.setText("🙈");
                 } else if (newUser) {
                     status_lbl.setText("Welcome! Create New Account");
                     status_emoji_lbl.setText("\uD83D\uDE4F");
-//                    status_emoji_lbl.setText("\uD83D\uDE1E");
+                    // status_emoji_lbl.setText("\uD83D\uDE1E");
                     try {
                         Thread.sleep(2000);
                     } catch (InterruptedException e) {
@@ -344,7 +389,7 @@ public class LoginFrame extends JFrame implements Runnable {
                 } else if (incorrectPassword) {
                     status_lbl.setText("Password doesn't Match!");
                     status_emoji_lbl.setText("\uD83D\uDE16");
-//                    status_emoji_lbl.setText("\uD83D\uDE1E");
+                    // status_emoji_lbl.setText("\uD83D\uDE1E");
                     try {
                         Thread.sleep(2000);
                     } catch (InterruptedException e) {
@@ -363,8 +408,8 @@ public class LoginFrame extends JFrame implements Runnable {
                 } else if (password_txt_fld.getPassword().length < 8) {
                     newAccount_btn.setEnabled(false);
                     status_lbl.setText("Nope, Password is too Short");
-//                    status_emoji_lbl.setText("\uD83D\uDE0F");
-//                    status_emoji_lbl.setText("\uD83E\uDD0F");
+                    // status_emoji_lbl.setText("\uD83D\uDE0F");
+                    // status_emoji_lbl.setText("\uD83E\uDD0F");
                     status_emoji_lbl.setText("\uD83D\uDE15");
                 } else if (Arrays.equals(password_txt_fld.getPassword(), "abcdefgh".toCharArray())) {
                     newAccount_btn.setEnabled(false);
@@ -377,12 +422,12 @@ public class LoginFrame extends JFrame implements Runnable {
                 } else if (Arrays.equals(password_txt_fld.getPassword(), "asdfghjk".toCharArray())) {
                     newAccount_btn.setEnabled(false);
                     status_lbl.setText("Be Lazy, but not thaaat lazy");
-//                    status_emoji_lbl.setText("\uD83D\uDE42");
+                    // status_emoji_lbl.setText("\uD83D\uDE42");
                     status_emoji_lbl.setText("\uD83D\uDC80");
                 } else if (Arrays.equals(password_txt_fld.getPassword(), "asdfasdf".toCharArray())) {
                     newAccount_btn.setEnabled(false);
                     status_lbl.setText("Even Krishnaraj isnt this lazy");
-//                    status_emoji_lbl.setText("\uD83E\uDD21");
+                    // status_emoji_lbl.setText("\uD83E\uDD21");
                     status_emoji_lbl.setText("\uD83D\uDC80");
                 } else if (password_txt_fld.getPassword().length > 30) {
                     newAccount_btn.setEnabled(false);
@@ -391,8 +436,8 @@ public class LoginFrame extends JFrame implements Runnable {
                 } else {
                     status_lbl.setText("All Good!");
                     status_emoji_lbl.setText("\uD83D\uDC4C");
-//                    status_emoji_lbl.setText("\uD83D\uDE0E" );
-//                    status_emoji_lbl.setText("🤝" );
+                    // status_emoji_lbl.setText("\uD83D\uDE0E" );
+                    // status_emoji_lbl.setText("🤝" );
                     newAccount_btn.setEnabled(true);
                     login_btn.setEnabled(true);
                 }

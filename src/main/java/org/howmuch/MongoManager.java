@@ -1,3 +1,7 @@
+/*
+ * Class that does everything that we wanna do with mongodb. Things like inserting, deleting, creating and fetching data. 
+ */
+
 package org.howmuch;
 
 import com.mongodb.MongoClient;
@@ -6,7 +10,6 @@ import org.bson.Document;
 
 public class MongoManager {
     static MongoDatabase database;
-
     public static String MONGO_DATABASE_NAME = "HowMuch";
     public static int MONGO_PORT_NO = 27017;
     public static String MONGO_HOST = "localhost";
@@ -18,19 +21,20 @@ public class MongoManager {
         for (Document document : iterDoc) {
             System.out.println(document);
             if (i == randomIndex) {
-                return new String[]{(String) document.get("Name"), document.getString("Price"), document.getString("Image")};
+                return new String[] { (String) document.get("Name"), document.getString("Price"),
+                        document.getString("Image") };
             }
             i++;
         }
-        return new String[]{"Sadly Not Found", "Sadly Not Found", "Sadly Not Found"};
+        return new String[] { "Sadly Not Found", "Sadly Not Found", "Sadly Not Found" };
 
     }
 
     public static boolean establishConnectionWithMongo() {
-//        Creating a MongoDB client
+        // Creating a MongoDB client
         try {
             MongoClient mongoClient = new MongoClient(MONGO_HOST, MONGO_PORT_NO);
-            //Connecting to the database
+            // Connecting to the database
             database = mongoClient.getDatabase(MONGO_DATABASE_NAME);
             System.out.println("Connected Successfully to mongoDb");
             return true;
@@ -43,9 +47,9 @@ public class MongoManager {
     }
 
     public static void addDataToMongo(String Topic, String[] data) {
-        try{
+        try {
             MongoClient mongoClient = new MongoClient(MONGO_HOST, MONGO_PORT_NO);
-            //Connecting to the database
+            // Connecting to the database
             database = mongoClient.getDatabase(MONGO_DATABASE_NAME);
             Topic = Topic.substring(0, 1).toUpperCase() + Topic.substring(1);
             MongoCollection<Document> collection = database.getCollection(Topic);
@@ -56,7 +60,7 @@ public class MongoManager {
             collection.insertOne(dataDocToAdd);
             System.out.println(data[0]);
             System.out.println("\n\nAdded record to mongo---------\n\n");
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Couldnt add data");
         }
     }

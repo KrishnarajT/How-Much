@@ -19,8 +19,6 @@ public class GameFrame extends JFrame {
     public static int time_left = 9;
     public static boolean gameWon = false;
     static boolean[] whichOptionCorrect;
-
-    ButtonChangeListener button_cl;
     BackgroundPanel backgroundPanel;
     BackgroundPanel productImagePanel;
     static JButton option_1_btn;
@@ -114,7 +112,7 @@ public class GameFrame extends JFrame {
     private void assignCurrentData() {
         currentData = new String[]{"", "", ""};
         System.out.println("Accessing or atleast trying to access data here");
-        try{
+        try {
             if (!usingMongo) {
                 System.out.println("We are accessing data from the local database as mongo isnt working");
                 currentData = DataBaseManager.readFromLocalDatabase(currentTopic, randomIndex);
@@ -122,7 +120,7 @@ public class GameFrame extends JFrame {
                 currentData = MongoManager.fetchDataFromMongo(currentTopic, randomIndex);
                 System.out.println("Reading data from mongo sucessful");
             }
-        } catch(Exception e){
+        } catch (Exception e) {
             System.out.println("We got some Issues reading the file from Mongodb");
             currentData = DataBaseManager.readFromLocalDatabase(currentTopic, randomIndex);
         }
@@ -449,7 +447,7 @@ public class GameFrame extends JFrame {
             } else if (optionButton.getModel().isRollover()) {
                 optionButton.setForeground(Colors.accentColor);
             } else {
-                optionButton.setForeground(Colors.bgColor);
+                optionButton.setForeground(Colors.light_bgColor);
             }
         });
         optionButton.addActionListener(e -> {
@@ -504,47 +502,5 @@ public class GameFrame extends JFrame {
         time_left = 2;
         grantAccess = true;
         gameWon = true;
-    }
-
-    public static class ButtonChangeListener implements ChangeListener {
-        @Override
-        public void stateChanged(ChangeEvent e) {
-            if (e.getSource() == option_1_btn) {
-                if (option_1_btn.getModel().isPressed()) {
-                    option_1_btn.setForeground(Colors.accentColor);
-                } else if (option_1_btn.getModel().isRollover()) {
-                    option_1_btn.setForeground(Colors.accentColor);
-                } else {
-                    option_1_btn.setForeground(Colors.bgColor);
-                }
-            }
-            if (e.getSource() == option_2_btn) {
-                if (option_2_btn.getModel().isPressed()) {
-                    option_2_btn.setForeground(Colors.accentColor);
-                } else if (option_2_btn.getModel().isRollover()) {
-                    option_2_btn.setForeground(Colors.accentColor);
-                } else {
-                    option_2_btn.setForeground(Colors.bgColor);
-                }
-            }
-            if (e.getSource() == option_3_btn) {
-                if (option_3_btn.getModel().isPressed()) {
-                    option_3_btn.setForeground(Colors.accentColor);
-                } else if (option_3_btn.getModel().isRollover()) {
-                    option_3_btn.setForeground(Colors.accentColor);
-                } else {
-                    option_3_btn.setForeground(Colors.bgColor);
-                }
-            }
-            if (e.getSource() == option_4_btn) {
-                if (option_4_btn.getModel().isPressed()) {
-                    option_4_btn.setForeground(Colors.accentColor);
-                } else if (option_4_btn.getModel().isRollover()) {
-                    option_4_btn.setForeground(Colors.accentColor);
-                } else {
-                    option_4_btn.setForeground(Colors.bgColor);
-                }
-            }
-        }
     }
 }
