@@ -4,7 +4,7 @@ A Desktop GUI Game/App about Guessing the Price of a Product of all Genres.
 # Screenshots and Demos
 
 ## Demos
-<img alt="Login Screen gif" height="1080" src="https://github.com/KrishnarajT/How-Much/blob/main/design/Screenshots/login.gif" width="1920"/>
+![Login Screen gif](https://github.com/KrishnarajT/How-Much/blob/main/design/Screenshots/login.gif)
 ![Main Menu gif](https://github.com/KrishnarajT/How-Much/blob/main/design/Screenshots/Main%20Menu.gif)
 ![Game Play gif](https://github.com/KrishnarajT/How-Much/blob/main/design/Screenshots/Game%20Play.gif)
 ![Other Screens gif](https://github.com/KrishnarajT/How-Much/blob/main/design/Screenshots/Other%20Screens.gif)
