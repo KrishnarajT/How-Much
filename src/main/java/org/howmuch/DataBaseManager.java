@@ -4,7 +4,6 @@
 
 package org.howmuch;
 
-import com.mongodb.client.MongoDatabase;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import org.apache.commons.io.FileUtils;
@@ -19,17 +18,17 @@ import java.util.Objects;
 
 public class DataBaseManager {
 
-    public static String LOCAL_DATAFOLDER = "src/main/resources/data";
-    public static String LOCAL_CSV_FOLDER = "src/main/resources/data/csvs";
-    public static String LOCAL_IMG_FOLDER = "src/main/resources/data/images";
-    public static String LOCAL_BACKUP_DATAFOLDER = "src/main/resources/data_backup";
-    public static String LOCAL_BACKUP_CSV_FOLDER = "src/main/resources/data_backup/csvs";
-    public static String LOCAL_BACKUP_IMG_FOLDER = "src/main/resources/data_backup/images";
-    public static String USERDATA_FILEPATH = "src/main/resources/data/user_details.csv";
-    public static String BACKUP_USERDATA_FILEPATH = "src/main/resources/data_backup/user_details.csv";
-    public static String LOCAL_DATEFILE = "src/main/resources/data/dateUpdated.txt";
-    public static String LOCAL_MONGODATEFILE = "src/main/resources/data/MongoDateUpdated.txt";
-    public static String LOCAL_BACKUP_DATEFILE = "src/main/resources/data_backup/dateUpdated.txt";
+    public static String LOCAL_DATAFOLDER = Objects.requireNonNull(DataBaseManager.class.getResource("/data")).getPath().replace("%20", " ");
+    public static String LOCAL_CSV_FOLDER = Objects.requireNonNull(DataBaseManager.class.getResource("/data/csvs")).getPath().replace("%20", " ");
+    public static String LOCAL_IMG_FOLDER = Objects.requireNonNull(DataBaseManager.class.getResource("/data/images")).getPath().replace("%20", " ");
+    public static String LOCAL_BACKUP_DATAFOLDER = Objects.requireNonNull(DataBaseManager.class.getResource("/data_backup")).getPath().replace("%20", " ");
+    public static String LOCAL_BACKUP_CSV_FOLDER = Objects.requireNonNull(DataBaseManager.class.getResource("/data_backup/csvs")).getPath().replace("%20", " ");
+    public static String LOCAL_BACKUP_IMG_FOLDER = Objects.requireNonNull(DataBaseManager.class.getResource("/data_backup/images")).getPath().replace("%20", " ");
+    public static String USERDATA_FILEPATH = Objects.requireNonNull(DataBaseManager.class.getResource("/data/user_details.csv")).getPath().replace("%20", " ");
+    public static String BACKUP_USERDATA_FILEPATH = Objects.requireNonNull(DataBaseManager.class.getResource("/data_backup/user_details.csv")).getPath().replace("%20", " ");
+    public static String LOCAL_DATEFILE = Objects.requireNonNull(DataBaseManager.class.getResource("/data/dateUpdated.txt")).getPath().replace("%20", " ");
+    public static String LOCAL_MONGODATEFILE = Objects.requireNonNull(DataBaseManager.class.getResource("/data/MongoDateUpdated.txt")).getPath().replace("%20", " ");
+    public static String LOCAL_BACKUP_DATEFILE = Objects.requireNonNull(DataBaseManager.class.getResource("/data_backup/dateUpdated.txt")).getPath().replace("%20", " ");
 
     static String currentUsername = "guest";
     static int USER_INDEX = -1;
@@ -297,6 +296,7 @@ public class DataBaseManager {
 
     public static int findLength(String Topic) {
         File inputFile;
+        System.out.println(Main.isLocalDatabaseUpToDate);
         if (Main.isLocalDatabaseUpToDate) {
             inputFile = new File(LOCAL_CSV_FOLDER + '/' + Topic.toLowerCase() + ".csv");
         } else {

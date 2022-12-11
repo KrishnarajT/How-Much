@@ -1,17 +1,12 @@
 package org.howmuch;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
-import java.util.TimerTask;
+import java.util.*;
 import java.util.Timer;
 
-import static java.lang.Math.round;
 import static org.howmuch.Main.*;
 
 public class GameFrame extends JFrame {
@@ -128,6 +123,7 @@ public class GameFrame extends JFrame {
 
     private void findRandomIndex() {
         int max = DataBaseManager.findLength(currentTopic);
+        System.out.println("the max length of the file of the current topic " + currentTopic + " : " + max);
         Random random = new Random();
         // Generates random integers 0 to 49
         randomIndex = random.nextInt(max);
@@ -154,7 +150,7 @@ public class GameFrame extends JFrame {
     public static void setPrices() {
         Random random = new Random();
         int[] wrongPrices = new int[]{0, 0, 0};
-        correctPrice = Math.round(Integer.parseInt(currentData[1]));
+        correctPrice = Math.round(Integer.parseInt(currentData[1])) + 2;
         System.out.println("Correct price is: ");
         System.out.println(correctPrice);
 
@@ -242,7 +238,7 @@ public class GameFrame extends JFrame {
         productName_txtArea.setBorder(null);
         productName_txtArea.setLineWrap(true);
 
-        ImageIcon imageIcon = new ImageIcon("src/main/resources/images/confetti.gif");
+        ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(GameFrame.class.getResource("/images/confetti.gif")).getPath().replace("%20", " "));
         confetti = new JLabel(imageIcon);
         confetti.setVisible(false);
     }
@@ -282,9 +278,9 @@ public class GameFrame extends JFrame {
     private void reassignColors() {
 
         if (Colors.DarkMode) {
-            backgroundPanel.setBackground("src/main/resources/images/gamescreen.png");
+            backgroundPanel.setBackground(DataBaseManager.class.getResource("/images/gamescreen dark.png").getPath().replace("%20", " "));
         } else {
-            backgroundPanel.setBackground("src/main/resources/images/gamescreen.png");
+            backgroundPanel.setBackground(DataBaseManager.class.getResource("/images/gamescreen.png").getPath().replace("%20", " "));
         }
         Colors.reassignColors();
         basicButtons_pnl.setBackground(Colors.light_primaryColor);

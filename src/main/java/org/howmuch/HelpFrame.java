@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.util.Objects;
 
 import static org.howmuch.Main.*;
 
@@ -64,9 +65,9 @@ public class HelpFrame extends JFrame {
     private void reassignColors() {
         Colors.reassignColors();
         if (Colors.DarkMode) {
-            backgroundPanel.setBackground("src/main/resources/images/help and credits dark.png");
+            backgroundPanel.setBackground(Objects.requireNonNull(DataBaseManager.class.getResource("/images/help and credits dark.png")).getPath().replace("%20", " "));
         } else {
-            backgroundPanel.setBackground("src/main/resources/images/help and credits.png");
+            backgroundPanel.setBackground(Objects.requireNonNull(DataBaseManager.class.getResource("/images/game won over.png")).getPath().replace("%20", " "));
         }
         backToMenu_btn.setBackground(Colors.primaryColor);
         backToMenu_btn.setForeground(Colors.bgColor);

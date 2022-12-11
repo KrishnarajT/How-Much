@@ -4,9 +4,12 @@
 
 package org.howmuch;
 
+import com.mongodb.*;
 import com.mongodb.MongoClient;
 import com.mongodb.client.*;
 import org.bson.Document;
+
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 public class MongoManager {
     static MongoDatabase database;
@@ -29,13 +32,16 @@ public class MongoManager {
         return new String[] { "Sadly Not Found", "Sadly Not Found", "Sadly Not Found" };
 
     }
-
     public static boolean establishConnectionWithMongo() {
         // Creating a MongoDB client
         try {
-            MongoClient mongoClient = new MongoClient(MONGO_HOST, MONGO_PORT_NO);
+            MongoClientOptions.Builder builder = MongoClientOptions.builder().maxWaitTime(500).connectTimeout(500);
+            MongoClient mongoClient = new MongoClient(new ServerAddress(MONGO_HOST, MONGO_PORT_NO), builder.serverSelectionTimeout(500).build());
+
+            System.out.println(mongoClient.getAddress());
             // Connecting to the database
             database = mongoClient.getDatabase(MONGO_DATABASE_NAME);
+            System.out.println(database);
             System.out.println("Connected Successfully to mongoDb");
             return true;
 

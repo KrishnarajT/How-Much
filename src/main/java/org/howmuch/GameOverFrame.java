@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.util.Objects;
 
 import static org.howmuch.Main.*;
 
@@ -72,15 +73,15 @@ public class GameOverFrame extends JFrame {
         Colors.reassignColors();
         if (GameFrame.gameWon) {
             if (Colors.DarkMode) {
-                backgroundPanel.setBackground("src/main/resources/images/game won over dark.png");
+                backgroundPanel.setBackground(Objects.requireNonNull(DataBaseManager.class.getResource("/images/game won over dark.png")).getPath().replace("%20", " "));
             } else {
-                backgroundPanel.setBackground("src/main/resources/images/game won over.png");
+                backgroundPanel.setBackground(Objects.requireNonNull(DataBaseManager.class.getResource("/images/game won over.png")).getPath().replace("%20", " "));
             }
         } else {
             if (Colors.DarkMode) {
-                backgroundPanel.setBackground("src/main/resources/images/game over dark.png");
+                backgroundPanel.setBackground(Objects.requireNonNull(DataBaseManager.class.getResource("/images/game over dark.png")).getPath().replace("%20", " "));
             } else {
-                backgroundPanel.setBackground("src/main/resources/images/game over.png");
+                backgroundPanel.setBackground(Objects.requireNonNull(DataBaseManager.class.getResource("/images/game over.png")).getPath().replace("%20", " "));
             }
         }
         backtoTopic_btn.setBackground(Colors.primaryColor);

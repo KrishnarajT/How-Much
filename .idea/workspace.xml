@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="How Much:jar" />
+      <artifact name="How-Much:jar" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -10,7 +10,120 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c3445363-49b9-4e94-934c-5274cca32d9f" name="Changes" comment="created login page">
-      <change afterPath="$PROJECT_DIR$/design/Screenshots/Other Screens.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/How_Much_jar2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/How_Much_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/How_Much_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/AmazonScrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/AmazonScrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/DataBaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/DataBaseManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/GameFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/GameOverFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/GameOverFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/HelpFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/HelpFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/HighscoreFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/HighscoreFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/LoginFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/MenuFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/MenuFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/MongoManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/MongoManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/howmuch/TopicsFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/howmuch/TopicsFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/csvs/fashion.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/csvs/fashion.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/csvs/household.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/csvs/household.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/csvs/miscellaneous.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/csvs/miscellaneous.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/csvs/technology.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/csvs/technology.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/user_details.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/user_details.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/csvs/fashion.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/csvs/fashion.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/csvs/household.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/csvs/household.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/csvs/miscellaneous.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/csvs/miscellaneous.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/csvs/technology.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/csvs/technology.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/dateUpdated.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/dateUpdated.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/fashion/Mens TShirts0.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/fashion/Mens TShirts0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/fashion/Mens TShirts1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/fashion/Mens TShirts1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/fashion/Mens TShirts2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/fashion/Mens TShirts2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/fashion/Mens TShirts3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/fashion/Mens TShirts3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/fashion/Mens TShirts4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/fashion/Mens TShirts4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/fashion/Mens TShirts5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/fashion/Mens TShirts5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/fashion/Mens TShirts6.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/fashion/Mens TShirts6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/fashion/Mens TShirts7.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/fashion/Mens TShirts7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/fashion/Mens TShirts8.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/fashion/Mens TShirts8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/fashion/Mens TShirts9.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/fashion/Mens TShirts9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/household/Furniture0.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/household/Furniture0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/household/Furniture1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/household/Furniture1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/household/Furniture2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/household/Furniture2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/household/Furniture3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/household/Furniture3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/household/Furniture5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/household/Furniture5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/household/Furniture6.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/household/Furniture6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/household/Furniture7.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/household/Furniture7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/household/Furniture8.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/household/Furniture8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/household/Furniture9.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/household/Furniture9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/miscellaneous/Gifts0.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/miscellaneous/Gifts0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/miscellaneous/Gifts1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/miscellaneous/Gifts1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/miscellaneous/Gifts2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/miscellaneous/Gifts2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/miscellaneous/Gifts3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/miscellaneous/Gifts3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/miscellaneous/Gifts4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/miscellaneous/Gifts4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/miscellaneous/Gifts5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/miscellaneous/Gifts5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/miscellaneous/Gifts6.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/miscellaneous/Gifts6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/miscellaneous/Gifts7.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/miscellaneous/Gifts7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/images/miscellaneous/Gifts9.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/images/miscellaneous/Gifts9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_backup/user_details.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_backup/user_details.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/a.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/GFG.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/MongoDateUpdated.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/MongoDateUpdated.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/dateUpdated.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/dateUpdated.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/user_details.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/user_details.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/MongoDateUpdated.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/MongoDateUpdated.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/csvs/fashion.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/csvs/fashion.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/csvs/household.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/csvs/household.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/csvs/miscellaneous.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/csvs/miscellaneous.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/csvs/technology.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/csvs/technology.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/dateUpdated.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/dateUpdated.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/fashion/Mens TShirts0.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/fashion/Mens TShirts0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/fashion/Mens TShirts1.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/fashion/Mens TShirts1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/fashion/Mens TShirts2.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/fashion/Mens TShirts2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/fashion/Mens TShirts3.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/fashion/Mens TShirts3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/fashion/Mens TShirts4.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/fashion/Mens TShirts4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/fashion/Mens TShirts5.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/fashion/Mens TShirts5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/fashion/Mens TShirts6.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/fashion/Mens TShirts6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/fashion/Mens TShirts7.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/fashion/Mens TShirts7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/fashion/Mens TShirts8.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/fashion/Mens TShirts8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/fashion/Mens TShirts9.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/fashion/Mens TShirts9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/household/Furniture0.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/household/Furniture0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/household/Furniture1.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/household/Furniture1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/household/Furniture2.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/household/Furniture2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/household/Furniture3.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/household/Furniture3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/household/Furniture5.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/household/Furniture5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/household/Furniture6.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/household/Furniture6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/household/Furniture7.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/household/Furniture7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/household/Furniture8.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/household/Furniture8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/household/Furniture9.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/household/Furniture9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/miscellaneous/Gifts0.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/miscellaneous/Gifts0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/miscellaneous/Gifts1.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/miscellaneous/Gifts1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/miscellaneous/Gifts3.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/miscellaneous/Gifts3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/miscellaneous/Gifts4.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/miscellaneous/Gifts4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/miscellaneous/Gifts5.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/miscellaneous/Gifts5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/miscellaneous/Gifts6.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/miscellaneous/Gifts6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/miscellaneous/Gifts7.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/miscellaneous/Gifts7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/images/miscellaneous/Gifts9.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/images/miscellaneous/Gifts9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data_backup/user_details.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data_backup/user_details.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/AmazonScrapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/AmazonScrapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/DataBaseManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/DataBaseManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/GameFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/GameFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/GameFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/GameFrame$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/GameFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/GameFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/GameOverFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/GameOverFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/GameOverFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/GameOverFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/HelpFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/HelpFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/HelpFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/HelpFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/HighscoreFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/HighscoreFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/HighscoreFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/HighscoreFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/LoginFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/LoginFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/LoginFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/LoginFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/MenuFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/MenuFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/MenuFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/MenuFrame$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/MenuFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/MenuFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/MongoManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/MongoManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/TopicsFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/TopicsFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/howmuch/TopicsFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/howmuch/TopicsFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/GFG.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/GFG.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +159,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "extract.method.default.visibility": "private",
-    "last_opened_file_path": "/run/media/krishnaraj/Programs/Java/How Much/src/main/resources",
+    "last_opened_file_path": "/run/media/krishnaraj/Programs/Java/How Much/src/main/resources/images",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -55,7 +168,7 @@
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.27079645",
-    "settings.editor.selected.configurable": "MavenSettings"
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -83,21 +196,14 @@
   <component name="RunManager" selected="Application.Main">
     <configuration name="GFG" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GFG" />
-      <module name="How Much" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ImageDownloader" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ImageDownloader" />
-      <module name="How Much" />
+      <module name="How-Much" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.howmuch.Main" />
-      <module name="How Much" />
+      <module name="How-Much" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.howmuch.*" />
@@ -115,20 +221,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="xmlparsing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="xmlparsing" />
-      <module name="How Much" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="How Much.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/How_Much_jar/How Much.jar" />
+      <method v="2" />
+    </configuration>
+    <configuration name="How-Much.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/How_Much_jar/How-Much.jar" />
+      <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.WebScraper" />
-        <item itemvalue="Application.ImageDownloader" />
-        <item itemvalue="Application.xmlparsing" />
         <item itemvalue="Application.GFG" />
+        <item itemvalue="JAR Application.How-Much.jar" />
+        <item itemvalue="JAR Application.How Much.jar" />
+        <item itemvalue="Application.WebScraper" />
       </list>
     </recent_temporary>
   </component>
@@ -150,6 +257,22 @@
       <workItem from="1666252644424" duration="10000000" />
       <workItem from="1666294856486" duration="115133000" />
       <workItem from="1666724165908" duration="7203000" />
+      <workItem from="1666791412060" duration="716000" />
+      <workItem from="1667320451736" duration="1215000" />
+      <workItem from="1667364355224" duration="3677000" />
+      <workItem from="1667456654026" duration="3616000" />
+      <workItem from="1667793500993" duration="357000" />
+      <workItem from="1667883820957" duration="463000" />
+      <workItem from="1668153918016" duration="247000" />
+      <workItem from="1668154759529" duration="4309000" />
+      <workItem from="1668514431804" duration="15000" />
+      <workItem from="1668514655728" duration="537000" />
+      <workItem from="1669151832419" duration="1999000" />
+      <workItem from="1669227396464" duration="86000" />
+      <workItem from="1669364934185" duration="6000" />
+      <workItem from="1669782549208" duration="331000" />
+      <workItem from="1669787865893" duration="1036000" />
+      <workItem from="1670747572269" duration="13454000" />
     </task>
     <task id="LOCAL-00001" summary="created login page">
       <created>1665855114321</created>

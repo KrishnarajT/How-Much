@@ -7,7 +7,6 @@
 package org.howmuch;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -18,7 +17,6 @@ import java.util.*;
 import com.groupdocs.conversion.Converter;
 import com.groupdocs.conversion.filetypes.ImageFileType;
 import com.groupdocs.conversion.options.convert.ImageConvertOptions;
-import org.apache.commons.io.FileExistsException;
 import org.w3c.dom.*;
 
 import javax.xml.parsers.*;
@@ -61,26 +59,21 @@ public class AmazonScrapper {
     public static void fillSearchQueries() {
         System.out.println(Arrays.toString(Main.Topics));
 
-        // This is the final stuff here, but is commented out for quicker debugging.
+//         This is the final stuff here, but is commented out for quicker debugging.
 
-        // searchQueries_map.put(0, new String[]{"Televisions", "Mobile Phones",
-        // "Laptops", "Iphone", "Macbook", "Refrigerators", "Washing Machines", "Smart
-        // Watches", "Gaming Laptops", "Computer Accessories", "GPUs", "Tablets",
-        // "Playstation", "Xbox"});
-        // searchQueries_map.put(1, new String[]{"Mens TShirts", "Formal Suits", "Mens
-        // Casual Wear", "Womens Casual Wear", "Womens Formal Wear", "Kids Clothes",
-        // "Makeup", "Beauty Products", "Analog Watches", "Earrings", "Necklaces",
-        // "Jewellery", "Branded Clothes", "Gold Jewellery", "Shoes"});
-        // searchQueries_map.put(2, new String[]{"Furniture", "Tape", "Stationary",
-        // "Cutlery", "Kitchen Products", "Toothpaste", "Chocolates", "Soaps", "Water
-        // Bottles", "Carpets", "Sofa Sets", "Tables and Desks", "Cleaning Products"});
-        // searchQueries_map.put(3, new String[]{"Gifts", "Car Appliances", "Diwali
-        // Lights", "Decoration", "Birthday Decor", "Lenses"});
-
-        searchQueries_map.put(0, new String[] { "8k OLED Televisions" });
-        searchQueries_map.put(1, new String[] { "Mens TShirts" });
-        searchQueries_map.put(2, new String[] { "Furniture" });
-        searchQueries_map.put(3, new String[] { "Gifts" });
+         searchQueries_map.put(0, new String[]{"Televisions", "Mobile Phones",
+         "Laptops", "Iphone", "Macbook", "Refrigerators", "Washing Machines", "Smart Watches", "Gaming Laptops", "Computer Accessories", "GPUs", "Tablets",
+         "Playstation", "Xbox"});
+         searchQueries_map.put(1, new String[]{"Mens TShirts", "Formal Suits", "Mens Casual Wear", "Womens Casual Wear", "Womens Formal Wear", "Kids Clothes",
+         "Makeup", "Beauty Products", "Analog Watches", "Earrings", "Necklaces",
+         "Jewellery", "Branded Clothes", "Gold Jewellery", "Shoes"});
+         searchQueries_map.put(2, new String[]{"Furniture", "Tape", "Stationary", "Cutlery", "Kitchen Products", "Toothpaste", "Chocolates", "Soaps", "Water Bottles", "Carpets", "Sofa Sets", "Tables and Desks", "Cleaning Products"});
+         searchQueries_map.put(3, new String[]{"Gifts", "Car Appliances", "Diwali Lights", "Decoration", "Birthday Decor", "Lenses"});
+//
+//        searchQueries_map.put(0, new String[] { "8k OLED Televisions" });
+//        searchQueries_map.put(1, new String[] { "Kurti", "Womens Dresses" });
+//        searchQueries_map.put(2, new String[] { "Furniture" });
+//        searchQueries_map.put(3, new String[] { "Gifts" });
 
         for (Map.Entry<Integer, String[]> m : searchQueries_map.entrySet()) {
             System.out.println(m.getKey() + " " + Arrays.toString(m.getValue()));

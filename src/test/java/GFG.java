@@ -1,5 +1,9 @@
 // Java Program to implement
 // the above approach
+import org.howmuch.Main;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.*;
 
 import static java.lang.Math.abs;
@@ -45,13 +49,13 @@ class GFG {
     // Driver Code
     public static void main(String[] args)
     {
-        Scanner Sc=new Scanner(System.in);
-        int n=Sc.nextInt();
-        int[] a =new int[n];
-        for (int i = 0; i < n; i++) {
-            a[i] = Sc.nextInt();
+        URI s;
+        try {
+            s = Objects.requireNonNull(Objects.requireNonNull(Main.class.getResource("/icons/circle_delete.png")).toURI());
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
         }
+        System.out.println(s);
 
-        System.out.println(minDistance(a, n));
     }
 }

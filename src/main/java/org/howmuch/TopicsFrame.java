@@ -3,6 +3,7 @@ package org.howmuch;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Objects;
 
 import static org.howmuch.Main.*;
 
@@ -84,9 +85,9 @@ public class TopicsFrame extends JFrame {
     private void reassignColors() {
 
         if (Colors.DarkMode) {
-            backgroundPanel.setBackground("src/main/resources/images/choose topic dark.png");
+            backgroundPanel.setBackground(Objects.requireNonNull(DataBaseManager.class.getResource("/images/choose topic dark.png")).getPath().replace("%20", " "));
         } else {
-            backgroundPanel.setBackground("src/main/resources/images/choose topic.png");
+            backgroundPanel.setBackground(Objects.requireNonNull(DataBaseManager.class.getResource("/images/choose topic.png")).getPath().replace("%20", " "));
         }
         Colors.reassignColors();
         basicButtons_pnl.setBackground(Colors.bgColor);

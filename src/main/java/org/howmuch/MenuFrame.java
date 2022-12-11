@@ -3,6 +3,7 @@ package org.howmuch;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Objects;
 
 import static org.howmuch.Main.*;
 
@@ -98,9 +99,9 @@ public class MenuFrame extends JFrame {
     private void reassignColors() {
 
         if (Colors.DarkMode) {
-            backgroundPanel.setBackground("src/main/resources/images/Main_Menu_bg_dark.png");
+            backgroundPanel.setBackground("/run/media/krishnaraj/Programs/Java/How Much/src/main/resources/images/Main_Menu_bg_dark.png");
         } else {
-            backgroundPanel.setBackground("src/main/resources/images/Main_Menu_bg.png");
+            backgroundPanel.setBackground("/run/media/krishnaraj/Programs/Java/How Much/src/main/resources/images/Main_Menu_bg.png");
         }
         Colors.reassignColors();
         basicButtons_pnl.setBackground(Colors.bgColor);
@@ -146,8 +147,8 @@ public class MenuFrame extends JFrame {
      * Clicked on.
      */
     private void createToggles() {
-        ImageIcon toggle_on = new ImageIcon("src/main/resources/icons/toggle_on.png");
-        ImageIcon toggle_off = new ImageIcon("src/main/resources/icons/toggle_off.png");
+        ImageIcon toggle_on = new ImageIcon("/run/media/krishnaraj/Programs/Java/How Much/src/main/resources/icons/toggle_on.png");
+        ImageIcon toggle_off = new ImageIcon("/run/media/krishnaraj/Programs/Java/How Much/src/main/resources/icons/toggle_off.png");
 
         darkMode_tglbtn = new JToggleButton();
         darkMode_tglbtn.setOpaque(false);
@@ -168,7 +169,7 @@ public class MenuFrame extends JFrame {
                     darkMode_tglbtn.setIcon(toggle_on);
 
                     Colors.DarkMode = true;
-                    backgroundPanel.setBackground("src/main/resources/images/Main_Menu_bg_dark.png");
+                    backgroundPanel.setBackground(Objects.requireNonNull(DataBaseManager.class.getResource("/images/Main_Menu_bg_dark.png")).getPath().replace("%20", " "));
                     reassignColors();
                     repaint();
 
@@ -177,7 +178,7 @@ public class MenuFrame extends JFrame {
                     darkMode_tglbtn.setIcon(toggle_off);
 
                     Colors.DarkMode = false;
-                    backgroundPanel.setBackground("src/main/resources/images/Main_Menu_bg.png");
+                    backgroundPanel.setBackground(Objects.requireNonNull(DataBaseManager.class.getResource("/images/Main_Menu_bg.png")).getPath().replace("%20", " "));
                     reassignColors();
                     repaint();
                 }

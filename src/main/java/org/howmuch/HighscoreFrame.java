@@ -7,6 +7,7 @@ import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Objects;
 
 import static org.howmuch.Main.*;
 
@@ -115,9 +116,9 @@ public class HighscoreFrame extends JFrame {
     private void reassignColors() {
         Colors.reassignColors();
         if (Colors.DarkMode) {
-            backgroundPanel.setBackground("src/main/resources/images/highscore dark.png");
+            backgroundPanel.setBackground(Objects.requireNonNull(DataBaseManager.class.getResource("/images/highscore dark.png")).getPath().replace("%20", " "));
         } else {
-            backgroundPanel.setBackground("src/main/resources/images/highscore.png");
+            backgroundPanel.setBackground(Objects.requireNonNull(DataBaseManager.class.getResource("/images/highscore dark.png")).getPath().replace("%20", " "));
         }
         backToMenu_btn.setBackground(Colors.primaryColor);
         backToMenu_btn.setForeground(Colors.bgColor);

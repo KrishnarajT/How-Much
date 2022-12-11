@@ -13,6 +13,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
+import java.util.Objects;
 
 // Basically importing every static thing from Main coz its used so often
 // not a very good practice. 
@@ -199,11 +200,11 @@ public class LoginFrame extends JFrame implements Runnable {
         });
         newAccount_btn.setEnabled(false);
 
-        ImageIcon exit = new ImageIcon("src/main/resources/icons/circle_delete.png");
+        ImageIcon exit = new ImageIcon(Objects.requireNonNull(Main.class.getResource("/icons/circle_delete.png")).getPath().replace("%20", " "));
         Image exit_image = exit.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
-        ImageIcon minimize = new ImageIcon("src/main/resources/icons/circle_minus.png");
+        ImageIcon minimize = new ImageIcon(Objects.requireNonNull(Main.class.getResource("/icons/circle_minus.png")).getPath().replace("%20", " "));
         Image minimize_image = minimize.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
-        ImageIcon resize = new ImageIcon("src/main/resources/icons/screen_expand_3.png");
+        ImageIcon resize = new ImageIcon(Objects.requireNonNull(Main.class.getResource("/icons/screen_expand_3.png")).getPath().replace("%20", " "));
         Image resize_image = resize.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
 
         exit_btn = new JButton();
@@ -283,7 +284,7 @@ public class LoginFrame extends JFrame implements Runnable {
      * Standard function to create labels used in this frame.
      */
     public void createLabels() {
-        ImageIcon icon = new ImageIcon("src/main/resources/images/Login_bg.png");
+        ImageIcon icon = new ImageIcon(Objects.requireNonNull(DataBaseManager.class.getResource("/images/Login_bg.png")).getPath().replace("%20", " "));
         Image bg_image = icon.getImage().getScaledInstance(1280, 720, Image.SCALE_SMOOTH);
 
         background_lbl = new JLabel();
@@ -408,8 +409,8 @@ public class LoginFrame extends JFrame implements Runnable {
                 } else if (password_txt_fld.getPassword().length < 8) {
                     newAccount_btn.setEnabled(false);
                     status_lbl.setText("Nope, Password is too Short");
-                    // status_emoji_lbl.setText("\uD83D\uDE0F");
-                    // status_emoji_lbl.setText("\uD83E\uDD0F");
+//                     status_emoji_lbl.setText("\uD83D\uDE0F");
+//                     status_emoji_lbl.setText("\uD83E\uDD0F");
                     status_emoji_lbl.setText("\uD83D\uDE15");
                 } else if (Arrays.equals(password_txt_fld.getPassword(), "abcdefgh".toCharArray())) {
                     newAccount_btn.setEnabled(false);

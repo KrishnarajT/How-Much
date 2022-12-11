@@ -1,11 +1,10 @@
 package org.howmuch;
-
-import org.xml.sax.SAXException;
 import javax.swing.*;
-import javax.xml.parsers.ParserConfigurationException;
 import java.awt.*;
 import java.io.*;
+import java.net.URISyntaxException;
 import java.time.LocalDate;
+import java.util.Objects;
 
 // You have to extend the thread class to create a new thread for running the databases.
 public class Main extends Thread {
@@ -38,13 +37,22 @@ public class Main extends Thread {
     // They also let you have full control over what you want to do when they are
     // pressed, and what you wanna call, which you cant do without them.
     // You can also control now exactly the resizing behaviour of your software.
-    static ImageIcon exit = new ImageIcon("src/main/resources/icons/circle_delete.png");
+    static ImageIcon exit;
+
+    static {
+        try {
+            exit = new ImageIcon(Objects.requireNonNull(Objects.requireNonNull(Main.class.getResource("/icons/circle_delete.png")).toURI()).getPath().replace("%20", " "));
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     static Image exit_image = exit.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
-    static ImageIcon minimize = new ImageIcon("src/main/resources/icons/circle_minus.png");
+    static ImageIcon minimize = new ImageIcon(Objects.requireNonNull(Main.class.getResource("/icons/circle_minus.png")).getPath().replace("%20", " "));
     static Image minimize_image = minimize.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
-    static ImageIcon resizeUp = new ImageIcon("src/main/resources/icons/resize_3.png");
+    static ImageIcon resizeUp = new ImageIcon(Objects.requireNonNull(Main.class.getResource("/icons/resize_3.png")).getPath().replace("%20", " "));
     static Image resizeUp_image = resizeUp.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
-    static ImageIcon resizeDown = new ImageIcon("src/main/resources/icons/resize_4.png");
+    static ImageIcon resizeDown = new ImageIcon(Objects.requireNonNull(Main.class.getResource("/icons/resize_4.png")).getPath().replace("%20", " "));
     static Image resizeDown_image = resizeDown.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
 
     /**
@@ -58,21 +66,23 @@ public class Main extends Thread {
 
             // Used for Buttons Almost everywhere.
             buttonFont = Font
-                    .createFont(Font.TRUETYPE_FONT, new File("src/main/resources/Fonts/BelgradoItalic-OVArd.ttf"))
+                    .createFont(Font.TRUETYPE_FONT, new File(Objects.requireNonNull(Main.class.getResource("/Fonts/BelgradoItalic-OVArd.ttf")).getPath().replace("%20", " ")))
                     .deriveFont(50f);
             // Used Mostly on the Login Page.
-            textFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/Fonts/MomcakeBold-WyonA.otf"))
+            textFont = Font
+                    .createFont(Font.TRUETYPE_FONT, new File(Objects.requireNonNull(Main.class.getResource("/Fonts/MomcakeBold-WyonA.otf")).getPath().replace("%20", " ")))
                     .deriveFont(50f);
             // Used for password Entering
             password_font = Font
-                    .createFont(Font.TRUETYPE_FONT, new File("src/main/resources/Fonts/CaeciliaLTPro45Light.TTF"))
+                    .createFont(Font.TRUETYPE_FONT, new File(Objects.requireNonNull(Main.class.getResource("/Fonts/CaeciliaLTPro45Light.TTF")).getPath().replace("%20", " ")))
                     .deriveFont(35f);
             // Used only for Emojis
-            emoji_font = Font.createFont(Font.TRUETYPE_FONT,
-                    new File("src/main/resources/Fonts/NotoEmoji-VariableFont_wght.ttf")).deriveFont(35f);
+            emoji_font = Font
+                    .createFont(Font.TRUETYPE_FONT, new File(Objects.requireNonNull(Main.class.getResource("/Fonts/NotoEmoji-VariableFont_wght.ttf")).getPath().replace("%20", " ")))
+                    .deriveFont(35f);
             // Used to show the Price, needs to contain the Rupee symbol
             options_font = Font
-                    .createFont(Font.TRUETYPE_FONT, new File("src/main/resources/Fonts/ProductSans-Regular.ttf"))
+                    .createFont(Font.TRUETYPE_FONT, new File(Objects.requireNonNull(Main.class.getResource("/Fonts/ProductSans-Regular.ttf")).getPath().replace("%20", " ")))
                     .deriveFont(35f);
 
             // registering them locally, not required.
@@ -189,8 +199,10 @@ public class Main extends Thread {
                     if (lastUpdateDate.equals(String.valueOf(LocalDate.now()))) {
                         System.out.println("Backup DataBases are Up to Date!");
                     } else {
-                        // Else update it.
-                        DataBaseManager.createLocalDatabaseBackup();
+                        // Else update it only if local database was up to date.
+                        if(isLocalDatabaseUpToDate){
+                            DataBaseManager.createLocalDatabaseBackup();
+                        }
                     }
                 } catch (IOException e) {
                     throw new RuntimeException(e);
@@ -240,18 +252,20 @@ public class Main extends Thread {
                     // data,
                     // we will just erase them altogether and create them again.
                     DataBaseManager.clearLocalDatabase();
-                    MongoManager.clearMongoDb();
+                    if (usingMongo){
+                        MongoManager.clearMongoDb();
+                    }
 
                     // Scrap everything and Start Saving
                     AmazonScrapper obj = new AmazonScrapper();
                     try {
                         AmazonScrapper.scrapAndSave();
+                        // Just copy everything to the backup either way.
+                        DataBaseManager.createLocalDatabaseBackup();
                     } catch (Exception e) {
                         System.out.println("Couldnt update the database, there was some problem. It was");
                         System.out.println(e.getMessage());
                     }
-                    // Just copy everything to the backup either way.
-                    DataBaseManager.createLocalDatabaseBackup();
 
                     File dateFile;
 
@@ -262,11 +276,14 @@ public class Main extends Thread {
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                    dateFile = new File(DataBaseManager.LOCAL_MONGODATEFILE);
-                    try (FileWriter f = new FileWriter(dateFile, false)) {
-                        f.write(String.valueOf(LocalDate.now()));
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
+                    if(usingMongo)
+                    {
+                        dateFile = new File(DataBaseManager.LOCAL_MONGODATEFILE);
+                        try (FileWriter f = new FileWriter(dateFile, false)) {
+                            f.write(String.valueOf(LocalDate.now()));
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 }
                 case 6 -> {
@@ -286,9 +303,6 @@ public class Main extends Thread {
                     gameOverFrame = new GameOverFrame();
                 }
                 default -> {
-                    // In Case something goes really wrong, just backup and exit.
-                    DataBaseManager.createLocalDatabaseBackup();
-
                     // Exit game
                     System.out.println("Thanks for Playing! ");
                     System.exit(0);
@@ -357,14 +371,16 @@ public class Main extends Thread {
         // If say one of them is not updated, then we gotta scrap amazon.
         if (!isLocalDatabaseUpToDate || (usingMongo && !isMongoUpToDate)) {
 
-            System.out.println("Beginning to Scrap Data From Amazon, as one of the DataBases isnt updated. ");
+            System.out.println("Beginning to Scrap Data From Amazon, as atleast one of the DataBases isnt updated. ");
             if (!isLocalDatabaseUpToDate) {
                 // As an edge case, if mongo isnt up to date, we dont wanna clear the local one.
                 DataBaseManager.clearLocalDatabase();
+                System.out.println("cleared local database!");
             }
             if (usingMongo && !isMongoUpToDate) {
                 // If the local one isnt up to date we dont wanna clear mongo.
                 MongoManager.clearMongoDb();
+                System.out.println("Clearing Mongodb and using mongo");
             }
 
             // Scrap and save, as at this point we already know what works and what doesnt,
@@ -431,5 +447,7 @@ public class Main extends Thread {
         // and we still need to show stuff to the user so they can play the game. This
         // is the most important one.
         loginFrame = new LoginFrame();
+
+//        usingMongo = MongoManager.establishConnectionWithMongo();
     }
 }
